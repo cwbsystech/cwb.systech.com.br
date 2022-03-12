@@ -1,0 +1,19 @@
+#!/bin/bash
+# Autor:                Jensy Gregorio Gomez
+# Bio:                  Tecnico em Informatica e Eletronica
+# YouTube:              youtube.com/Sys-tech
+# Instagram:            https://www.instagram.com/systech5/?hl=pt-br
+# Github:               https://github.com/systech-brz
+
+# Data de criação:      01/01/2022
+# Data de atualização:  01/01/2022
+# Versão:               0.01
+
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Testado e homologado para a versão do GLPI Help Desk v9.5.x
+#
+# Agendamento das atualização dos Registros do GLPI a cada 1 minuto, todos os dias
+# [minutos] [horas] [dias do mês] [mês] [dias da semana] [usuário] [comando]
+*/1 * * * * root /usr/bin/php7.4 /var/www/html/glpi/front/cron.php &> /dev/null
+
+#Fim do agendamento, obrigatório ter uma linha em branco no final do arquivo para a execução correta.

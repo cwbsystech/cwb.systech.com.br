@@ -1,0 +1,24 @@
+#!/bin/bash
+# Autor:				JENSY GEGORIO GOMEZ
+# Bio:					Tecnico em Informatica e Eletronica
+# YouTube: 				youtube.com/Sys-tech
+# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
+# Github: 				https://github.com/systech-brz
+
+# Data de criação: 		01/01/2022
+# Data de atualização: 	01/01/2022
+# Versão: 				0.01
+
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+#
+# Testado e homologado para a versão do Bacula Server 11.x e do Baculum 11.x
+
+# Liberação dos comandos do Bacula acessar o Baculum via WEB/API
+Defaults:www-data !requiretty
+www-data ALL = (root) NOPASSWD: /usr/sbin/bconsole
+www-data ALL = (root) NOPASSWD: /usr/sbin/bdirjson
+www-data ALL = (root) NOPASSWD: /usr/sbin/bsdjson
+www-data ALL = (root) NOPASSWD: /usr/sbin/bfdjson
+www-data ALL = (root) NOPASSWD: /usr/sbin/bbconsjson
+
+# Obs: deixar uma linha em branco no final do arquivo para a execução correta

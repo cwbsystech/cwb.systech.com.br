@@ -1,0 +1,89 @@
+Conexão via Console do pfSense: https://docs.netgate.com/pfsense/en/latest/hardware/connect-to-console.html
+Conexão via SSH do pfSense: https://docs.netgate.com/pfsense/en/latest/recipes/ssh-access.html#enable-ssh-via-gui
+
+Configuração da Porta Serial no Oracle VirtualBOX
+Configurações
+	Portas Seriais
+		Porta 1
+			Habilitar Porta Serial (yes)
+			Número da Porta: COM3 - IRQ: 4 Endereço I/O: 0x3E8
+			Modo da Porta: Dispositivo no Hospedeiro
+			Caminho/Endereço: /dev/ttyS0
+
+Configuração do Serviço do SSH (Secure Shell) do pfSense
+System
+	Advanced
+		Secure Shell
+			Secure Shell Server: ON
+			SSHd Key Only: Require Both Password and Public Key
+			Allow Agent Forwarding: OFF
+			SSH port: 22
+		Login Protection
+			Threshold: 30
+			Blocktime: 120
+			Detection time: 1800
+			Pass list (Whitlist): (default)
+		Console Options
+			Console menu: ON
+	Save
+
+Configuração da Porta Serial (Console) do pfSense
+System
+	Advanced
+		Serial Communication
+			Serial Terminal: ON
+			Serial Speed: 115200
+			Primary Console: Serial Console
+		Console Options
+			Console menu: ON
+	Save
+
+Acessando remotamente o pfSense utilizando o Protocolo SSH
+Terminal
+	ssh admin@173.169.73.254
+	Are you sure want to continue connecting? (yes)
+	Password: Casado#55
+	0) Logout (SSH only)
+
+Instalando os software PuTTY e FileZilla para o gerenciamento do pfSense
+Terminal 
+	sudo apt update
+	sudo apt install putty putty-tools filezilla
+
+Geração da Chave Pública do SSH para autenticação do pfSense
+Terminal
+	ssh-keygen
+	Enter file in which to save the key (/home/jensy/.ssh/id_rsa): <Enter>
+	Enter passphrase (empty for no passphrase): <Enter>
+	Enter same passphrase again: <Enter>
+
+	Localização padrão das Chaves Públicas e Privadas do SSH
+	cd /home/jensy/.ssh/
+	ls -lh
+
+	Verificando o conteúdo da Chave Pública do SSH
+	cat id_rsa.pub
+
+Configuração da Chave Pública do SSH no usuário Admin do pfSense
+System
+	User Manager
+		Users
+			Admin 
+				Edit Users
+					Keys
+						Authorized SSH Keys: (copiar e colocar o conteúdo da chave pública)
+				Save
+
+Verificando o acesso via SSH do pfSense
+Status
+	System Logs
+		Geral
+			Advanced Log Filter
+				Process: sshd 
+			Apply Filter
+
+Configuração do usuário do Linux Mint para ter acesso a Porta Console
+Menu
+	Usuários e Grupos
+		Usuários
+			Adicionar o usuário aos Grupos: tty e dialout

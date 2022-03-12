@@ -1,0 +1,32 @@
+#!/bin/bash
+# Autor:				JENSY GEGORIO GOMEZ
+# Bio:					Tecnico em Informatica e Eletronica
+# YouTube: 				youtube.com/Sys-tech
+# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
+# Github: 				https://github.com/systech-brz
+
+# Data de criação: 		01/01/2022
+# Data de atualização: 	01/01/2022
+# Versão: 				0.01
+
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+#
+# Testado e homologado para a versão do Asterisk v19.1.x
+
+# Usuário e Grupo do serviço do Asterisk
+AST_USER="asterisk"
+AST_GROUP="asterisk"
+
+# Habilitando o recurso de cores no terminal do Asterisk
+COLOR=yes
+
+# Localizaçãodo arquivo de configuração padrão do Asterisk
+ALTCONF=/etc/asterisk/asterisk.conf
+
+# Configurações padrão do Asterisk, só descomentar se for necessário
+#COREDUMP=yes
+#MAXLOAD=4
+#MAXCALLS=1000
+#VERBOSITY=3
+#INTERNALTIMING=yes
+#TEMPRECORDINGLOCATION=yes

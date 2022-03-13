@@ -22,7 +22,7 @@
 # opção do comando date: +%T (Time)
 HORAINICIAL=$(date +%T)
 
-EMPRESA="SYS-TECH"
+EMPRESA="SYS - TECH"
 Logo_Empresa(){
 clear
 echo -e " \e[1;31m ======================================================================== \e[m ";

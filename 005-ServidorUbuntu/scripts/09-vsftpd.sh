@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do VSFTPD v3.0.x
 #
 # O VSFTPd, é um servidor FTP para sistemas do tipo Unix, incluindo Linux. 
@@ -290,8 +286,8 @@ echo -e "Criando a Chave Privada/Pública e o Certificado Assinado do Vsftpd Ser
 	# 	Locality Name (eg, city): Sao Paulo <-- pressione <Enter>
 	# 	Organization Name (eg, company): Bora para Pratica <-- pressione <Enter>
 	# 	Organization Unit Name (eg, section): Procedimentos em TI <-- pressione <Enter>
-	# 	Common Name (eg, server FQDN or YOUR name): systech.brz <-- pressione <Enter>
-	# 	Email Address: pti@systech.brz <-- pressione <Enter>
+	# 	Common Name (eg, server FQDN or YOUR name): pti.intra <-- pressione <Enter>
+	# 	Email Address: pti@pti.intra <-- pressione <Enter>
 	#
 	# opções do comando openssl: 
 	# x509 (command is a multi-purpose certificate utility),

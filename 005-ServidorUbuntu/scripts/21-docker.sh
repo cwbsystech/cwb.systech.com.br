@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do Docker v20.10.x e Portainer v2.9.x
 #
 # O Docker é uma tecnologia de software que fornece contêineres, promovido pela empresa 
@@ -32,8 +28,8 @@
 #
 # Informações que serão solicitadas na configuração via Web do Portainer.io
 # Username: admin;
-# Password: Casado#55;
-# Confirm password: Casado#55: Create User;
+# Password: pti@2018;
+# Confirm password: pti@2018: Create User;
 # Connect Portainer to the Docker environment you want to manage: Local: Connect
 #
 # Site oficial do Docker Community: https://www.docker.com/docker-community

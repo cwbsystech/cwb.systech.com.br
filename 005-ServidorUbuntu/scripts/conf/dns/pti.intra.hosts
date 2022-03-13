@@ -1,14 +1,11 @@
-;!/bin/bash
-; Autor:                Jensy Gregorio Gomez
-; Bio:                  Tecnico em Informatica e Eletronica
-; YouTube:              youtube.com/Sys-tech
-; Instagram:            https://www.instagram.com/systech5/?hl=pt-br
-; Github:               https://github.com/systech-brz
-
-; Data de criação:      01/01/2022
-; Data de atualização:  01/01/2022
-; Versão:               0.01
-
+; !/bin/bash
+; Autor:						Jensy Gregorio Gomez
+; YouTube:						youtube.com/systech
+; Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+; Github:						https://github.com/vaasystech-brz
+; Data de criação:				01/01/2022
+; Data de atualização:			01/01/2022
+; Versão:						0.01
 ; Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 ; Testado e homologado para a versão do Bind9 DNS Server v9.16.x
 ;
@@ -22,13 +19,13 @@
 ; 	86400 = tempo de atualizações caso o refresh falhe retenção 1 (um) dia
 ; 	2419200 = tempo de expiração do slave caso não se contate com o master expiração 4 (quatro) semanas
 ; 	604800 = tempo de vida das repostas negativas do servidor mínimo retenção de 1 (uma) semana
-; @ IN 	NS	servmembro.systech.brz. = configuração do Name Server (Nome do Servidor) do domínio.
+; @ IN 	NS	ptispo01ws01.pti.intra. = configuração do Name Server (Nome do Servidor) do domínio.
 ; @ IN 	MX	10 mail = configuração do Mail Exchanger (registros de troca de e-mail) do domínio
 ; @ IN	TXT	"v=spf1 a mx -all" = registro de Texto com informações do SPF (Sender Policy Framework)
 
-$ORIGIN systech.brz.
+$ORIGIN pti.intra.
 $TTL 3600 ; 1 hour
-@		IN		SOA		servmembro.systech.brz. vaamonde.systech.brz. (
+@		IN		SOA		ptispo01ws01.pti.intra. vaamonde.pti.intra. (
 				1 ; serial
 				604800 ; refresh (1 week)
 				86400 ; retry (1 day)
@@ -36,36 +33,36 @@ $TTL 3600 ; 1 hour
 				604800 ; minimum (1 week)
 				)
 ;
-@               IN 		NS		servmembro.systech.brz.
+@               IN 		NS		ptispo01ws01.pti.intra.
 @               IN 		MX		10 mail
 @               IN		TXT		"v=spf1 a mx -all"
 ;
-systech.brz.      IN 		A 		173.169.73.5
-servmembro    IN 		A		173.169.73.5
-ptispo01fw01    IN 		A		173.169.73.254
-mail            IN 		A 		173.169.73.5
+pti.intra.      IN 		A 		172.16.1.20
+ptispo01ws01    IN 		A		172.16.1.20
+ptispo01fw01    IN 		A		172.16.1.254
+mail            IN 		A 		172.16.1.20
 ;
-cloud           IN		CNAME	servmembro
-ftp             IN		CNAME	servmembro
-glpi            IN		CNAME	servmembro
-imap4           IN		CNAME	servmembro
-imap            IN		CNAME	servmembro
-loganalyzer     IN		CNAME	servmembro
-log             IN		CNAME	servmembro
-mysql           IN		CNAME	servmembro
-next            IN		CNAME	servmembro
-nfs             IN		CNAME	servmembro
-ntp             IN		CNAME	servmembro
-own             IN		CNAME	servmembro
-pop3            IN		CNAME	servmembro
-portal          IN		CNAME	servmembro
-pxe             IN		CNAME	servmembro
-smtp            IN		CNAME	servmembro
-ssh             IN		CNAME	servmembro
-tftp            IN		CNAME	servmembro
-webdav          IN		CNAME	servmembro
-wpad            IN		CNAME	servmembro
-wp              IN		CNAME	servmembro
-www             IN		CNAME	servmembro
-zm              IN		CNAME	servmembro
+cloud           IN		CNAME	ptispo01ws01
+ftp             IN		CNAME	ptispo01ws01
+glpi            IN		CNAME	ptispo01ws01
+imap4           IN		CNAME	ptispo01ws01
+imap            IN		CNAME	ptispo01ws01
+loganalyzer     IN		CNAME	ptispo01ws01
+log             IN		CNAME	ptispo01ws01
+mysql           IN		CNAME	ptispo01ws01
+next            IN		CNAME	ptispo01ws01
+nfs             IN		CNAME	ptispo01ws01
+ntp             IN		CNAME	ptispo01ws01
+own             IN		CNAME	ptispo01ws01
+pop3            IN		CNAME	ptispo01ws01
+portal          IN		CNAME	ptispo01ws01
+pxe             IN		CNAME	ptispo01ws01
+smtp            IN		CNAME	ptispo01ws01
+ssh             IN		CNAME	ptispo01ws01
+tftp            IN		CNAME	ptispo01ws01
+webdav          IN		CNAME	ptispo01ws01
+wpad            IN		CNAME	ptispo01ws01
+wp              IN		CNAME	ptispo01ws01
+www             IN		CNAME	ptispo01ws01
+zm              IN		CNAME	ptispo01ws01
 

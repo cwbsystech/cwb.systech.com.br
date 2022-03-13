@@ -34,10 +34,10 @@
 # 15. Install zimbra-chat [Y] <Enter>
 # 16. The system will be modified.  Continue? [N] Y <Enter>
 # 17. Change domain name? [Yes] Y <Enter>
-# 18. Create domain: [servmembro.systech.brz] systech.brz <Enter>
+# 18. Create domain: [ptispo01ws01.pti.intra] pti.intra <Enter>
 # 19. Address unconfigured (**) items  (? - help) 6 <Enter>
 #	19.1 Select, or 'r' for previous menu [r] 4 <Enter>
-#	19.2 Password for admin@systech.brz (min 6 characters): [XXXXXX] Casado#55 <Enter>
+#	19.2 Password for admin@pti.intra (min 6 characters): [XXXXXX] pti@2018 <Enter>
 #	19.3 Select, or 'r' for previous menu [r] <Enter>
 # 20. Select from menu, or press 'a' to apply config (? - help) a <Enter>
 # 21. Save configuration data to a file? [Yes] <Enter>
@@ -47,14 +47,14 @@
 # 25. Configuration complete - press return to exit <Enter>
 #
 # INFORMAÇÕES QUE SERÃO SOLICITADAS VIA WEB (NAVEGADOR) DO ZIMBRA ADMIN CONSOLE:
-# 01. Acessar a URL: https://mail.systech.brz:7071
+# 01. Acessar a URL: https://mail.pti.intra:7071
 # 02. Nome do usuário: admin
-# 03. Senha: Casado#55 <Login>
+# 03. Senha: pti@2018 <Login>
 #
 # INFORMAÇÕES QUE SERÃO SOLICITADAS VIA WEB (NAVEGADOR) DO ZIMBRA WEBMAIL:
-# 01. Acessar a URL: https://mail.systech.brz
+# 01. Acessar a URL: https://mail.pti.intra
 # 02. Nome do usuário: admin
-# 03. Senha: Casado#55
+# 03. Senha: pti@2018
 # 04. Versão: Padrão <Login>
 #
 # Site Oficial do Projeto Zimbra: https://www.zimbra.org

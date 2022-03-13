@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do NTop-NG v5.0.x
 #
 # NTop-NG é um software para monitorar o tráfego em uma rede de computadores. Ele foi 
@@ -33,8 +29,8 @@
 # Password: admin (Login)
 #
 # Change Password
-#	Password: Casado#55
-#	Confirm Password: Casado#55
+#	Password: pti@2018
+#	Confirm Password: pti@2018
 #	Language: English (Change Password)
 #
 # Site Oficial do Projeto: https://www.ntop.org/

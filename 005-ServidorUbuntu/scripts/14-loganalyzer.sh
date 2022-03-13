@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do LogAnalyzer v4.1.x
 #
 # O LogAnalyzer é uma interface da Web para o Syslog/Rsyslog e outros dados de eventos 
@@ -51,11 +47,11 @@
 # Step 6 -	Creating the Main Useraccount
 #				Create User Account
 #					Username: admin
-#					Password: Casado#55
-#					Repeat Password: Casado#55: Next;
+#					Password: pti@2018
+#					Repeat Password: pti@2018: Next;
 # Step 7 -	Create the first source for syslog messages
 #				First Syslog Source
-#					Name of the Source: servmembro
+#					Name of the Source: ptispo01ws01
 #					Source Type: MYSQL Native
 #					Select View: Syslog Fields
 #				Database Type Options

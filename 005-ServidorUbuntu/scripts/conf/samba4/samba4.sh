@@ -52,11 +52,11 @@ KERNEL=$(uname -r | cut -d'.' -f1,2)
 LOG="/var/log/$(echo $0 | cut -d'/' -f2)"
 #
 # Variáveis de configuração do Kerberos e SAMBA4
-REALM="systech.brz"
+REALM="PTI.INTRA"
 NETBIOS="PTI"
-DOMAIN="systech.brz"
-FQDN="servmembro.systech.brz"
-IP="173.169.73.5"
+DOMAIN="pti.intra"
+FQDN="ptispo01ws01.pti.intra"
+IP="172.16.1.20"
 #
 # Variáveis de configuração do NTP Server
 NTP="a.st1.ntp.br"
@@ -65,11 +65,11 @@ NTP="a.st1.ntp.br"
 ROLE="dc"
 DNS="SAMBA_INTERNAL"
 USER="administrator"
-PASSWORD="Casado#55"
+PASSWORD="pti@2018"
 LEVEL="2008_R2"
-SITE="systech.brz"
-INTERFACE="ens18"
-GATEWAY="173.169.73.254"
+SITE="PTI.INTRA"
+INTERFACE="enp0s3"
+GATEWAY="172.16.1.254"
 #
 # Variáveis de configuração do DNS
 ARPA="1.16.172.in-addr.arpa"

@@ -18,7 +18,7 @@ TFTP_USERNAME="tftp"
 TFTP_DIRECTORY="/var/lib/tftpboot"
 #
 # Configuração da porta padrão do serviço do Servidor TFTP-HPA
-#TFTP_ADDRESS="173.169.73.5:69"
+#TFTP_ADDRESS="172.16.1.20:69"
 TFTP_ADDRESS=":69"
 #
 # Configuração das opções de segurança do Servidor TFTP-HPA

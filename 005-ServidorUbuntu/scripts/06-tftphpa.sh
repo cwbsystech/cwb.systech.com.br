@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do TFTP-HPA v5.2.x
 #
 # Trivial File Transfer Protocol (ou apenas TFTP) é um protocolo de transferência 
@@ -22,13 +18,13 @@
 #
 # Utilização do TFTP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	tftp tftp.systech.brz
+# 	tftp tftp.pti.intra
 #		verbose
 #		status
 #		get robson.txt
 #		put vaamonde.txt
 # Windows Powershell:
-# 	tftp tftp.systech.brz
+# 	tftp tftp.pti.intra
 #		verbose
 #		status
 #		get robson.txt

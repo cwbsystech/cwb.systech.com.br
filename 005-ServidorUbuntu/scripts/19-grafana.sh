@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do Grafana Server v8.3.x
 #
 # Grafana é uma aplicação web de análise de código aberto multiplataforma e visualização 
@@ -21,8 +17,8 @@
 # Email or username: admin
 # Password: admin: (Log In)
 # Change Password
-#	New password: Casado#55
-#	Confirm new password: Casado#55: (Submit)
+#	New password: pti@2018
+#	Confirm new password: pti@2018: (Submit)
 #
 # Site Oficial do Projeto: https://grafana.com/
 #

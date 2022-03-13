@@ -1,16 +1,17 @@
-#!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
+Autor: Robson Vaamonde<br>
+Procedimentos em TI: http://procedimentosemti.com.br<br>
+Bora para Prática: http://boraparapratica.com.br<br>
+Robson Vaamonde: http://vaamonde.com.br<br>
+Facebook Procedimentos em TI: https://www.facebook.com/ProcedimentosEmTi<br>
+Facebook Bora para Prática: https://www.facebook.com/BoraParaPratica<br>
+Instagram Procedimentos em TI: https://www.instagram.com/procedimentoem<br>
+YouTUBE Bora Para Prática: https://www.youtube.com/boraparapratica<br>
+LinkedIn Robson Vaamonde: https://www.linkedin.com/in/robson-vaamonde-0b029028/<br>
+Github Procedimentos em TI: https://github.com/vaamonde<br>
+Data de criação: 10/10/2021<br>
+Data de atualização: 14/10/2021<br>
+Versão: 0.03<br>
+Testado e homologado no GNU/Linux Ubuntu Server 20.04.3 LTS
 
 Atualização da versão do Ubuntu Server 20.04.3: https://wiki.ubuntu.com/FocalFossa/ReleaseNotes<br>
 Mudanças da versão do Ubuntu Server 20.04.3: https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/ChangeSummary/20.04.3<br>
@@ -104,14 +105,14 @@ Instalação do Ubuntu Server: https://ubuntu.com/server/docs/installation
 	_ 		Variant: [English (US)]
 	_ 	<Done>
 	_ 03. Network connections
-	_ 		ens18 eth <Enter>
+	_ 		enp0s3 eth <Enter>
 	_ 			Edit IPv4 <Enter>
 	_ 				IPv4 Method: Manual <Enter>
-	_ 					Subnet: 173.169.73.0/24 <Tab>
-	_ 					Address: 173.169.73.5 <Tab>
-	_ 					Gateway: 173.169.73.254 <Tab>
-	_ 					Name servers: 173.169.73.254 <Tab>
-	_ 					Search domains: systech.brz
+	_ 					Subnet: 172.16.1.0/24 <Tab>
+	_ 					Address: 172.16.1.20 <Tab>
+	_ 					Gateway: 172.16.1.254 <Tab>
+	_ 					Name servers: 172.16.1.254 <Tab>
+	_ 					Search domains: pti.intra
 	_ 				<Save>
 	_ 	<Done>
 	_ 04. Configure proxy - <Done>
@@ -123,10 +124,10 @@ Instalação do Ubuntu Server: https://ubuntu.com/server/docs/installation
 	_ 		Confirm destructive action - <Continue>
 	_ 08. Profile setup
 	_ 		Your name: Robson Vaamonde <Tab>
-	_ 		Your server's name: servmembro <Tab>
+	_ 		Your server's name: ptispo01ws01 <Tab>
 	_ 		Pick a username: vaamonde <Tab>
-	_ 		Choose a passwords: Casado#55 <Tab>
-	_ 		Confirm your passwords: Casado#55
+	_ 		Choose a passwords: pti@2018 <Tab>
+	_ 		Confirm your passwords: pti@2018
 	_ 	<Done>
 	_ 09. SSH Setup
 	_ 		Install OpenSSH server: ON <Space>

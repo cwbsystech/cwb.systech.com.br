@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do NTP Server v4.2.
 #
 # O NTP é um protocolo para sincronização dos relógios dos computadores baseado 
@@ -33,7 +29,7 @@
 #
 # Configuração do NTP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	sudo ntpdate -s 173.169.73.5
+# 	sudo ntpdate -s 172.16.1.20
 #	sudo ntpq -pn
 #	sudo ntpq -c sysinfo
 #	sudo timedatectl
@@ -41,10 +37,10 @@
 #	sudo date
 #	sudo hwclock
 # Windows Powershell: 
-#	net time \\173.169.73.5 /set /yes
+#	net time \\172.16.1.20 /set /yes
 #	w32tm /query /status
 #	w32tm /query /configuration
-#	w32tm /config /syncfromflags:manual /manualpeerlist:”173.169.73.5” /reliable:yes /update
+#	w32tm /config /syncfromflags:manual /manualpeerlist:”172.16.1.20” /reliable:yes /update
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

@@ -1,16 +1,14 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
+# Testado e homologado para a versão do ISC DHCP Server v4.4.x
+# Testado e homologado para a versão do Bind DNS Sever v9.16.x
 #
 # O Bind DNS Server BIND (Berkeley Internet Name Domain ou, como chamado previamente, 
 # Berkeley Internet Name Daemon) é o servidor para o protocolo DNS mais utilizado na 
@@ -24,16 +22,16 @@
 #
 # Testando o DNS no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T 
-#	nslookup systech.brz
-#	dig systech.brz
-#	host systech.brz
-#	ping systech.brz
+#	nslookup pti.intra
+#	dig pti.intra
+#	host pti.intra
+#	ping pti.intra
 # Windows Powershell.: 
-#	nslookup systech.brz
+#	nslookup pti.intra
 #	ipconfig /displaydns
-#	ping systech.brz
-#	Resolve-DnsName systech.brz
-#	Test-Connection systech.brz
+#	ping pti.intra
+#	Resolve-DnsName pti.intra
+#	Test-Connection pti.intra
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
@@ -217,12 +215,12 @@ echo -e "Atualizando os arquivos de configuração do Bind DNS Server, aguarde..
 	mv -v /etc/bind/rndc.key /etc/bind/rndc.key.old &>> $LOG
 	mv -v /etc/default/named /etc/default/named.old &>> $LOG
 	cp -v conf/dns/{named.conf,named.conf.local,named.conf.options,named.conf.default-zones,rndc.key} /etc/bind/ &>> $LOG
-	cp -v conf/dns/{systech.brz.hosts,173.169.73.rev} /var/lib/bind/ &>> $LOG
+	cp -v conf/dns/{pti.intra.hosts,172.16.1.rev} /var/lib/bind/ &>> $LOG
 	cp -v conf/dns/{dnsupdate-cron,rndcupdate-cron} /etc/cron.d/ &>> $LOG
 	cp -v conf/dns/named /etc/default/ &>> $LOG
 	cp -v conf/dns/rndcstats /etc/logrotate.d/ &>> $LOG
 	chown -v root:bind /etc/bind/rndc.key &>> $LOG
-	chown -v root:bind /var/lib/bind/{systech.brz.hosts,173.169.73.rev} &>> $LOG
+	chown -v root:bind /var/lib/bind/{pti.intra.hosts,172.16.1.rev} &>> $LOG
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
@@ -264,22 +262,22 @@ echo -e "Editando o arquivo de configuração rndc.key, pressione <Enter> para c
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo de configuração systech.brz.hosts, pressione <Enter> para continuar."
+echo -e "Editando o arquivo de configuração pti.intra.hosts, pressione <Enter> para continuar."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /var/lib/bind/systech.brz.hosts
-	named-checkzone $DOMAIN /var/lib/bind/systech.brz.hosts &>> $LOG
+	vim /var/lib/bind/pti.intra.hosts
+	named-checkzone $DOMAIN /var/lib/bind/pti.intra.hosts &>> $LOG
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo de configuração 173.169.73.rev, pressione <Enter> para continuar."
+echo -e "Editando o arquivo de configuração 172.16.1.rev, pressione <Enter> para continuar."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /var/lib/bind/173.169.73.rev
-	named-checkzone $DOMAINREV /var/lib/bind/173.169.73.rev &>> $LOG
-	named-checkzone $NETWORK /var/lib/bind/173.169.73.rev &>> $LOG
+	vim /var/lib/bind/172.16.1.rev
+	named-checkzone $DOMAINREV /var/lib/bind/172.16.1.rev &>> $LOG
+	named-checkzone $NETWORK /var/lib/bind/172.16.1.rev &>> $LOG
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

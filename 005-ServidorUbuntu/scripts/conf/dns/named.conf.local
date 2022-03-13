@@ -1,14 +1,11 @@
 //!/bin/bash
-// Autor:                Jensy Gregorio Gomez
-// Bio:                  Tecnico em Informatica e Eletronica
-// YouTube:              youtube.com/Sys-tech
-// Instagram:            https://www.instagram.com/systech5/?hl=pt-br
-// Github:               https://github.com/systech-brz
-
-// Data de criação:      01/01/2022
-// Data de atualização:  01/01/2022
-// Versão:               0.01
-
+// Autor:						Jensy Gregorio Gomez
+// YouTube:						youtube.com/systech
+// Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+// Github:						https://github.com/vaasystech-brz
+// Data de criação:				01/01/2022
+// Data de atualização:			01/01/2022
+// Versão:						0.01
 // Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 // Testado e homologado para a versão do Bind9 DNS Server v9.16.x
 
@@ -25,9 +22,9 @@ key "rndc-key" {
 };
 
 // Configuração de Zona de Pesquisa Direta do Bind9 DNS Server
-zone "systech.brz" IN {
+zone "pti.intra" IN {
 	type master;
-	file "/var/lib/bind/systech.brz.hosts";
+	file "/var/lib/bind/pti.intra.hosts";
 	allow-update { key rndc-key; };
 	allow-query { any; };
 	allow-transfer { none; };
@@ -38,7 +35,7 @@ zone "systech.brz" IN {
 // Configuração da Zona de Pesquisa Reversa do Bind9 DNS Server
 zone "1.16.172.in-addr.arpa" IN {
 	type master;
-	file "/var/lib/bind/173.169.73.rev";
+	file "/var/lib/bind/172.16.1.rev";
 	allow-update { key rndc-key; };
 	allow-query { any; };
 	allow-transfer { none; };

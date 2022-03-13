@@ -1,16 +1,17 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
+# Autor: Robson Vaamonde
+# Procedimentos em TI: http://procedimentosemti.com.br
+# Bora para Prática: http://boraparapratica.com.br
+# Robson Vaamonde: http://vaamonde.com.br
+# Facebook Procedimentos em TI: https://www.facebook.com/ProcedimentosEmTi
+# Facebook Bora para Prática: https://www.facebook.com/BoraParaPratica
+# Instagram Procedimentos em TI: https://www.instagram.com/procedimentoem
+# YouTUBE Bora Para Prática: https://www.youtube.com/boraparapratica
+# LinkedIn Robson Vaamonde: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Github: https://github.com/vaamonde
+# Data de criação: 21/02/2022
+# Data de atualização: 21/02/2022
+# Versão: 0.01
 # Testado e homologado no Linux Mint 20.x e VSCode 1.58.x
 #
 PowerShell é um shell de linha de comando baseado em tarefas e linguagem de script desenvolvido

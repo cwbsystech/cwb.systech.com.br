@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do Wordpress v5.8.x
 #
 # WordPress: é um sistema livre e aberto de gestão de conteúdo para internet (do inglês: 
@@ -24,7 +20,7 @@
 # Informação necessária
 #	Título do site: Bora para Prática;
 #	Nome de usuário: admin;
-#	Senha: Casado#55;
+#	Senha: pti@2018;
 #	Confirme a senha: Confirmar o uso de uma senha fraca;
 #	O seu e-mail: vaamonde@vaamonde.pti; Instalar WordPress.
 #

@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do ISC DHCP Server v4.4.x
 #
 # Configuração padrão do ISC DHCP Server Daemon (código em /etc/init.d/isc-dhcp-server)
@@ -18,7 +14,7 @@
 # Configuração da Interface de Rede que o ISC DHCP Server irá escutar as solicitações
 # de endereçamento IPv4
 # OBSERVAÇÃO: o suporte ao IPv6 foi desativado e não será utilizado nesse curso
-INTERFACESv4="ens18"
+INTERFACESv4="enp0s3"
 #INTERFACESv6=""
 #
 # Localização do caminho padrão do arquivo de configuração do ISC DHCP Server

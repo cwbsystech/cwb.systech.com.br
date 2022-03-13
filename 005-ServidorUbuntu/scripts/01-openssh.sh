@@ -1,16 +1,13 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
+# Testado e homologado para a versão do OpenSSH Server v8.2.x
 #
 # OpenSSH (Open Secure Shell) é um conjunto de utilitários de rede relacionado à segurança que 
 # provém a criptografia em sessões de comunicações em uma rede de computadores usando o protocolo 
@@ -23,20 +20,20 @@
 # BSD. Ele permite que o host, endereços IP de sub-rede, nomes e/ou respostas de consulta ident, 
 # sejam usados como tokens sobre os quais realizam-se filtros para propósitos de controle de acesso.
 #
-# Site Oficial do Projeto OpenSSH: 			https://www.openssh.com/
-# Site Oficial do Projeto OpenSSL: 			https://www.openssl.org/
-# Site Oficial do Projeto Shell-In-a-Box: 	https://code.google.com/archive/p/shellinabox/
-# Site Oficial do Projeto Neofetch: 		https://github.com/dylanaraps/neofetch
+# Site Oficial do Projeto OpenSSH: https://www.openssh.com/
+# Site Oficial do Projeto OpenSSL: https://www.openssl.org/
+# Site Oficial do Projeto Shell-In-a-Box: https://code.google.com/archive/p/shellinabox/
+# Site Oficial do Projeto Neofetch: https://github.com/dylanaraps/neofetch
 #
 # Acesso remoto utilizando o GNU/Linux ou Microsoft Windows
 #
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	ssh vaamonde@173.169.73.10
-#	ssh vaamonde@ssh.systech.brz
+# 	ssh vaamonde@172.16.1.10
+#	ssh vaamonde@ssh.pti.intra
 #
 # Windows Powershell: Menu, Powershell 
-#	ssh vaamonde@173.169.73.10
-#	ssh vaamonde@ssh.systech.brz
+#	ssh vaamonde@172.16.1.10
+#	ssh vaamonde@ssh.pti.intra
 #
 # Linux Mint ou Windows:
 #	apt install putty putty-tools
@@ -58,7 +55,7 @@
 #		Enter file in which to save the key (/home/vaamonde/.ssh/id_rsa): /home/vaamonde/.ssh/vaamonde <Enter>
 #		Enter passphrase (empty for no passphrase): <Enter>
 #		Enter same passphrase again: <Enter>
-#	ssh-copy-id vaamonde@ssh.systech.brz
+#	ssh-copy-id vaamonde@ssh.pti.intra
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

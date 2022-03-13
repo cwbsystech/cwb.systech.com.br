@@ -1,14 +1,11 @@
 //!/bin/bash
-// Autor:                Jensy Gregorio Gomez
-// Bio:                  Tecnico em Informatica e Eletronica
-// YouTube:              youtube.com/Sys-tech
-// Instagram:            https://www.instagram.com/systech5/?hl=pt-br
-// Github:               https://github.com/systech-brz
-
-// Data de criação:      01/01/2022
-// Data de atualização:  01/01/2022
-// Versão:               0.01
-
+// Autor:						Jensy Gregorio Gomez
+// YouTube:						youtube.com/systech
+// Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+// Github:						https://github.com/vaasystech-brz
+// Data de criação:				01/01/2022
+// Data de atualização:			01/01/2022
+// Versão:						0.01
 // Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 // Testado e homologado para a versão do Bind9 DNS Server v9.16.x
 
@@ -25,7 +22,7 @@ options {
 	// Endereços IPv4 de encaminhamento para servidores de DNS externos.
 	// Padrão do encaminhamento é enviar as consultas para o servidor de Firewall pfSense
 	forwarders {
-		173.169.73.254;
+		172.16.1.254;
 		//8.8.8.8;
 		//8.8.4.4;
 	};
@@ -33,7 +30,7 @@ options {
 	// Número da porta de conexão do Bind9 DNS Server e Endereço IPv4 liberado.
 	listen-on port 53 { 
 		127.0.0.1; 
-		173.169.73.5; 
+		172.16.1.20; 
 	};
 
 	// Configuração do Protocolo IPv6 no Bind9 DNS Server (serviço desabilitado).

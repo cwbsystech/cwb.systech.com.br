@@ -1,16 +1,13 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
+# Testado e homologado para a versão do ISC DHCP Server v4.4.x
 #
 # O ISC DHCP Server dhcpd (uma abreviação de "daemon DHCP") é um programa de servidor 
 # DHCP que opera como um daemon em um servidor para fornecer serviço de protocolo de 
@@ -25,14 +22,14 @@
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo NetworkManager --print-config
 # 	sudo nmcli device status
-# 	sudo nmcli device show ens18 
-# 	sudo networkctl status ens18 
-# 	sudo ifconfig ens18
-# 	sudo ip address show ens18
+# 	sudo nmcli device show enp0s3 
+# 	sudo networkctl status enp0s3 
+# 	sudo ifconfig enp0s3
+# 	sudo ip address show enp0s3
 # 	sudo route -n
 # 	sudo systemd-resolve --status
-# 	sudo dhclient -r ens18
-# 	sudo dhclient ens18
+# 	sudo dhclient -r enp0s3
+# 	sudo dhclient enp0s3
 # 	sudo cat /var/lib/dhcp/dhclient.leases
 # Windows Powershell: 
 #	ipconfig /all

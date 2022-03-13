@@ -1,13 +1,12 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Data de criação: 03/01/2021
-# Data de atualização: 19/04/2021
-# Versão: 0.03
-# Testado e homologado para a versão do Ubuntu Server 18.04.x LTS x64
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Kernel >= 4.15.x
 # Testado e homologado para a versão do OpenProject-
 #
@@ -20,7 +19,7 @@
 # 01. Select your OpenProject Edition: default <OK>
 # 02. Do you want to use this wizard to help setup your PostgreSQL database? install <OK>
 # 03. Do you want to use this wizard to help setup your Web Server? install <OK>
-# 04. Your fully qualified domain name: servmembro.systech.brz (173.169.73.5) <OK>
+# 04. Your fully qualified domain name: ptispo01ws01.pti.intra (172.16.1.20) <OK>
 # 05. Server path prefix: /openproject <OK>
 # 06. Do you want to enable SSL for your Web Server? no <OK>
 # 07. Do yoi want to use this wizard to setup Subversion repositories support for openproject? install <OK>

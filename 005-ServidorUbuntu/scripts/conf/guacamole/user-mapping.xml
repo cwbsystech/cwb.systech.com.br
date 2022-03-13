@@ -1,15 +1,12 @@
-<!--
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Data de criação: 03/12/2021
-# Data de atualização: 09/12/2021
-# Versão: 0.3
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
+#!/bin/bash
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do Apache Guacamole Server 1.3.x e Cliente 1.3.x
 #
 # comando para a geração da senha: echo -n guacadmin | openssl md5 | cut -d ' ' -f2
@@ -24,21 +21,21 @@
         <!-- configuração do acesso remoto via OpenSSH-->
         <connection name="Ubuntu-Server-SSH">
             <protocol>ssh</protocol>
-            <param name="hostname">173.169.73.5</param>
+            <param name="hostname">172.16.1.20</param>
             <param name="port">22</param>
             <param name="username">vaamonde</param>
         </connection>
         <!-- configuração do acesso remoto via Telnet-->
         <connection name="Ubuntu-Server-Telnet">
             <protocol>telnet</protocol>
-            <param name="hostname">173.169.73.5</param>
+            <param name="hostname">172.16.1.20</param>
             <param name="port">23</param>
             <param name="username">vaamonde</param>
         </connection>
         <!-- configuração do acesso remoto via RDP-->
         <connection name="Windows-7-RDP">
             <protocol>rdp</protocol>
-            <param name="hostname">173.169.73.103</param>
+            <param name="hostname">172.16.1.103</param>
             <param name="port">3389</param>
             <param name="username">vaamonde</param>
             <param name="ignore-cert">true</param>
@@ -49,7 +46,7 @@
         <!-- configuração do acesso remoto via RDP-->
         <connection name="Windows-10-RDP">
             <protocol>rdp</protocol>
-            <param name="hostname">173.169.73.104</param>
+            <param name="hostname">172.16.1.104</param>
             <param name="port">3389</param>
             <param name="username">vaamonde</param>
             <param name="ignore-cert">true</param>
@@ -57,7 +54,7 @@
         <!-- configuração do acesso remoto via VNC-->
         <connection name="Linux-Mint-VNC">
             <protocol>vnc</protocol>
-            <param name="hostname">173.169.73.101</param>
+            <param name="hostname">172.16.1.101</param>
             <param name="port">5900</param>
         </connection>
 

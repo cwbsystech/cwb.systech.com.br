@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#4
 # Kernel >= 4.15.x
 # Testado e homologado para a versão do Certbot Let's Encrypt 1.x.x e Apache2 2.4.x
 #
@@ -58,9 +54,9 @@ LOG="/var/log/$(echo $0 | cut -d'/' -f2)"
 #
 # Declarando as variáveis de PPA do Certbot e Domínio para a criação do certificado
 PPA="ppa:certbot/certbot"
-D1="systech.brz"
-D2="www.systech.brz"
-D3="servmembro.systech.brz"
+D1="pti.intra"
+D2="www.pti.intra"
+D3="ptispo01ws01.pti.intra"
 #
 # Exportando o recurso de Noninteractive do Debconf para não solicitar telas de configuração
 export DEBIAN_FRONTEND="noninteractive"
@@ -165,15 +161,15 @@ echo -e "Instalando o Certbot com suporte ao Apache2, aguarde..."
 echo -e "Certbot instalado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Criando o Virtual Host do Domínio systech.brz no Apache2, aguarde..."
+echo -e "Criando o Virtual Host do Domínio pti.intra no Apache2, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando mkdir: -v (verbose)
 	# opção do comando chown: -R (recursive), -v (verbose), www-data (user), www-data (group)
 	# opção do comando chmod: -R (recursive), -v (verbose), 755 (User=RWX,Group=R-X,Other=R-X)
 	# opção do comando cp: -v (verbose)
-	mkdir -v /var/www/html/systech.brz &>> $LOG
-	chown -Rv www-data:www-data /var/www/html/systech.brz &>> $LOG
-	chmod -Rv 755 /var/www/html/systech.brz &>> $LOG
+	mkdir -v /var/www/html/pti.intra &>> $LOG
+	chown -Rv www-data:www-data /var/www/html/pti.intra &>> $LOG
+	chmod -Rv 755 /var/www/html/pti.intra &>> $LOG
 	cp -v conf/pti-intra.conf /etc/apache2/sites-available/pti-intra.conf &>> $LOG
 echo -e "Virtual Host criado com sucesso!!!, continuando com o script...\n"
 sleep 5

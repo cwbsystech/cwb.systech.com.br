@@ -1,16 +1,12 @@
 #!/bin/bash
-# Autor:				JENSY GEGORIO GOMEZ
-# Bio:					Tecnico em Informatica e Eletronica
-# YouTube: 				youtube.com/Sys-tech
-# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
-# Github: 				https://github.com/systech-brz
-
-# Data de criação: 		01/01/2022
-# Data de atualização: 	01/01/2022
-# Versão: 				0.01
-
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
 # Testado e homologado para a versão do NFS Server v4.x
 #
 # NFS (acrônimo para Network File System) é um sistema de arquivos distribuídos desenvolvido 
@@ -25,7 +21,7 @@
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo apt update && sudo apt install nfs-common
 #	sudo mkdir -v /mnt/nfs
-#	sudo sudo mount nfs.systech.brz:/mnt/nfs /mnt/nfs
+#	sudo sudo mount nfs.pti.intra:/mnt/nfs /mnt/nfs
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

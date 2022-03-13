@@ -33,4 +33,4 @@
 # no_all_squash		Desligue todo esmagamento
 #
 # SHARE            NETWORKING    OPTIONS
-/mnt/nfs           172.16.1.0/24(rw,sync,no_subtree_check)
+/mnt/nfs           173.169.73.0/24(rw,sync,no_subtree_check)

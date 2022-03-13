@@ -28,8 +28,8 @@
 #
 # Informações que serão solicitadas na configuração via Web do Portainer.io
 # Username: admin;
-# Password: pti@2018;
-# Confirm password: pti@2018: Create User;
+# Password: Casado#55;
+# Confirm password: Casado#55: Create User;
 # Connect Portainer to the Docker environment you want to manage: Local: Connect
 #
 # Site oficial do Docker Community: https://www.docker.com/docker-community

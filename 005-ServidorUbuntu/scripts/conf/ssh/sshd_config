@@ -1,9 +1,9 @@
-# Autor: Robson Vaamonde
+# Autor: Robson jensy
 # Site: www.procedimentosemti.com.br
 # Facebook: facebook.com/ProcedimentosEmTI
 # Facebook: facebook.com/BoraParaPratica
 # YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Linkedin: https://www.linkedin.com/in/robson-jensy-0b029028/
 # Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
 # Data de criação: 11/10/2021
 # Data de atualização: 20/01/2022
@@ -24,7 +24,7 @@ Protocol 2
 #
 # Endereço IPv4 do Servidor de OpenSSH que está liberado para permitir conexões remotas 
 # via protocolo SSH
-ListenAddress 172.16.1.20
+ListenAddress 173.169.73.5
 #
 # Métodos de Autenticação do OpenSSH, utilizar chaves públicas e autenticação por senha
 # Por padrão o Servidor de OpenSSH não trabalhar com Chaves Pública para autenticação, 
@@ -79,13 +79,13 @@ PermitRootLogin no
 #
 # Usuários que tem permissão de acesso remoto ao Servidor de OpenSSH, separados por 
 # espaço, deve existir no servidor. Usuários listados no arquivo /etc/passwd
-AllowUsers vaamonde
+AllowUsers jensy
 #
 # Grupos que tem permissão de acesso remoto ao Servidor de OpenSSH, cuidado, se você 
 # usar a variável AllowUsers o grupo padrão do usuário precisa está liberado na linha 
 # AllowGroups, separados por espaço, deve existir no servidor. Grupos listados no 
 # arquivo /etc/group
-AllowGroups vaamonde
+AllowGroups jensy
 #
 # Usuários que não tem permissão de acesso remoto ao Servidor de OpenSSH, separados 
 # por espaço, deve existir no servidor. Usuários listados no arquivo /etc/passwd

@@ -17,8 +17,8 @@
 # Email or username: admin
 # Password: admin: (Log In)
 # Change Password
-#	New password: pti@2018
-#	Confirm new password: pti@2018: (Submit)
+#	New password: Casado#55
+#	Confirm new password: Casado#55: (Submit)
 #
 # Site Oficial do Projeto: https://grafana.com/
 #

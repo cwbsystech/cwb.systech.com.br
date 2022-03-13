@@ -1,0 +1,1164 @@
+#!/usr/bin/env bash
+
+
+Logo_Empresa(){
+clear
+echo -e " \e[1;31m ======================================================================== \e[m ";
+figlet -c "$EMPRESA"
+echo -e " \e[1;31m ======================================================================== \e[m ";
+echo ""
+echo ""
+return
+}
+
+
+_Configuracao_Winbind () {
+
+Logo_Empresa
+	systemctl status samba-ad-dc  > /dev/null
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo -e '\e[34;1;3m' "Tudo em ordem... VAMOS CONTINUAR ! ! !    \e[m";
+		echo -e '\e[36;1;3m' "O Serviço SAMBA esta RUNNING ! ! !    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+	else
+		echo ""
+		echo ""
+		echo -e '\e[31;1;3m' "OPA ! ! ! Tivemos um ERRO    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+		return
+	fi
+	
+	
+	#ARQUITEXTURA DEL HARDWARE
+	Logo_Empresa
+	echo -e '\e[36;3m' "QUAL É O TEU SISTEMA HARDWARE ? (EX. x86_64)     \e[m";
+	uname -a
+	echo "------------------------------------------------------------- "
+	read _ARQUITECTURA_HARDWARE
+	
+	#ONDE ESTA A BIBLIOTECA LIB...?
+	Logo_Empresa
+	echo -e '\e[36;3m' "LOCALIZAR A BIBLIOTECA LIBNSS_WINBIND.SO.2 (EX. /opt/samba/lib)     \e[m";
+	/opt/samba/sbin/smbd -b | grep LIBDIR
+	echo "------------------------------------------------------------- "
+	read _BILBIOTECA_LIB
+	
+	#CREAMOS OS LINK DESA LIBRARIA
+	Logo_Empresa
+	echo -e '\e[34;1;3m' "Agora Vamos CREAR O (01) PRIMEIRO LINK   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[34;1;3m' "Digita:    \e[m";
+    echo -e '\e[36;1;3m'"ln -s /opt/samba/lib/libnss_winbind.so.2 /lib/x86_64-linux-gnu/    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="ln -s /opt/samba/lib/libnss_winbind.so.2 /lib/x86_64-linux-gnu/"
+	Comparar_String
+	ln -s $_BILBIOTECA_LIB/libnss_winbind.so.2 /lib/$_ARQUITECTURA_HARDWARE-linux-gnu/
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo -e '\e[34;1;3m' "Tudo em ordem... VAMOS CONTINUAR ! ! !    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+	else
+		echo ""
+		echo ""
+		echo -e '\e[31;1;3m' "OPA ! ! ! Tivemos um ERRO    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+		
+	fi
+	
+	#SEGUNDO LINK A CREAR
+	Logo_Empresa
+	echo -e '\e[34;1;3m' "Agora Vamos CREAR O (02) SEGUNDO LINK   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[34;1;3m' "Digita:    \e[m";
+    echo -e '\e[36;1;3m'"ln -s /lib/x86_64-linux-gnu/libnss_winbind.so.2 /lib/x86_64-linux-gnu/libnss_winbind.so    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="ln -s /lib/x86_64-linux-gnu/libnss_winbind.so.2 /lib/x86_64-linux-gnu/libnss_winbind.so"
+	Comparar_String
+	ln -s /lib/x86_64-linux-gnu/libnss_winbind.so.2 /lib/x86_64-linux-gnu/libnss_winbind.so
+
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo -e '\e[34;1;3m' "Tudo em ordem... VAMOS CONTINUAR ! ! !    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+	else
+		echo ""
+		echo ""
+		echo -e '\e[31;1;3m' "OPA ! ! ! Tivemos um ERRO    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+		
+	fi
+	
+	
+	#APLICAR AS REGRAS
+	Logo_Empresa
+	echo -e '\e[34;1;3m' "Agora Vamos RECARREGAR BIBLITOTECAS   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[34;1;3m' "Digita:    \e[m";
+    echo -e '\e[36;1;3m'"ldconfig   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="ldconfig"
+	Comparar_String
+	ldconfig
+
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo -e '\e[34;1;3m' "Tudo em ordem... VAMOS CONTINUAR ! ! !    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+	else
+		echo ""
+		echo ""
+		echo -e '\e[31;1;3m' "OPA ! ! ! Tivemos um ERRO    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+		return
+	fi
+	
+	#EDITAMOS O ARQUIVO /ETC/NSSWITCH
+	_Arquivo_nsswitch
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo -e '\e[34;1;3m' "Tudo em ordem... VAMOS CONTINUAR ! ! !    \e[m";
+		echo -e '\e[34;1;3m' "El Arquivo /etc/nsswitch esta atualizado    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+	else
+		echo ""
+		echo ""
+		echo -e '\e[31;1;3m' "OPA ! ! ! Tivemos um ERRO    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+		return
+	fi
+	
+	#RELOAD NO SAMBA 
+	Logo_Empresa
+	echo -e '\e[34;1;3m' "Agora Vamos RECARREGAR O SAMBA   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[34;1;3m' "Digita:    \e[m";
+    echo -e '\e[36;1;3m'"smbcontrol all reload-config   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="smbcontrol all reload-config"
+	Comparar_String
+	smbcontrol all reload-config
+
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo -e '\e[34;1;3m' "Tudo em ordem... VAMOS CONTINUAR ! ! !    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+	else
+		echo ""
+		echo ""
+		echo -e '\e[31;1;3m' "OPA ! ! ! Tivemos um ERRO    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+		return
+	fi
+	
+	
+	#EXECUTAR OS TESTES 
+	Logo_Empresa
+	echo -e '\e[34;1;3m' "Agora Vamos TESTAR O administrator   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[34;1;3m' "Digita:    \e[m";
+    echo -e '\e[36;1;3m'"getent passwd administrator   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="getent passwd administrator"
+	Comparar_String
+	getent passwd administrator
+
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo -e '\e[34;1;3m' "Tudo em ordem... VAMOS CONTINUAR ! ! !    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+	else
+		echo ""
+		echo ""
+		echo -e '\e[31;1;3m' "OPA ! ! ! Tivemos um ERRO    \e[m";
+		echo "------------------------------------------------------------- "
+		read
+		return
+	fi
+
+
+}
+
+
+Conferir_Controlador_Dominio () {
+Logo_Empresa
+	echo -e '\e[36;3m' "Agora Vamos TESTAR OS COMPARTILHAMENTOS PADRÃO ( SYSVOL E NETLOGON)   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"smbclient -L localhost -U%    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="smbclient -L localhost -U%"
+	Comparar_String
+	smbclient -L localhost -U%
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "TESTAR AUTENTICAÇÃO, CONECTE-SE AO COMPARTILHAMENTO NETLOGON COMO ADMINISTRADOR DO DOMÍNIO   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"smbclient //localhost/netlogon -UAdministrator -c 'ls'    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="smbclient //localhost/netlogon -UAdministrator -c 'ls'"
+	Comparar_String
+	smbclient //localhost/netlogon -UAdministrator -c 'ls'
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	#VERIFICAR REGISTRO SRV _LDAP BASEADO EM TCP NO DOMÍNIO.
+	Logo_Empresa
+	echo -e '\e[36;3m' "VERIFICAR REGISTRO SRV _LDAP BASEADO EM TCP NO DOMÍNIO.   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"host -t SRV _ldap._tcp.Dominio.FQDN.    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="host -t SRV _ldap._tcp.Dominio.FQDN."
+	Comparar_String
+	host -t SRV _ldap._tcp.systec.gomez.
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	#VERIFICAR REGISTRO SRV _KERBEROS NO DOMÍNIO.
+	Logo_Empresa
+	echo -e '\e[36;3m' "VERIFICAR REGISTRO SRV _KERBEROS NO DOMÍNIO.   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"host -t SRV _kerberos._udp.Dominio.FQDN.    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="host -t SRV _kerberos._udp.Dominio.FQDN."
+	Comparar_String
+	host -t SRV _kerberos._udp.systec.gomez.
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	
+	#VERIFICAR REGISTRO A DO CONTROLADOR DE DOMÍNIO.
+	Logo_Empresa
+	echo -e '\e[36;3m' "VERIFICAR REGISTRO A DO CONTROLADOR DE DOMÍNIO.   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"host -t A NomeServidor.DominioFQDN.    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="host -t A NomeServidor.DominioFQDN."
+	Comparar_String
+	host -t A DC-01.systec.gomez.
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	#TESTAR SE O KERBEROS ESTÁ EMITINDO TICKETS.
+	Logo_Empresa
+	echo -e '\e[36;3m' "TESTAR SE O KERBEROS ESTÁ EMITINDO TICKETS.   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"kinit administrator    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="kinit administrator"
+	Comparar_String
+	kinit administrator
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	#VERIFICAR O TICKET.
+	Logo_Empresa
+	echo -e '\e[36;3m' "VERIFICAR O TICKET. \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"klist    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="klist"
+	Comparar_String
+	klist
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	
+	#CONFIGURAR O SAMBA NO BOOT.
+	Logo_Empresa
+	echo -e '\e[36;3m' "CONFIGURAR O SAMBA NO BOOT \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"touch /etc/systemd/system/samba-ad-dc.service   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="touch /etc/systemd/system/samba-ad-dc.service"
+	Comparar_String
+	touch /etc/systemd/system/samba-ad-dc.service
+	
+cat << EOF > /etc/systemd/system/samba-ad-dc.service
+# Gerado pelo script SYSTEC - Soluções em TI
+
+[Unit]
+Description=Samba Active Directory Domain Controller
+After=network.target remote-fs.target nss-lookup.target
+[Service]
+Type=forking
+ExecStart=/opt/samba/sbin/samba -D
+PIDFile=/opt/samba/var/run/samba.pid
+[Install]
+WantedBy=multi-user.target
+EOF
+	
+	
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+
+
+	#RECARREGAR SYSTEMD.
+	Logo_Empresa
+	echo -e '\e[36;3m' "RECARREGAR SYSTEMD \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"systemctl daemon-reload   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="systemctl daemon-reload"
+	Comparar_String
+	systemctl daemon-reload
+	
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	# HABILITAR O SERVIÇO SAMBA-AD-DC.
+	Logo_Empresa
+	echo -e '\e[36;3m' " HABILITAR O SERVIÇO SAMBA-AD-DC \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"systemctl enable samba-ad-dc   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="systemctl enable samba-ad-dc"
+	Comparar_String
+	systemctl enable samba-ad-dc
+	
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	# START O CONTROLADOR DE DOMINIO NO BOOT.
+	Logo_Empresa
+	echo -e '\e[36;3m' " START O CONTROLADOR DE DOMINIO NO BOOT\e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"systemctl start samba-ad-dc   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="systemctl start samba-ad-dc"
+	Comparar_String
+	systemctl start samba-ad-dc
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	# STOP O CONTROLADOR DE DOMINIO NO BOOT.
+	Logo_Empresa
+	echo -e '\e[36;3m' " STOP O CONTROLADOR DE DOMINIO NO BOOT\e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"systemctl stop samba-ad-dc   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="systemctl stop samba-ad-dc"
+	Comparar_String
+	systemctl stop samba-ad-dc
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	
+	# RESTART O CONTROLADOR DE DOMINIO NO BOOT.
+	Logo_Empresa
+	echo -e '\e[36;3m' " RESTART O CONTROLADOR DE DOMINIO NO BOOT\e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"systemctl restart samba-ad-dc   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="systemctl restart samba-ad-dc"
+	Comparar_String
+	systemctl restart samba-ad-dc
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	# VERIFICAR O DNS COMO ELE MESMO
+	Logo_Empresa
+	echo -e '\e[36;3m' " VERIFICAR O DNS COMO ELE MESMO\e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"nslookup uol.com.br   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="nslookup uol.com.br"
+	Comparar_String
+	nslookup uol.com.br
+	if [ "$?" = "0" ] ;then
+		echo ""
+		echo ""
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo ""
+		echo ""
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	
+	
+}
+
+
+
+Controlador_de_Dominio () {
+Logo_Empresa
+samba-tool domain provision --realm=systec.gomez --use-rfc2307 --domain=systec --dns-backend=SAMBA_INTERNAL --adminpass=Casado#55 --server-role=dc
+
+if [ "$?" = "0" ]; then
+	echo "Parabens esse $NOME_SERVIDOR agora tem a funçaõ como Controlador de Dominio"
+	read
+else
+	echo "OPA ! ! ! Aconteceu um erro"
+	read
+fi
+
+#CONFIGURÇAO DO ARQUIVO KERBEROS
+Logo_Empresa
+	echo -e '\e[36;3m' "Agora Vamos Configurar o Arquivo Kerberos   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"cp /opt/samba/private/krb5.conf /etc/krb5.conf    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="cp /opt/samba/private/krb5.conf /etc/krb5.conf"
+	Comparar_String
+	cp /opt/samba/private/krb5.conf /etc/krb5.conf
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+	fi
+	
+	
+	
+	
+	#EXECUTAR O SAMBA COMO CONTROLADOR DE DOMINIO
+	Logo_Empresa
+	echo -e '\e[36;3m' "Agora Vamos Executar Samba como controlador de Dominio Interactivo   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"/opt/samba/sbin/samba -i    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="/opt/samba/sbin/samba -i"
+	Comparar_String
+	
+	/opt/samba/sbin/samba -i
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+	fi
+	Logo_Empresa
+	echo -e '\e[36;3m' "Agora Vamos Executar Samba como controlador de Dominio Não Interactivo   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"/opt/samba/sbin/samba    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="/opt/samba/sbin/samba"
+	Comparar_String
+	
+	$Caminho_da_Instalacion/sbin/samba
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+	fi
+	
+	#VERIFICAR SE O SERVIÇO SAMBA SUBIU
+	Logo_Empresa
+	echo -e '\e[36;3m' "Agora Vamos Verifivcar se o Samba Subiu   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"ps aux |  grep samba    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="ps aux |  grep samba"
+	Comparar_String
+	ps aux |  grep samba
+	
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+	fi
+	
+	
+
+}
+
+
+
+Configurar_Samba (){
+Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a Configurar a Primeira (01) Variavel PATH   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "export PATH="$"PATH:'/opt/samba/bin:/opt/samba/sbin'    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="export PATH="$"PATH:'/opt/samba/bin:/opt/samba/sbin'"
+	Comparar_String
+	export PATH=$PATH:'/opt/samba/bin:/opt/samba/sbin'
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a Configurar a Segunda (02) Variavel PATH   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "echo 'export PATH=PATH:/opt/samba/bin:/opt/samba/sbin' >> ~/.bashrc    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="echo 'export PATH=PATH:/opt/samba/bin:/opt/samba/sbin' >> ~/.bashrc"
+	Comparar_String
+	echo 'export PATH=$PATH:"/opt/samba/bin:/opt/samba/sbin' >> ~/.bashrc
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a Configurar a Terceira (03) Variavel PATH   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "echo 'export PATH=PATH:/opt/samba/bin:/opt/samba/bin' >> ~/.bashrc    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="echo 'export PATH=PATH:/opt/samba/bin:/opt/samba/bin' >> ~/.bashrc"
+	Comparar_String
+	echo 'export PATH=$PATH:"/opt/samba/bin:/opt/samba/bin' >> ~/.bashrc
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	
+	
+	}
+
+
+limpeza () {
+Logo_Empresa
+echo "LIMPANDO O SERVIDOR, AGUARDE ..."
+echo ""
+apt-get remove winbind* -y 2> /dev/null
+apt-get remove samba* -y 2> /dev/null
+apt-get remove ntp acl attr unzip autoconf bind9utils liblmdb-dev bison build-essential debhelper dnsutils docbook-xml docbook-xsl flex gdb libjansson-dev krb5-user libacl1-dev libaio-dev libarchive-dev libattr1-dev libblkid-dev libbsd-dev libcap-dev libcups2-dev libgnutls28-dev libgpgme11 libjson-perl libldap2-dev libncurses5-dev libpam0g-dev libparse-yapp-perl libpopt-dev libreadline-dev nettle-dev perl perl-modules-5.28 libsystemd-dev pkg-config python-all-dev python-crypto python-dbg python-dev python-dnspython python3-dnspython python3-gpg python3-gpg python-markdown perl-modules-5.28 python-gpg python3-gpg python3-markdown python3-dev xsltproc zlib1g-dev libgpgme-dev apache2 libapache2-mod-php7.3 php7.3 unzip php7.3-cli php7.3-common php7.3-curl php7.3-gd php7.3-json php7.3-mbstring php7.3-mysql php7.3-xml php-ldap sudo -y
+killall samba 2> /dev/null
+systemctl stop "samba*"	 2> /dev/null
+find /etc/systemd/system/ -type f -iname "samba-4*" -exec rm -v {} \; 2> /dev/null
+find /etc -type f -iname krb5.conf -exec rm -v {} \; 2> /dev/null
+find /etc/samba -type f -iname smb.conf -exec rm -v {} \; 2> /dev/null
+find /opt -type f -iname smb.conf -exec rm -v {} \; 2> /dev/null
+find / -type f -iname "*.ldb" -exec rm -v {} \; 2> /dev/null
+find / -type f -iname "*.tdb" -exec rm -v {} \; 2> /dev/null
+find / -type d -iname sysvol -exec rm -rfv {} \; 2> /dev/null
+find /usr/src -type f -iname "samba-*" -exec rm -v {} \; 2> /dev/null
+rm -rfv /var/www/html/*
+systemctl disable myfirewall
+clear
+Logo_Empresa
+echo ""
+echo "CONCLUIDO !"
+sleep 2
+return
+}
+
+
+_Instalar_Samba () {
+
+Logo_Empresa
+export DEBIAN_FRONTEND=noninteractive;apt-get update; apt-get install acl apt-utils attr autoconf bind9utils binutils bison build-essential ccache chrpath curl debhelper dnsutils docbook-xml docbook-xsl flex gcc gdb git glusterfs-common gzip heimdal-multidev hostname htop krb5-config krb5-user lcov libacl1-dev libarchive-dev libattr1-dev libavahi-common-dev libblkid-dev libbsd-dev libcap-dev libcephfs-dev libcups2-dev libdbus-1-dev libglib2.0-dev libgnutls28-dev libgpgme11-dev libicu-dev libjansson-dev libjs-jquery libjson-perl libkrb5-dev libldap2-dev liblmdb-dev libncurses5-dev libpam0g-dev libparse-yapp-perl libpcap-dev libpopt-dev libreadline-dev libsystemd-dev libtasn1-bin libtasn1-dev libunwind-dev lmdb-utils locales lsb-release make mawk mingw-w64 patch perl perl-modules pkg-config procps psmisc python3 python3-cryptography python3-dbg python3-dev python3-dnspython python3-gpg python3-iso8601 python3-markdown python3-matplotlib python3-pexpect python3-pyasn1 rsync sed  tar tree uuid-dev wget xfslibs-dev xsltproc zlib1g-dev -y
+if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+
+
+Logo_Empresa
+echo -e " \e[36;3mQUAL A VERSAO DO SAMBA 4 QUE VOCE QUER QUE EU INSTALE - EXEMPLO: 4.15.2 \e[m "
+echo -e "\e[36;3mACESSE https://download.samba.org/pub/samba/stable/ E ESCOLHA A VERSAO \e[m"
+echo "------------------------------------------------------------- "
+read VERSAO
+if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+
+Logo_Empresa
+wget https://download.samba.org/pub/samba/stable/samba-$VERSAO.tar.gz
+if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+
+Logo_Empresa
+echo -e '\e[36;3m' "Vamos a DESCOMPACTAR O ARQUIVO  SAMBA    \e[m";
+	echo "------------------------------------------------------------- "
+echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "tar -xzvf samba-version.tar.gz    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="tar -xzvf samba-version.tar.gz"
+	Comparar_String
+	tar -xzvf samba-$VERSAO.tar.gz
+		if [ "$?" = "0" ] ;then
+			echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+			read
+		else
+			echo "Aconteceu um erro"
+			read
+			return
+		fi
+	
+Logo_Empresa
+echo -e '\e[36;3m' "Vamos a INFORMAR O CAMINHO DA INSTALAÇÃO DO SAMBA    \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "./configure --prefix=Caminho_da_Instalacion -j 10   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="./configure --prefix=Caminho_da_Instalacion -j 10"
+	Comparar_String
+		cd samba-$VERSAO
+		Caminho_da_Instalacion="/opt/samba"
+		./configure --prefix=$Caminho_da_Instalacion -j 10
+			if [ "$?" = "0" ] ;then
+				echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+				read
+			else
+				echo "Aconteceu um erro"
+				read
+				return
+			fi
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a COMPILAR O SAMBA    \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "make -j 10   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="make -j 10"
+	Comparar_String
+	 make -j 10
+	 if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem A Compilação do Samba foi bem Sucedida... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a INSTALAR O SAMBA    \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "make install -j 10   \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="make install -j 10"
+	 make install -j 10
+	 if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem A Compilação do Samba foi bem Sucedida... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+
+
+}
+
+
+_Arquivo_nsswitch () {
+
+cat << EOF > /etc/nsswitch.conf
+
+
+
+# Gerado pelo script Systec -- Soluçoes em TI
+
+
+
+passwd:         compat winbind
+group:          compat winbind
+shadow:         compat
+gshadow:        files
+
+hosts:          files dns
+networks:       files
+
+protocols:      db files
+services:       db files
+ethers:         db files
+rpc:            db files
+
+netgroup:       nis
+
+
+
+EOF
+
+}
+
+
+
+Arquivo_Resolv_conf () {
+cat << EOF > /etc/resolv.conf
+# Gerado pelo script Systec -- Soluçoes em TI
+
+domain $NOME_DOMINIO_FQDN
+search $NOME_DOMINIO_FQDN
+nameserver 127.0.0.1
+nameserver 208.67.222.222
+EOF
+
+}
+
+
+
+Arquivo_Hostname () {
+cat <<EOF > /etc/hostname
+# Gerado pelo script Systec -- Soluçoes em TI
+
+$NOME_SERVIDOR
+EOF
+
+}
+
+
+Arquivo_Hosts () {
+cat << EOF > /etc/hosts
+# Gerado pelo script Systec -- Soluçoes em TI
+
+127.0.0.1 	localhost 
+$IP 		$NOME_SERVIDOR.$NOME_DOMINIO_FQDN $NOME_SERVIDOR
+EOF
+
+}
+
+
+Arquivo_Interfaces (){
+ifdown $LAN
+sleep 1
+
+cat << EOF > /etc/network/interfaces
+# Gerado pelo script Systec -- Soluçoes em TI
+# The loopback network interface
+
+source /etc/network/interfaces.d/*	
+	
+	auto lo
+	iface lo inet loopback
+	
+	allow-hotplug $LAN
+		iface $LAN inet static
+		address $IP
+		netmask $MASCARA
+		gateway $GATEWAY
+EOF
+
+}
+
+
+
+Obter_Informacoes() {
+	Logo_Empresa
+	echo -e '\e[36;3m' "QUAL DESSAS INTEFACES ESTA CONECTADA NA SWITCH ?    \e[m";
+	ip -br link | awk '{print $1}' 
+	echo "------------------------------------------------------------- "
+	read LAN
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "AGORA DIGITA O IP FIXO DESTE SERVIDOR ?    \e[m";
+	echo "------------------------------------------------------------- "
+	read IP
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' " QUAL É A MASCARA DE REDE ( EX. 24) ?   \e[m";
+	echo "------------------------------------------------------------- "
+	read MASCARA
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' " QUAL É O SEU GATEWAY ? (EX. 192.168.1.1)   \e[m";
+	echo "------------------------------------------------------------- "
+	read GATEWAY
+		
+	Logo_Empresa
+	echo -e '\e[36;3m' " QUAL É O NOME DO SERVIDOR   \e[m";
+	echo "------------------------------------------------------------- "
+	read NOME_SERVIDOR
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' " QUAL É O NOME DO DOMINIO-FQDN (EX. EXEMPLO.TTL   \e[m";
+	echo "------------------------------------------------------------- "
+	read NOME_DOMINIO_FQDN
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' " QUAL É O NOME DO NETBIOS DO DOMINIO (EX. EXEMPLO   \e[m";
+	echo "------------------------------------------------------------- "
+	read NOME_DOMINIO_NETBIOS
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' " QUAL É A SENHA DO ADMINISTRATOR    \e[m";
+	echo "------------------------------------------------------------- "
+	read SENHA_ADMINISTRATOR
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a Configurar el Arquivo INTERFACES    \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "nano /etc/network/interfaces    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="nano /etc/network/interfaces"
+	Comparar_String
+	Arquivo_Interfaces
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a Configurar el Arquivo HOSTS    \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "nano /etc/hosts    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="nano /etc/hosts"
+	Comparar_String
+	Arquivo_Hosts
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+	Logo_Empresa
+	echo -e '\e[36;3m' "Vamos a Configurar el Arquivo HOSTNAME    \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m' "nano /etc/hostname    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="nano /etc/hostname"
+	Comparar_String
+	Arquivo_Hostname
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+	
+#CONFIGURÇAO DO ARQUIVO RESOLV.CONF
+Logo_Empresa
+	echo -e '\e[36;3m' "Agora Vamos Configurar o Arquivo RESOLV.CONF   \e[m";
+	echo "------------------------------------------------------------- "
+	echo -e '\e[36;3m' "Digita:    \e[m";
+    echo -e '\e[36;3m'"nano /etc/resolv.conf    \e[m";
+	read Minha_Escrita
+	Cadena_a_Comparar="nano /etc/resolv.conf"
+	Comparar_String
+	Arquivo_Resolv_conf
+	if [ "$?" = "0" ] ;then
+		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
+		read
+	else
+		echo "Aconteceu um erro"
+		read
+		return
+	fi
+
+	
+ifup $LAN
+Logo_Empresa
+ping -c 2 google.com
+	if [ "$?" = "0" ] ; then
+	
+echo -e "\e[1;32m PARABENS !! SEU SERVIDOR ESTA CONECTADO A INTERNET PODEMOS CONTINUAR  \e[m";
+echo ""
+echo -e "\e[1;32m ENTER  \e[m";
+read
+fi
+
+return
+}
+
+
+
+Instalar_Pacote () {
+pacote=$(dpkg --get-selections | grep "$Cadena_a_Comparar" )
+
+if [ -n "$pacote" ] ;
+then echo
+    echo "Perfeito o Serviço $Cadena_a_Comparar ja estáva instalado"
+	echo "Enter para continuar..."
+	read
+else echo
+    apt-get install $Cadena_a_Comparar
+	echo "Perfeito o Serviço $Cadena_a_Comparar foi instalado"
+	echo "Enter para continuar..."
+	read
+fi
+return
+
+}
+
+
+
+Comparar_String () {
+	Logo_Empresa
+			local Var1=$Cadena_a_Comparar
+			local Var2=$Minha_Escrita
+						
+			while [[ "$Var1" != "$Var2" ]] ; do
+			if [[ $? = "0" ]] ; then
+			Logo_Empresa
+				echo "Teve um erro na escrita"
+				echo -e "Tenta escrever:"
+				echo -e '\e[34;1;3m' "               $Cadena_a_Comparar  \e[m";
+				read nuevo
+				Var2=$nuevo
+			fi
+			done
+}
+
+clear
+echo -e "carregando..."
+DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND
+EMPRESA=SYSTEC
+pacote=$(dpkg --get-selections | grep "figlet" )
+	if [ -n "$pacote" ] ;then
+		echo
+	else
+		apt-get install figlet -qq > /dev/null
+	fi
+
+
+
+clear
+echo""
+echo""
+echo -e " \e[1;31m ======================================================================== \e[m ";
+echo ""
+figlet -c "$EMPRESA"
+echo ""
+echo -e " \e[1;31m ======================================================================== \e[m ";
+echo ""
+echo ""
+
+Logo_Empresa
+echo "=========================================================="
+
+while true; do
+clear
+echo -e " \e[1;31m ======================================================================== \e[m ";
+figlet -c "$EMPRESA"
+echo -e " \e[1;31m ======================================================================== \e[m ";
+echo ""
+echo ""
+echo "==========================================================
+       	Digite o número do componente a ser instalado:
+		1 - Obter Informaçoes
+		2 - Instalar Samba
+		3 - Configurar Samba
+		4 - Provisionar Controlador de Dominio
+		5 - Conferir Controlador de Domonio
+		6 - Configuraçao WINBIND
+		0 - Sair
+==========================================================="
+echo -n "->OPÇÃO:  "
+
+read opcao
+
+
+if [ -z $opcao ]; then
+	echo "ERRO: digite uma opcao"
+	read
+	exit
+
+fi
+
+case $opcao in
+	1)
+		#VAMOS OBTER INFORMAÇOES
+		Obter_Informacoes
+		;;
+		
+	2)
+		#VAMOS INSTALAR SAMBA
+		_Instalar_Samba
+		;;
+		
+	3)
+		#VAMOS CONFIGURAR SAMBA
+		Configurar_Samba
+		;;
+
+	4)
+		#VAMOS POSISIOAR SAMBA COMO CONTROLADOR DE DOMINIO
+		Controlador_de_Dominio
+		;;
+		
+	5)
+		#VAMOS CONFERIR CONTROLADOR DE DOMINIO
+		Conferir_Controlador_Dominio
+		;;
+		
+	6)
+		#VAMOS CONFERIR CONTROLADOR DE DOMINIO
+		_Configuracao_Winbind
+		;;
+	0)
+		echo "Saindo..."
+		sleep 1
+		clear
+		exit
+		clear
+		;;
+	*)
+		echo
+		echo "ERRO: opção inválida"
+
+		echo ;;
+
+
+esac
+
+done

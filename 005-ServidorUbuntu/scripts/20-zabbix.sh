@@ -33,7 +33,7 @@
 # Zabbix server details
 #		Host: localhost
 #		Port: 10051
-#		Name: ptispo01ws01
+#		Name: ServUbuntu
 #	Next step;
 # GUI settings
 #		Default time zone: System

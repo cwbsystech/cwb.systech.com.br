@@ -1,12 +1,12 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
+# Autor: Robson jensy
 # Site: www.procedimentosemti.com.br
 # Facebook: facebook.com/ProcedimentosEmTI
 # Facebook: facebook.com/BoraParaPratica
 # YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Linkedin: https://www.linkedin.com/in/robson-jensy-0b029028/
 # Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/vaamonde
+# Github: https://github.com/jensy
 # Data de criação: 10/10/2021
 # Data de atualização: 20/01/2022
 # Versão: 0.20
@@ -24,10 +24,10 @@ sudo apt update && sudo apt install git vim python
 
 #Configuração do Git Localmente
 	#Seu nome completo que vai ser utilizado em qualquer commit (confirmação) recém-criado.
-	git config --global user.name "Robson Vaamonde"
+	git config --global user.name "Robson jensy"
 	
 	#Seu endereço de e-mail que vai ser utilizado em qualquer commit (confirmação) recém-criado.
-	git config --global user.email robsonvaamonde@gmail.com
+	git config --global user.email robsonjensy@gmail.com
 	
 	#Seu editor de texto padrão para todos os commit (confirmação) e tags.
 	git config --global core.editor vim
@@ -57,8 +57,8 @@ https://github.com
 		Edit: Description (Emoji) - Website: http://www.boraparapratica.com.br
 			(https://gist.github.com/rxaviers/7360908)
 		Manage topics: git github bash shell linux linux-mint
-			Link: https://github.com/vaamonde/devops.git
-			Link: https://github.com/vaamonde/devops
+			Link: https://github.com/jensy/devops.git
+			Link: https://github.com/jensy/devops
 	
 	Create new file: 	teste01.sh
 						Edit new file: Criando nosso primeiro script em Shell
@@ -84,7 +84,7 @@ Link da geração do Token: https://github.com/settings/tokens
 Gerando um novo Token
 
 #Clonando um Repositório Remoto do Github.
-git clone https://github.com/vaamonde/devops.git
+git clone https://github.com/jensy/devops.git
 cd devops
 ls -lha
 
@@ -143,8 +143,8 @@ git push
 
 #Criando um novo Repositório Local com o Git e enviando as confirmações (commit) para a criação de um novo 
 #Repositório Remoto no Github
-mkdir vaamonde
-cd vaamonde
+mkdir jensy
+cd jensy
 git init
 ls -lha
 echo "#Teste de versionamento utilizando o Git" > teste.sh

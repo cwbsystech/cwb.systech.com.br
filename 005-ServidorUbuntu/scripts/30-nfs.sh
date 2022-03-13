@@ -21,7 +21,7 @@
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo apt update && sudo apt install nfs-common
 #	sudo mkdir -v /mnt/nfs
-#	sudo sudo mount nfs.pti.intra:/mnt/nfs /mnt/nfs
+#	sudo sudo mount nfs.systech.brz:/mnt/nfs /mnt/nfs
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

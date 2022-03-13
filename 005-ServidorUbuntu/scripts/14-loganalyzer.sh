@@ -47,11 +47,11 @@
 # Step 6 -	Creating the Main Useraccount
 #				Create User Account
 #					Username: admin
-#					Password: pti@2018
-#					Repeat Password: pti@2018: Next;
+#					Password: Casado#55
+#					Repeat Password: Casado#55: Next;
 # Step 7 -	Create the first source for syslog messages
 #				First Syslog Source
-#					Name of the Source: ptispo01ws01
+#					Name of the Source: ServUbuntu
 #					Source Type: MYSQL Native
 #					Select View: Syslog Fields
 #				Database Type Options

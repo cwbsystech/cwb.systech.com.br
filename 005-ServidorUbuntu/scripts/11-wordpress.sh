@@ -20,9 +20,9 @@
 # Informação necessária
 #	Título do site: Bora para Prática;
 #	Nome de usuário: admin;
-#	Senha: pti@2018;
+#	Senha: Casado#55;
 #	Confirme a senha: Confirmar o uso de uma senha fraca;
-#	O seu e-mail: vaamonde@vaamonde.pti; Instalar WordPress.
+#	O seu e-mail: jensy@jensy.pti; Instalar WordPress.
 #
 # Site oficial do Wordpress: https://wordpress.org/
 #

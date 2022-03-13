@@ -37,7 +37,7 @@
 #	Database type: MySQL
 #	Database name: bacula
 #	Login: root
-#	Password: pti@2018
+#	Password: Casado#55
 #	IP address (or hostname): localhost
 #	Port: 3306
 #	Connection test: <Test>
@@ -72,9 +72,9 @@
 #	<Next>
 # 05. Step 5 - authentication to AP
 #	Use HTTP Basic authentication: Yes
-#	Administration login: vaamonde
-#	Administration password: vaamonde
-#	Retype administration password: vaamonde
+#	Administration login: jensy
+#	Administration password: jensy
+#	Retype administration password: jensy
 #	<Next>
 # 06. @@Step 7 - Finish@@
 #	<save>
@@ -90,8 +90,8 @@
 #			IP Address/Hostname: localhost
 #			Port: 9096
 #			Use HTTP Basic authentication: Yes
-#			API Login: vaamonde
-#			API Password: vaamonde
+#			API Login: jensy
+#			API Password: jensy
 #			API connection test: <Test>
 #		<Next>
 # 03. Step 3 - authentication params to Baculum Web pane

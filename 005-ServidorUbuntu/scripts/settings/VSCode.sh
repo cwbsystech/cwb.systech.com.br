@@ -1,14 +1,14 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
+# Autor: Robson jensy
 # Procedimentos em TI: http://procedimentosemti.com.br
 # Bora para Prática: http://boraparapratica.com.br
-# Robson Vaamonde: http://vaamonde.com.br
+# Robson jensy: http://jensy.com.br
 # Facebook Procedimentos em TI: https://www.facebook.com/ProcedimentosEmTi
 # Facebook Bora para Prática: https://www.facebook.com/BoraParaPratica
 # Instagram Procedimentos em TI: https://www.instagram.com/procedimentoem
 # YouTUBE Bora Para Prática: https://www.youtube.com/boraparapratica
-# LinkedIn Robson Vaamonde: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Github: https://github.com/vaamonde
+# LinkedIn Robson jensy: https://www.linkedin.com/in/robson-jensy-0b029028/
+# Github: https://github.com/jensy
 # Data de criação: 23/07/2021
 # Data de atualização: 26/11/2021
 # Versão: 0.05

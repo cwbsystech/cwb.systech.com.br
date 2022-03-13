@@ -12,7 +12,7 @@ CloudFlare FamilyShield.: Preferencial: 1.1.1.3 - Secundário: 1.0.0.3
 Assistente de configuração pfSense: https://docs.netgate.com/pfsense/en/latest/config/setup-wizard.html
 
 Primeira etapa: Acessando o pfSense via Navegador (recomendado utilizar o Navegador Firefox)
-01. Acessar o endereço IPv4: http://172.16.10.254
+01. Acessar o endereço IPv4: http://173.169.730.254
 	Sign In
 		Username: admin 
 		Password: pfsense

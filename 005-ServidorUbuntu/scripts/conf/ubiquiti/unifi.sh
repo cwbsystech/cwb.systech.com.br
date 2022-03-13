@@ -1,5 +1,5 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
+# Autor: Robson jensy
 # Site: www.procedimentosemti.com.br
 # Facebook: facebook.com/ProcedimentosEmTI
 # Facebook: facebook.com/BoraParaPratica
@@ -20,7 +20,7 @@
 # Informações que serão solicitadas na configuração via Web do Unifi Controller
 # Step 1 of 6:
 #   Name Your Controller
-#       Controller Name: Vaamonde
+#       Controller Name: jensy
 #       By selecting this you are agreeing to end user licence agreement and the terms of service: ON <Next>
 # Step 2 of 6:
 #   Sign in with your Ubiquiti Account

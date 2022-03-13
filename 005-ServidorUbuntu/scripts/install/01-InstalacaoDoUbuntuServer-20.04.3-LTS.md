@@ -1,13 +1,13 @@
-Autor: Robson Vaamonde<br>
+Autor: Robson jensy<br>
 Procedimentos em TI: http://procedimentosemti.com.br<br>
 Bora para Prática: http://boraparapratica.com.br<br>
-Robson Vaamonde: http://vaamonde.com.br<br>
+Robson jensy: http://jensy.com.br<br>
 Facebook Procedimentos em TI: https://www.facebook.com/ProcedimentosEmTi<br>
 Facebook Bora para Prática: https://www.facebook.com/BoraParaPratica<br>
 Instagram Procedimentos em TI: https://www.instagram.com/procedimentoem<br>
 YouTUBE Bora Para Prática: https://www.youtube.com/boraparapratica<br>
-LinkedIn Robson Vaamonde: https://www.linkedin.com/in/robson-vaamonde-0b029028/<br>
-Github Procedimentos em TI: https://github.com/vaamonde<br>
+LinkedIn Robson jensy: https://www.linkedin.com/in/robson-jensy-0b029028/<br>
+Github Procedimentos em TI: https://github.com/jensy<br>
 Data de criação: 10/10/2021<br>
 Data de atualização: 14/10/2021<br>
 Versão: 0.03<br>
@@ -105,14 +105,14 @@ Instalação do Ubuntu Server: https://ubuntu.com/server/docs/installation
 	_ 		Variant: [English (US)]
 	_ 	<Done>
 	_ 03. Network connections
-	_ 		enp0s3 eth <Enter>
+	_ 		ens18 eth <Enter>
 	_ 			Edit IPv4 <Enter>
 	_ 				IPv4 Method: Manual <Enter>
-	_ 					Subnet: 172.16.1.0/24 <Tab>
-	_ 					Address: 172.16.1.20 <Tab>
-	_ 					Gateway: 172.16.1.254 <Tab>
-	_ 					Name servers: 172.16.1.254 <Tab>
-	_ 					Search domains: pti.intra
+	_ 					Subnet: 173.169.73.0/24 <Tab>
+	_ 					Address: 173.169.73.5 <Tab>
+	_ 					Gateway: 173.169.73.254 <Tab>
+	_ 					Name servers: 173.169.73.254 <Tab>
+	_ 					Search domains: systech.brz
 	_ 				<Save>
 	_ 	<Done>
 	_ 04. Configure proxy - <Done>
@@ -123,11 +123,11 @@ Instalação do Ubuntu Server: https://ubuntu.com/server/docs/installation
 	_ 07. Storage configuration - <Done>
 	_ 		Confirm destructive action - <Continue>
 	_ 08. Profile setup
-	_ 		Your name: Robson Vaamonde <Tab>
-	_ 		Your server's name: ptispo01ws01 <Tab>
-	_ 		Pick a username: vaamonde <Tab>
-	_ 		Choose a passwords: pti@2018 <Tab>
-	_ 		Confirm your passwords: pti@2018
+	_ 		Your name: Robson jensy <Tab>
+	_ 		Your server's name: ServUbuntu <Tab>
+	_ 		Pick a username: jensy <Tab>
+	_ 		Choose a passwords: Casado#55 <Tab>
+	_ 		Confirm your passwords: Casado#55
 	_ 	<Done>
 	_ 09. SSH Setup
 	_ 		Install OpenSSH server: ON <Space>

@@ -19,7 +19,7 @@
 #
 # Informações que serão solicitadas na configuração via Web do ownCloud
 # 		Nome do usuário: admin
-# 		Senha: pti@2018
+# 		Senha: Casado#55
 # 		Pasta de dados: /var/www/html/own/data
 # 		Usuário do banco de dados: owncloud
 # 		Senha do banco de dados: owncloud

@@ -24,7 +24,7 @@
 # Enter it again: postgres
 #
 # Mensagem da configuração do email e senha do PgAdmin4 Web
-# Email address: postgres@pti.intra
+# Email address: postgres@systech.brz
 # Password: postgres
 # Retype password: postgres
 # We can now configure the Apache Web server for you. This involves enabling the wsgi module and 

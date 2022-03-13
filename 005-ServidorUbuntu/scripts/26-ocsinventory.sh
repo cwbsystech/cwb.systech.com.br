@@ -40,7 +40,7 @@
 #
 # INFORMAÇÕES QUE SERÃO SOLICITADAS VIA WEB (NAVEGADOR) DO OCS INVENTORY SERVER E REPORTS:
 # 	01. MySQL login: root (usuário padrão do MySQL)
-#	02. MySQL password: pti@2018 (senha criada nos arquivos 00-parametros.sh e 07-lamp.sh)
+#	02. MySQL password: Casado#55 (senha criada nos arquivos 00-parametros.sh e 07-lamp.sh)
 #	03. Name of Database: ocsweb (base de dados padrão do OCS Inventory, não mudar)
 # 	04. MySQL HostName: localhost (servidor local do MySQL)
 # 	05. MySQL Port: 3306 (porta padrão do MySQL)

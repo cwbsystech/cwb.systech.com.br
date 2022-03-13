@@ -72,7 +72,7 @@
 #
 # Variáveis de configuração do usuário root e senha do MariaDB para acesso via console e do PhpMyAdmin
 USERMARIADB="root"
-PASSWORDMARIADB="pti@2018"
+PASSWORDMARIADB="Casado#55"
 AGAINMARIADB=$PASSWORD
 #
 # Variáveis de configuração e liberação da conexão remota para o usuário Root do MariaDB
@@ -100,12 +100,12 @@ WEBSERVER_LEMP="localhost"
 # Utilização do MySQL Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo apt update && sudo apt install mariadb-client
-#	mariadb -u root -p -h pti.intra
+#	mariadb -u root -p -h systech.brz
 #
 # Utilização do Links2 Client no GNU/Linux
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo apt update && sudo apt install links2
-#	links2 http://pti.intra
+#	links2 http://systech.brz
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

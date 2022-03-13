@@ -22,14 +22,14 @@
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo NetworkManager --print-config
 # 	sudo nmcli device status
-# 	sudo nmcli device show enp0s3 
-# 	sudo networkctl status enp0s3 
-# 	sudo ifconfig enp0s3
-# 	sudo ip address show enp0s3
+# 	sudo nmcli device show ens18 
+# 	sudo networkctl status ens18 
+# 	sudo ifconfig ens18
+# 	sudo ip address show ens18
 # 	sudo route -n
 # 	sudo systemd-resolve --status
-# 	sudo dhclient -r enp0s3
-# 	sudo dhclient enp0s3
+# 	sudo dhclient -r ens18
+# 	sudo dhclient ens18
 # 	sudo cat /var/lib/dhcp/dhclient.leases
 # Windows Powershell: 
 #	ipconfig /all

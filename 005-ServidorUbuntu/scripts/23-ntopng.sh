@@ -29,8 +29,8 @@
 # Password: admin (Login)
 #
 # Change Password
-#	Password: pti@2018
-#	Confirm Password: pti@2018
+#	Password: Casado#55
+#	Confirm Password: Casado#55
 #	Language: English (Change Password)
 #
 # Site Oficial do Projeto: https://www.ntop.org/

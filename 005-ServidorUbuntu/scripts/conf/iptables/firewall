@@ -28,8 +28,8 @@ MULTIPORTSLIBTCP="$RULES/multiportslibtcp"  #Multiplas Portas Liberadas TCP
 DNSSERVER="$RULES/dnsserver"                #Servidores DNS liberados
 #
 # Declarando as variáveis da Interfaces de Rede e Subrede do IPTables
-LAN="enp0s3"           #Interface de Rede LAN
-REDE="172.16.1.0/24"   #Endereço da Subrede
+LAN="ens18"           #Interface de Rede LAN
+REDE="173.169.73.0/24"   #Endereço da Subrede
 #
 # opção da variável $1: Parâmetro número 1 (da linha de comando ou função)
 case "$1" in
@@ -236,7 +236,7 @@ case "$1" in
 	echo "======================================================================|"
 	echo "FIREWALL ATIVADO - SISTEMA PREPARADO E FUNCIONANDO PERFEITAMENTE"
 	echo "SCRIPT DE FIREWALL CRIADO POR :-) MARCELO MAGNO :-) - TODOS OS CRÉDITOS"
-	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON VAAMONDE - Procedimentos em TI ;-)"
+	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON jensy - Procedimentos em TI ;-)"
 	;;
 	#
 	# Início do Script de Firewall IPTables, utilizando o comando case (opção: stop)
@@ -268,7 +268,7 @@ case "$1" in
 	echo "======================================================================|"
 	echo "FIREWALL INATIVO - SISTEMA PARADO E LIBERADO TODAS AS REGRAS"
 	echo "SCRIPT DE FIREWALL CRIADO POR: MARCELO MAGNO :-) - TODOS OS CRÉDITOS"
-	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON VAAMONDE - Procedimentos em TI ;-)"
+	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON jensy - Procedimentos em TI ;-)"
 	;;
 	#
 	# Início do Script de Firewall IPTables, utilizando o comando case (opção: restart)
@@ -302,7 +302,7 @@ case "$1" in
 	echo ":FIM DA LISTAGEM DAS REGRAS DE FIREWALL NETFILTER ATRAVÉS DO IPTABLES:|"
 	echo "======================================================================|"
 	echo "SCRIPT DE FIREWALL CRIADO POR: MARCELO MAGNO :-) - TODOS OS CRÉDITOS"
-	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON VAAMONDE - Procedimentos em TI ;-)"
+	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON jensy - Procedimentos em TI ;-)"
 	;;
 	#
 	# Início do Script de Firewall IPTables, utilizando o comando case (opção: *)	

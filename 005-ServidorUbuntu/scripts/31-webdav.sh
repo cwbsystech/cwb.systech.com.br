@@ -20,7 +20,7 @@
 #
 # Configuração do Webdav Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Nemo:
-#	Nemo, Ctrl+L: davs://vaamonde@webdav.pti.intra/ 
+#	Nemo, Ctrl+L: davs://jensy@webdav.systech.brz/ 
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

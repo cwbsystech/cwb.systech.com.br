@@ -18,17 +18,17 @@
 #
 # Utilização do TFTP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	tftp tftp.pti.intra
+# 	tftp tftp.systech.brz
 #		verbose
 #		status
 #		get robson.txt
-#		put vaamonde.txt
+#		put jensy.txt
 # Windows Powershell:
-# 	tftp tftp.pti.intra
+# 	tftp tftp.systech.brz
 #		verbose
 #		status
 #		get robson.txt
-#		put vaamonde.txt
+#		put jensy.txt
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

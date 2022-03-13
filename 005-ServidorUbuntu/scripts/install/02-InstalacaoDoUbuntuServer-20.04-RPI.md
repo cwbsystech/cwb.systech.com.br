@@ -1,13 +1,13 @@
-Autor: Robson Vaamonde<br>
+Autor: Robson jensy<br>
 Procedimentos em TI: http://procedimentosemti.com.br<br>
 Bora para Prática: http://boraparapratica.com.br<br>
-Robson Vaamonde: http://vaamonde.com.br<br>
+Robson jensy: http://jensy.com.br<br>
 Facebook Procedimentos em TI: https://www.facebook.com/ProcedimentosEmTi<br>
 Facebook Bora para Prática: https://www.facebook.com/BoraParaPratica<br>
 Instagram Procedimentos em TI: https://www.instagram.com/procedimentoem<br>
 YouTUBE Bora Para Prática: https://www.youtube.com/boraparapratica<br>
-LinkedIn Robson Vaamonde: https://www.linkedin.com/in/robson-vaamonde-0b029028/<br>
-Github Procedimentos em TI: https://github.com/vaamonde<br>
+LinkedIn Robson jensy: https://www.linkedin.com/in/robson-jensy-0b029028/<br>
+Github Procedimentos em TI: https://github.com/jensy<br>
 Data de criação: 23/08/2021<br>
 Data de atualização: 30/08/2021<br>
 Versão: 0.2<br>
@@ -51,8 +51,8 @@ Testado e homologado no Raspberry Pi 3 B e Ubuntu Server 20.04.x LTS ARM x64 Bit
 	
 	_ Após se logar pela primeira vez no Ubuntu Server será solicitado a troca da senha:
 	_	Current password: ubuntu
-	_	New password: pti@2018
-	_	Retry new password: pti@2018
+	_	New password: Casado#55
+	_	Retry new password: Casado#55
 	
 	_ Recomendado depois que você trocar a senha, fazer a reinicialização do sistema.
 	_	sudo reboot

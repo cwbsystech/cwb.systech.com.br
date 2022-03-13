@@ -1,5 +1,5 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
+# Autor: Robson jensy
 # Site: www.procedimentosemti.com.br
 # Facebook: facebook.com/ProcedimentosEmTI
 # Facebook: facebook.com/BoraParaPratica
@@ -52,11 +52,11 @@ KERNEL=$(uname -r | cut -d'.' -f1,2)
 LOG="/var/log/$(echo $0 | cut -d'/' -f2)"
 #
 # Variáveis de configuração do Kerberos e SAMBA4
-REALM="PTI.INTRA"
+REALM="systech.brz"
 NETBIOS="PTI"
-DOMAIN="pti.intra"
-FQDN="ptispo01ws01.pti.intra"
-IP="172.16.1.20"
+DOMAIN="systech.brz"
+FQDN="ServUbuntu.systech.brz"
+IP="173.169.73.5"
 #
 # Variáveis de configuração do NTP Server
 NTP="a.st1.ntp.br"
@@ -65,14 +65,14 @@ NTP="a.st1.ntp.br"
 ROLE="dc"
 DNS="SAMBA_INTERNAL"
 USER="administrator"
-PASSWORD="pti@2018"
+PASSWORD="Casado#55"
 LEVEL="2008_R2"
-SITE="PTI.INTRA"
-INTERFACE="enp0s3"
-GATEWAY="172.16.1.254"
+SITE="systech.brz"
+INTERFACE="ens18"
+GATEWAY="173.169.73.254"
 #
 # Variáveis de configuração do DNS
-ARPA="1.16.172.in-addr.arpa"
+ARPA="73.169.173.in-addr.arpa"
 ARPAIP="20"
 #
 # Exportando o recurso de Noninteractive do Debconf para não solicitar telas de configuração

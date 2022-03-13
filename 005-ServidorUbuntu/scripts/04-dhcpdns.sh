@@ -31,19 +31,19 @@
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo NetworkManager --print-config
 # 	sudo nmcli device status
-# 	sudo nmcli device show enp0s3 
-# 	sudo networkctl status enp0s3 
-# 	sudo ifconfig enp0s3
-# 	sudo ip address show enp0s3
+# 	sudo nmcli device show ens18 
+# 	sudo networkctl status ens18 
+# 	sudo ifconfig ens18
+# 	sudo ip address show ens18
 # 	sudo route -n
 # 	sudo systemd-resolve --status
-# 	sudo dhclient -r enp0s3
-# 	sudo dhclient enp0s3
+# 	sudo dhclient -r ens18
+# 	sudo dhclient ens18
 # 	sudo cat /var/lib/dhcp/dhclient.leases
-#	nslookup pti.intra
-#	dig pti.intra
-#	host pti.intra
-#	ping pti.intra
+#	nslookup systech.brz
+#	dig systech.brz
+#	host systech.brz
+#	ping systech.brz
 # Windows Powershell: 
 #	ipconfig /all
 #	ipconfig /release
@@ -51,11 +51,11 @@
 #	netsh interface show interface
 #	netsh interface ip show interface
 #	netsh interface ip show config
-#	nslookup pti.intra
+#	nslookup systech.brz
 #	ipconfig /displaydns
-#	ping pti.intra
-#	Resolve-DnsName pti.intra
-#	Test-Connection pti.intra
+#	ping systech.brz
+#	Resolve-DnsName systech.brz
+#	Test-Connection systech.brz
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

@@ -25,8 +25,8 @@
 #		Português Brasileiro (pt_BR)
 #	Continuar;
 # Configurações do Servidor:
-#		Domínio: pti.intra
-#		Server Host Name (FQDN): ptispo01ws01.pti.intra
+#		Domínio: systech.brz
+#		Server Host Name (FQDN): ServUbuntu.systech.brz
 #		Porta do Console Admin: 9090
 #		Porta Segura do Console Admin: 9091: 
 #		Blowfish
@@ -48,9 +48,9 @@
 #		Padrão
 #	Continuar;
 # Conta do Administrador:
-#		Endereço de e-mail do Admin: vaamonde@pti.intra
-#		Nova senha: pti@2018
-#		Confirme a senha: pti@2018
+#		Endereço de e-mail do Admin: jensy@systech.brz
+#		Nova senha: Casado#55
+#		Confirme a senha: Casado#55
 #	Continuar;
 # Loge-se no console de administração.
 #

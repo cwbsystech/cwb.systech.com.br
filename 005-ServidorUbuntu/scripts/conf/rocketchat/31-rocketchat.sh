@@ -16,17 +16,17 @@
 #
 # Informações que serão solicitadas na configuração via Web do Rocket.Chat
 # Passo 1: Informação de administração
-#   Nome: Robson Vaamonde
-#   Nome de usuário: vaamonde
-#   E-mail da Organização: vaamonde@pti.intra
-#   Senha: vaamonde <Continuar>
+#   Nome: Robson jensy
+#   Nome de usuário: jensy
+#   E-mail da Organização: jensy@systech.brz
+#   Senha: jensy <Continuar>
 # Passo 2: Informações sobre a Organização
 #   Tipo de Organização: Comunidade
 #   Nome da Organização: Bora para Prática!!!
 #   Indústria: Educação
 #   Tamanho: 1-10 people
 #   País: Brasil
-#   Site: vaamonde.com.br <Continuar>
+#   Site: jensy.com.br <Continuar>
 # Passo 3: Informações do servidor
 #   Nome do Site: BoraParaPratica
 #   Idioma: Português do Brasil

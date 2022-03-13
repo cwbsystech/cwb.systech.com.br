@@ -29,7 +29,7 @@
 #
 # Configuração do NTP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	sudo ntpdate -s 172.16.1.20
+# 	sudo ntpdate -s 173.169.73.5
 #	sudo ntpq -pn
 #	sudo ntpq -c sysinfo
 #	sudo timedatectl
@@ -37,10 +37,10 @@
 #	sudo date
 #	sudo hwclock
 # Windows Powershell: 
-#	net time \\172.16.1.20 /set /yes
+#	net time \\173.169.73.5 /set /yes
 #	w32tm /query /status
 #	w32tm /query /configuration
-#	w32tm /config /syncfromflags:manual /manualpeerlist:”172.16.1.20” /reliable:yes /update
+#	w32tm /config /syncfromflags:manual /manualpeerlist:”173.169.73.5” /reliable:yes /update
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

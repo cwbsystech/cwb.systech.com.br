@@ -16,7 +16,7 @@
 #
 # Informações que serão solicitadas na configuração via Web do Nextcloud
 # 		Nome do usuário: admin
-# 		Senha: pti@2018
+# 		Senha: Casado#55
 # 		Pasta de dados: /var/www/html/nextcloud
 # 		Usuário do banco de dados: nextcloud
 # 		Senha do banco de dados: nextcloud

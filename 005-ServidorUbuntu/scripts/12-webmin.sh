@@ -14,7 +14,7 @@
 # centralizador de configurações do sistema, monitoração dos serviços e de servidores, 
 # fornecendo uma interface amigável, e que quando configurado com um servidor web, pode 
 # ser acessado de qualquer local, através de um navegador: 
-# Exemplo: https:\\(ip do servidor):(porta de utilização) - https:\\172.16.1.20:10000
+# Exemplo: https:\\(ip do servidor):(porta de utilização) - https:\\173.169.73.5:10000
 #
 # Usermin é uma interface baseada na web para webmail, alteração de senha, filtros de 
 # e-mail, fetchmail e muito mais. Ele é projetado para uso por usuários não-root regulares 
@@ -29,8 +29,8 @@
 # precisar de seu próprio servidor de e-mail, servidor web e assim por diante.
 #
 # Informações que serão solicitadas na configuração via Web do Webmin e Usermin
-# Username: vaamonde
-# Password: pti@2018: Sign In
+# Username: jensy
+# Password: Casado#55: Sign In
 #
 # Site oficial do Webmin: http://www.webmin.com/
 # Site oficial do Usermin: https://www.webmin.com/usermin.html

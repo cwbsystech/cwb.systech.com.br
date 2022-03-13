@@ -20,10 +20,10 @@ organizationalUnitName          = Organizational Unit Name (eg, section)
 organizationalUnitName_default  = Procedimentos em TI
 commonName                      = Common Name (e.g. server FQDN or YOUR name)
 commonName_max                  = 64
-commonName_default              = pti.intra
+commonName_default              = systech.brz
 emailAddress                    = Email Address
 emailAddress_max                = 64
-emailAddress_default            = pti@pti.intra
+emailAddress_default            = pti@systech.brz
 
 [ v3_req ]
 basicConstraints                = critical, CA:FALSE
@@ -35,8 +35,8 @@ subjectAltName                  = @alternate_names
 nsComment                       = "Certificado Gerado pelo OpenSSL"
 
 [ alternate_names ]
-IP.1    = 172.16.1.20
-DNS.1   = ptispo01ws01
-DNS.3   = ptispo01ws01.pti.intra
-DNS.3   = pti.intra
-DNS.4   = www.pti.intra
+IP.1    = 173.169.73.5
+DNS.1   = ServUbuntu
+DNS.3   = ServUbuntu.systech.brz
+DNS.3   = systech.brz
+DNS.4   = www.systech.brz

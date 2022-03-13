@@ -286,8 +286,8 @@ echo -e "Criando a Chave Privada/Pública e o Certificado Assinado do Vsftpd Ser
 	# 	Locality Name (eg, city): Sao Paulo <-- pressione <Enter>
 	# 	Organization Name (eg, company): Bora para Pratica <-- pressione <Enter>
 	# 	Organization Unit Name (eg, section): Procedimentos em TI <-- pressione <Enter>
-	# 	Common Name (eg, server FQDN or YOUR name): pti.intra <-- pressione <Enter>
-	# 	Email Address: pti@pti.intra <-- pressione <Enter>
+	# 	Common Name (eg, server FQDN or YOUR name): systech.brz <-- pressione <Enter>
+	# 	Email Address: pti@systech.brz <-- pressione <Enter>
 	#
 	# opções do comando openssl: 
 	# x509 (command is a multi-purpose certificate utility),

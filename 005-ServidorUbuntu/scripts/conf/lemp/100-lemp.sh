@@ -36,7 +36,7 @@
 # FPM (FastCGI Process Manager) é um gerenciador de processos para gerenciar o FastCGI SAPI 
 # (Server API) em PHP. O PHP-FPM é um serviço e não um módulo. Este serviço é executado 
 # completamente independente do servidor web em um processo à parte e é suportado por qualquer 
-# servidor web compatível com FastCGI (Fast Common Gateway Interface).
+# servidor web compatível com FastCGI (Fast Common Gateway _Lan).
 #
 # Perl é usada em aplicações de CGI para a web, para administração de sistemas linux e por 
 # várias aplicações que necessitam de facilidade de manipulação de strings.

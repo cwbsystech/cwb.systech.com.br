@@ -69,7 +69,7 @@ Testado e homologado no Raspberry Pi 3 B e Ubuntu Core 20 ARM x64 Bits
 	_ Após as reinicializações do Ubuntu Core, vamos configurar o sistema;
 	_	Press enter to configure <Enter>
 	_	Configure the network and setup an administrator account on this all-snap Ubuntu Core system. <OK>
-	_	Configure at least one interfaces this server can use to talk to other machines, and which
+	_	Configure at least one _Lans this server can use to talk to other machines, and which
 	_	preferably provides sufficient access for updates. <Done>
 	_	Enter an email address from your account in the store. <Done>
 	_ 	This device is registered to: seu_email@seudominio.com. <Done>

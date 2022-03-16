@@ -9,7 +9,7 @@
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do LogAnalyzer v4.1.x
 #
-# O LogAnalyzer é uma interface da Web para o Syslog/Rsyslog e outros dados de eventos 
+# O LogAnalyzer é uma _Lan da Web para o Syslog/Rsyslog e outros dados de eventos 
 # da rede. Ele fornece fácil navegação análise de eventos de rede em tempo real e 
 # serviços de relatórios. Os relatórios ajudam a manter um visão na atividade da rede. 
 # Ele consolida o Syslog/Rsyslog e outros dados de eventos, fornecendo uma página web 
@@ -343,7 +343,7 @@ sleep 5
 #
 echo -e "Verificando o Virtual Host do LogAnalyzer no Apache2, aguarde..."
 	# opção do comando apachectl: -s (a synonym)
-	apache2ctl -S | grep log.$DOMINIOSERVER
+	apache2ctl -S | grep log.$_DominioServer
 echo -e "Virtual Host verificado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

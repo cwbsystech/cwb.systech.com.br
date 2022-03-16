@@ -19,7 +19,7 @@
 # PowerShell para executar suas tarefas.
 #
 # O Rundeck é uma aplicação java de código aberto que automatiza processos e rotinas 
-# nos mais variados ambientes, gerenciado via interface gráfica fica extremamente 
+# nos mais variados ambientes, gerenciado via _Lan gráfica fica extremamente 
 # simples de verificar status de execuções, saídas de erro, etc. Muito utilizado 
 # quando se trata de ambientes DevOps, principalmente em uma abordagem de Entrega 
 # Contínua, onde em pequenos ciclos novas versões de software são construídas, 

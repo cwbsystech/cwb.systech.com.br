@@ -16,8 +16,8 @@
 # facilitam a encontrar e recuperar arquivos perdidos ou corrompidos. Com ele é possível 
 # fazer backup remotamente de Linux, Solaris, FreeBSD, NetBSD, Windows, Mac OS X, etc... 
 #
-# O Baculum fornece duas aplicações web: o Baculum Web como interface web para gerenciar 
-# o Bacula e a API do Baculum, que é a interface de programação do Bacula. Ambas as 
+# O Baculum fornece duas aplicações web: o Baculum Web como _Lan web para gerenciar 
+# o Bacula e a API do Baculum, que é a _Lan de programação do Bacula. Ambas as 
 # ferramentas conectadas criam um ambiente web para facilitar o trabalho com os programas 
 # da Comunidade Bacula. 
 #
@@ -42,16 +42,16 @@
 #	Port: 3306
 #	Connection test: <Test>
 #	<Next>
-# 03. Step 3 - share the Bacula Bconsole commands interface
-#	Do you want to setup and share the Bacula Bconsole interface to execute commands in this API instance?
+# 03. Step 3 - share the Bacula Bconsole commands _Lan
+#	Do you want to setup and share the Bacula Bconsole _Lan to execute commands in this API instance?
 #	Select: Yes
 #	Bconsole binary file path: /usr/sbin/bconsole
 #	Bconsole admin config file path: /opt/bacula/etc/bconsole.conf
 #	Use sudo: Yes
 #	Bconsole connection test: <Test>
 #	<Next>
-# 04. Step 4 - share the Bacula configuration interface
-#	Do you want to setup and share the Bacula configuration interface to configure Bacula components via this API instance?
+# 04. Step 4 - share the Bacula configuration _Lan
+#	Do you want to setup and share the Bacula configuration _Lan to configure Bacula components via this API instance?
 #	Select: Yes
 #	General configuration
 #		Baculum working directory for Bacula config: /etc/baculum/Config-api-apache
@@ -84,7 +84,7 @@
 #	Language: English 
 #	<Next>
 # 02. Step 2 - add API instances
-#	Baculum web interface requires to add at least one Baculum API instance with shared Catalog access. Please add API instance.
+#	Baculum web _Lan requires to add at least one Baculum API instance with shared Catalog access. Please add API instance.
 #		Add API host
 #			Protocol: HTTP
 #			IP Address/Hostname: localhost

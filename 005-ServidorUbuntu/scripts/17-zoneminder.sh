@@ -11,7 +11,7 @@
 #
 # ZoneMinder é um sistema de CFTV (Circuito Fechado de televisão) Open Source, desenvolvido 
 # para sistemas operacionais Linux. Ele é liberado sob os termos da GNU General Public 
-# License (GPL). Os usuários controlam o ZoneMinder através de uma interface baseada na Web; 
+# License (GPL). Os usuários controlam o ZoneMinder através de uma _Lan baseada na Web; 
 # também fornece LiveCD. O aplicativo pode usar câmeras padrão (por meio de uma placa de 
 # captura, USB, Firewire etc.) ou dispositivos de câmera baseados em IP. O software permite 
 # três modos de operação: monitoramento (sem gravação), gravação após movimento detectado e 

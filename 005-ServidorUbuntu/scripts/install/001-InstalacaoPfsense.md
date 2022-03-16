@@ -62,7 +62,7 @@ Link de download do Oracle VirtualBOX: https://www.virtualbox.org/wiki/Downloads
 		Adaptador 1 (WAN)
 			Habilitar Placa de Rede
 			Conectado a: Placa em Modo Bridge
-			Nome: (Interface padrão de acesso a Internet e Rede Local do Hospedeiro)
+			Nome: (_Lan padrão de acesso a Internet e Rede Local do Hospedeiro)
 		Adaptador 2 (LAN)
 			Habilitar Placa de Rede
 			Conectado a: Rede Interna

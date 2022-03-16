@@ -11,7 +11,7 @@
 # Kernel >= 4.15.x
 # Testado e homologado para a versão do Unifi Controller 6.0.x, MongoDB 3.6.x
 #
-# O software UniFi Controller que vem com o sistema Ubiquiti UniFi tem uma interface baseada em Web que facilita
+# O software UniFi Controller que vem com o sistema Ubiquiti UniFi tem uma _Lan baseada em Web que facilita
 # a administração, configuração e gerenciamento dos dispositivos Unifi (Access Point AP, Switch, Router, USG, etc).
 # O sistema Unifi e baseado na arquitetura SDN (Software defined networking) possibilitando o gerenciamento 
 # centralizado de todos os equipamentos da infraestrutura da rede utilizando o Unifi Controller Internamente ou 

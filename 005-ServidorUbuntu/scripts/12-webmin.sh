@@ -12,17 +12,17 @@
 # Webmin é um programa de gerenciamento de servidor, que roda em plataformas Unix/Linux. 
 # Com ele você pode usar também o Usermin e o Virtualmin. O Webmin funciona como um 
 # centralizador de configurações do sistema, monitoração dos serviços e de servidores, 
-# fornecendo uma interface amigável, e que quando configurado com um servidor web, pode 
+# fornecendo uma _Lan amigável, e que quando configurado com um servidor web, pode 
 # ser acessado de qualquer local, através de um navegador: 
 # Exemplo: https:\\(ip do servidor):(porta de utilização) - https:\\173.169.73.5:10000
 #
-# Usermin é uma interface baseada na web para webmail, alteração de senha, filtros de 
+# Usermin é uma _Lan baseada na web para webmail, alteração de senha, filtros de 
 # e-mail, fetchmail e muito mais. Ele é projetado para uso por usuários não-root regulares 
 # em um sistema Unix e os limita a tarefas que seriam capazes de realizar se logados via 
 # SSH ou no console.
 #
 # Virtualmin é um módulo Webmin para gerenciar vários hosts virtuais por meio de uma única 
-# interface, como Plesk ou Cpanel. Ele suporta a criação e gerenciamento de hosts virtuais 
+# _Lan, como Plesk ou Cpanel. Ele suporta a criação e gerenciamento de hosts virtuais 
 # Apache, domínios BIND DNS, bancos de dados MySQL e caixas de correio e aliases com 
 # Sendmail ou Postfix. Ele faz uso dos módulos Webmin existentes para esses servidores e, 
 # portanto, deve funcionar com qualquer configuração de sistema existente, ao invés de 

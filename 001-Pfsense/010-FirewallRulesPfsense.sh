@@ -1,7 +1,7 @@
 Introdução à regras de firewall: https://docs.netgate.com/pfsense/en/latest/firewall/index.html
 Configuração das Regras de Firewall: https://docs.netgate.com/pfsense/en/latest/firewall/configure.html
 
-Configurando as regras de Firewall na Interface LAN do pfSense
+Configurando as regras de Firewall na _Lan LAN do pfSense
 Firewall
 	Rules
 		LAN
@@ -28,7 +28,7 @@ Firewall
 				Edit Firewall Rule
 					Action: Pass
 					Disable: Off
-					Interface: LAN
+					_Lan: LAN
 					Address Family: IPv4
 					Protocol: UDP
 				Source

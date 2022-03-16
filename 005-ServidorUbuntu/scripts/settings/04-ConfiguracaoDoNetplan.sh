@@ -61,7 +61,7 @@ sudo ip link set ens18 up
 # Diretório padrão das configurações da Placa de Rede no Ubuntu Server
 cd /etc/netplan/
 #
-# Instalando as dependências das Interfaces de Rede (Placa de Rede)
+# Instalando as dependências das _Lans de Rede (Placa de Rede)
 sudo apt install bridge-utils ifenslave net-tools
 #
 # Arquivos de configuração da Placa de Rede no Ubuntu Server utilizando
@@ -208,7 +208,7 @@ sudo ip address show enp3s0
 sudo route -n
 sudo ip route
 #
-# Configurações de Bonds 802.3d com interface dinâmica
+# Configurações de Bonds 802.3d com _Lan dinâmica
 # Obs: no Oracle VirtualBOX as Placas de Rede precisam está configuradas no modo
 # Conectado a: Placa de rede exclusiva de hospedeiro (host-only) - Nome: vboxnet0
 # Instalar o aplicativo: sudo apt update && sudo apt install ifenslave bridge-utils
@@ -222,7 +222,7 @@ network:
 	bonds:
 		bond0:
 			dhcp4: true
-			interfaces:
+			_Lans:
 				- ens18
 				- enp0s8
 			parameters:
@@ -238,7 +238,7 @@ sudo ip address show bond0
 sudo route -n
 sudo ip route
 #
-# Configurações de Bonds 802.3d com interface estática
+# Configurações de Bonds 802.3d com _Lan estática
 # Obs: no Oracle VirtualBOX as Placas de Rede precisa está configurado o modo
 # Conectado a: Placa de rede exclusiva de hospedeiro (host-only) - Nome: vboxnet
 network:
@@ -250,7 +250,7 @@ network:
 	bonds:
 		bond0:
 			dhcp4: false
-			interfaces:
+			_Lans:
 				- ens18
 				- enp0s8
 			addresses: [173.169.73.5/24]
@@ -272,7 +272,7 @@ sudo ip address show bond0
 sudo route -n
 sudo ip route
 #
-# Configurações de Bridges com interface dinâmica
+# Configurações de Bridges com _Lan dinâmica
 network:
 	ethernets:
 		ens18:
@@ -280,7 +280,7 @@ network:
 	bridges:
 		br0:
 			dhcp4: yes
-			interfaces:
+			_Lans:
 				- ens18
 	version: 2
 #
@@ -293,7 +293,7 @@ sudo ip address show br0
 sudo route -n
 sudo ip route
 #
-# Configurações de VLANs em interfaces como Bonds e endereço estático
+# Configurações de VLANs em _Lans como Bonds e endereço estático
 network:
 	vlans:
         inet:

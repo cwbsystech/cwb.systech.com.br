@@ -33,7 +33,7 @@ Primeira etapa: Acessando o pfSense via Navegador (recomendado utilizar o Navega
 		Time server hostname: a.st1.ntp.br
 		Timezone: America/Sao_Paulo
 		<Next>
-	Configure WAN Interface
+	Configure WAN _Lan
 		SelectedType: DHCP
 		General configuration
 			MAC Address: (default)
@@ -43,7 +43,7 @@ Primeira etapa: Acessando o pfSense via Navegador (recomendado utilizar o Navega
 			Block RFC1918 Private Networks: (Disable)
 			Block bogon networks: (Disable)
 		<Next>
-	Configure LAN Interface
+	Configure LAN _Lan
 		LAN IP Address: 173.169.73.254
 		Subnet Mask: 24
 		<Next>

@@ -602,7 +602,7 @@ echo -e "Testando o Certificado TLS/SSL do Apache2, aguarde..."
 	# -servername (Include the TLS Server Name Indication (SNI) extension in the ClientHello message)
 	# -showcerts (Display the whole server certificate chain: normally only the server certificate itself is displayed)
 	#
-	echo | openssl s_client -connect localhost:443 -servername www.$DOMINIOSERVER -showcerts &>> $LOG
+	echo | openssl s_client -connect localhost:443 -servername www.$_DominioServer -showcerts &>> $LOG
 echo -e "Certificado do Apache2 testado sucesso!!!, continuando com o script...\n"
 sleep 5
 #

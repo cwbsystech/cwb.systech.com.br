@@ -56,33 +56,22 @@ export DEBIAN_FRONTEND="noninteractive"
 #
 # Declarando as variáveis utilizadas nas configurações de Rede do Servidor Ubuntu 
 #
-# Variável do Usuário padrão utilizado no Servidor Ubuntu desse curso
-USUARIODEFAULT="jensy"
-#
-# Variável da Senha padrão utilizado no Servidor Ubuntu desse curso
-SENHADEFAULT="Casado#55"
-#
-# Variável do Nome (Hostname) do Servidor Ubuntu desse curso
-NOMESERVER="ServUbuntu"
-#
-# Variável do Nome de Domínio do Servidor Ubuntu desse curso
-# OBSERVAÇÃO IMPORTANTE: essa variável será utilizada em outras variáveis desse curso
-DOMINIOSERVER="systech.brz"
-#
-# Variável do Nome (Hostname) FQDN (Fully Qualified Domain Name) do Servidor Ubuntu desse curso
-FQDNSERVER="$NOMESERVER.$DOMINIOSERVER"
-#
-# Variável do Endereço IPv4 principal (padrão) do Servidor Ubuntu desse curso
-IPV4SERVER="173.169.73.5"
-#
-# Variável do Nome da Interface Lógica do Servidor Ubuntu Server desse curso
-INTERFACE="ens18"
-#
-# Variável do arquivo de configuração da Placa de Rede do Netplan do Servidor Ubuntu
-# CUIDADO!!! o nome do arquivo de configuração da placa de rede pode mudar dependendo da 
-# versão do Ubuntu Server, verificar o conteúdo do diretório: /etc/netplan para saber o nome 
-# do arquivo de configuração do Netplan e mudar a variável NETPLAN com o nome correspondente.
-NETPLAN="/etc/netplan/00-installer-config.yaml"
+
+_UsuarioDefault="jensy"
+_SenhaAdministrator="Casado#55"
+_Nome_Servidor="ServUbuntu"
+_DominioServer="systech.brz"
+FQDNSERVER="$_Nome_Servidor.$_DominioServer"
+
+_Network="173.169.73.0"
+_Broadcast="173.169.73.255"
+_Gateway="173.169.73.254"
+_Mascara="24"
+_Ip_V4_DC_Primario="173.169.73.1"
+_Ip_V4_DC_Backup="173.169.73.2"
+_Ip_V4_Servidor="173.169.73.5"
+_Lan="enp0s3"
+_Netplan="/etc/netplan/00-installer-config.yaml"
 #
 #=============================================================================================
 #                        VARIÁVEIS UTILIZADAS NO SCRIPT: 01-openssh.sh                       #
@@ -113,16 +102,16 @@ NETPLAN="/etc/netplan/00-installer-config.yaml"
 # 07. tail -f /var/log/cron.log = filtrando as mensagens do serviço do CRON
 #
 # Variável das dependências do laço de loop do OpenSSH Server
-SSHDEP="openssh-server openssh-client"
+_SshDep="openssh-server openssh-client"
 #
 # Variável de instalação dos softwares extras do OpenSSH Server
-SSHINSTALL="net-tools ipcalc nmap tree pwgen neofetch shellinabox"
+_SshInstall="net-tools ipcalc nmap tree pwgen neofetch shellinabox"
 #
 # Variável da porta de conexão padrão do OpenSSH Server
-PORTSSH="22"
+_PortSsh="22"
 #
 # Variável da porta de conexão padrão do Shell-In-a-Box
-PORTSHELLINABOX="4200"
+_PortShellInaBox="4200"
 #
 #=============================================================================================
 #                          VARIÁVEIS UTILIZADAS NO SCRIPT: 02-dhcp.sh                        #
@@ -175,7 +164,7 @@ PORTDHCP="67"
 # Declarando as variáveis de Pesquisa Direta do Domínio, Reversas e Subrede do Bind DNS Server
 #
 # Variável do nome do Domínio do Servidor DNS (veja a linha: 64 desse arquivo)
-DOMAIN=$DOMINIOSERVER
+DOMAIN=$_DominioServer
 #
 # Variável do nome da Pesquisa Reversas do Servidor de DNS
 DOMAINREV="73.169.173.in-addr.arpa"
@@ -313,7 +302,7 @@ PORTTFTP="69"
 USERMYSQL="root"
 #
 # Variáveis da senha e confirmação da senha do usuário Root do Mysql 
-SENHAMYSQL=$SENHADEFAULT
+SENHAMYSQL=$_SenhaAdministrator
 AGAINMYSQL=$SENHAMYSQL
 #
 # Variáveis de configuração e liberação da conexão remota para o usuário Root do MySQL
@@ -417,7 +406,7 @@ GROUPFTP="ftpusers"
 USERFTP="ftpuser"
 #
 # Variável da senha do Usuário de VSFTPd Server
-PASSWORDFTP=$SENHADEFAULT
+PASSWORDFTP=$_SenhaAdministrator
 #
 # Variável da senha utilizada na geração das chaves privadas/públicas de criptografia do OpenSSL 
 PWDSSLFTP="jensy"
@@ -548,7 +537,7 @@ FLUSH_WORDPRESS="FLUSH PRIVILEGES;"
 #
 # Variáveis de usuário e senha do FTP para acessar o diretório raiz da instalação do Wordpress
 USERFTPWORDPRESS="wordpress"
-PASSWORDFTPWORDPRESS=$SENHADEFAULT
+PASSWORDFTPWORDPRESS=$_SenhaAdministrator
 #
 # Variável da instalação das dependências do Wordpress
 # opção do caractere: \ (contra barra): utilizado para quebra de linha em comandos grandes
@@ -1380,7 +1369,7 @@ POSTGRESQLINSTALL="postgresql postgresql-contrib postgresql-client"
 KEYPGADMIN4="https://www.pgadmin.org/static/packages_pgadmin_org.pub"
 #
 # Variável do email do usuário de autenticação padrão do PgAdmin4
-EMAILPGADMIN="$USERPOSTGRESQL@$DOMINIOSERVER"
+EMAILPGADMIN="$USERPOSTGRESQL@$_DominioServer"
 #
 # Variável da senha do email do usuário de autenticação padrão do PgAdmin4
 EMAILPASSPGADMIN=$PASSWORDPOSTGRESQL
@@ -1432,10 +1421,10 @@ WEBDAVDEP="apache2 apache2-utils openssl"
 REALWEBDAV="webdav"
 #
 # Variável da criação do usuário de acesso ao Webdav
-USERWEBDAV=$USUARIODEFAULT
+USERWEBDAV=$_UsuarioDefault
 #
 # Variável da criação da senha do usuário de acesso ao Webdav
-PASSWORDWEBDAV=$SENHADEFAULT
+PASSWORDWEBDAV=$_SenhaAdministrator
 #
 #=============================================================================================
 #                       VARIÁVEIS UTILIZADAS NO SCRIPT: 32-nextcloud.sh                      #

@@ -12,7 +12,7 @@
 # O OCS Inventory (Open Computer and Software Inventory Next Generation) é um software livre que permite 
 # aos usuários inventariar ativos de TI. O OCS-NG coleta informações sobre o hardware e o software das 
 # máquinas conectadas, executando um programa cliente do OCS ("OCS Inventory Agent"). O OCS pode visualizar 
-# o inventário por meio de uma interface web. Além disso, o OCS inclui a capacidade de implantar aplicações 
+# o inventário por meio de uma _Lan web. Além disso, o OCS inclui a capacidade de implantar aplicações 
 # em computadores de acordo com critérios de busca. O IpDiscover do lado do agente possibilita descobrir a 
 # totalidade de computadores e dispositivos em rede.
 #

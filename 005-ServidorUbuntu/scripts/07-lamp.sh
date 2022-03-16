@@ -18,7 +18,7 @@
 #
 # O MySQL é um sistema de gerenciamento de banco de dados (SGBD), que utiliza a linguagem 
 # SQL (Linguagem de Consulta Estruturada, do inglês Structured Query Language) como 
-# interface. É atualmente um dos sistemas de gerenciamento de bancos de dados mais 
+# _Lan. É atualmente um dos sistemas de gerenciamento de bancos de dados mais 
 # populares[2] da Oracle Corporation, com mais de 10 milhões de instalações pelo mundo.
 #
 # PHP (um acrônimo recursivo para "PHP: Hypertext Preprocessor", originalmente Personal 

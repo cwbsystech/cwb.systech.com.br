@@ -273,7 +273,7 @@ sleep 5
 #
 echo -e "Verificando o Virtual Host do ownCloud no Apache2, aguarde..."
 	# opção do comando apachectl: -s (a synonym)
-	apache2ctl -S | grep own.$DOMINIOSERVER
+	apache2ctl -S | grep own.$_DominioServer
 echo -e "Virtual Host verificado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

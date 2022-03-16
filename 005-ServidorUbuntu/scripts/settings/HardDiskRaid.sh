@@ -35,7 +35,7 @@
 # casos, use o GNU mais avançado dividido. O fdisk não usa o modo e os cilindros compatíveis com 
 # DOS como unidades de exibição por padrão.
 #
-# Cfdisk: é um editor de partições do Linux, semelhante ao fdisk, mas com uma interface de usuário 
+# Cfdisk: é um editor de partições do Linux, semelhante ao fdisk, mas com uma _Lan de usuário 
 # diferente (ncurses). Faz parte do pacote de programas utilitários do Linux, o util-linux. 
 #
 # Parted: (o nome sendo a conjunção das duas palavras PARTition e EDitor) é um editor de partições 

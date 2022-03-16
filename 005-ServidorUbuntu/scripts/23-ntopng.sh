@@ -14,14 +14,14 @@
 # NTop-NG é um software de código aberto lançado sob a Licença Pública Geral GNU 
 # (GPLv3) para software. Versões de código-fonte estão disponíveis para os sistemas 
 # operacionais: Unix, Linux, BSD, Mac OS X e Windows. O mecanismo do NTop-NG é escrito 
-# na linguagem de programação C++, sua interface da web é opcional e foi desenvolvida 
+# na linguagem de programação C++, sua _Lan da web é opcional e foi desenvolvida 
 # na linguagem Lua.
 #
 # OBSERVAÇÃO IMPORTANTE: para o NTop-NG funcionar corretamente em uma Infraestrutura 
 # de Redes de Computadores, é recomendado que as configurações da Porta do Switch que 
 # está conectado o Servidor do NTop-NG esteja no Modo Mirroring/Monitoring (Espelhamento
 # /Monitoramento) ou em alguns casos no Modo Trunk (Tronco), também é recomendado que 
-# a Interface de Rede do Servidor esteja no Promiscuous Mode (Modo Promíscuo) 
+# a _Lan de Rede do Servidor esteja no Promiscuous Mode (Modo Promíscuo) 
 #
 # Informações que serão solicitadas na configuração via Web do NTop-NG
 #
@@ -239,10 +239,10 @@ echo -e "Iniciando o serviço do NTop-NG, aguarde..."
 echo -e "Serviço do NTop-NG iniciado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Configurando a Interface de Rede em Modo Promíscuo, aguarde..."
+echo -e "Configurando a _Lan de Rede em Modo Promíscuo, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
-	ifconfig $INTERFACE promisc &>> $LOG
-echo -e "Interface de Rede configurada com sucesso!!!, continuando com o script...\n"
+	ifconfig $_Lan promisc &>> $LOG
+echo -e "_Lan de Rede configurada com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Verificando o serviço do NTop-NG, aguarde..."

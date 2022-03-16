@@ -485,7 +485,7 @@ function PMA_getValuesForColumn($db, $table, $column)
         null,
         null,
         null,
-        PMA\libraries\DatabaseInterface::QUERY_STORE
+        PMA\libraries\Database_Lan::QUERY_STORE
     );
 
     $values = PMA\libraries\Util::parseEnumSetValues($field_info_result[0]['Type']);
@@ -1016,7 +1016,7 @@ function PMA_executeQueryAndMeasureTime($full_sql_query)
     $querytime_before = array_sum(explode(' ', microtime()));
 
     $result = @$GLOBALS['dbi']->tryQuery(
-        $full_sql_query, null, PMA\libraries\DatabaseInterface::QUERY_STORE
+        $full_sql_query, null, PMA\libraries\Database_Lan::QUERY_STORE
     );
     $querytime_after = array_sum(explode(' ', microtime()));
 

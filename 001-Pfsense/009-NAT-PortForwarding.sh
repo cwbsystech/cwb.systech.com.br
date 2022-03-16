@@ -52,7 +52,7 @@ Firewall
 				Edit Redirect Entry
 					Disabled: Off
 					No RDR(NOT): Off
-					Interface: WAN
+					_Lan: WAN
 					Address Family: IPv4
 					Protocol: TCP
 					Source: Default
@@ -81,7 +81,7 @@ Firewall
 			Enter a description: Regras de NAT do Servidor UCS Univention - Color: Blue
 		Save
 
-Configurando as regras de Firewall na Interface WAN do pfSense
+Configurando as regras de Firewall na _Lan WAN do pfSense
 Firewall
 	Rules
 		WAN
@@ -106,7 +106,7 @@ Firewall
 				Edit Redirect Entry
 					Disabled: Off
 					No RDR(NOT): Off
-					Interface: WAN
+					_Lan: WAN
 					Address Family: IPv4
 					Protocol: TCP
 					Source: Default
@@ -132,7 +132,7 @@ Firewall
 		Apply Changes
 
 
-Configurando as regras de Firewall na Interface WAN do pfSense
+Configurando as regras de Firewall na _Lan WAN do pfSense
 Firewall
 	Rules
 		WAN

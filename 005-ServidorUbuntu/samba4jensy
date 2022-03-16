@@ -865,15 +865,15 @@ EOF
 }
 
 
-Arquivo_Interfaces (){
+Arquivo__Lans (){
 ifdown $LAN
 sleep 1
 
-cat << EOF > /etc/network/interfaces
+cat << EOF > /etc/network/_Lans
 # Gerado pelo script Systec -- Soluçoes em TI
-# The loopback network interface
+# The loopback network _Lan
 
-source /etc/network/interfaces.d/*	
+source /etc/network/_Lans.d/*	
 	
 	auto lo
 	iface lo inet loopback
@@ -932,14 +932,14 @@ Obter_Informacoes() {
 	read SENHA_ADMINISTRATOR
 	
 	Logo_Empresa
-	echo -e '\e[36;3m' "Vamos a Configurar el Arquivo INTERFACES    \e[m";
+	echo -e '\e[36;3m' "Vamos a Configurar el Arquivo _LanS    \e[m";
 	echo "------------------------------------------------------------- "
 	echo -e '\e[36;3m' "Digita:    \e[m";
-    echo -e '\e[36;3m' "nano /etc/network/interfaces    \e[m";
+    echo -e '\e[36;3m' "nano /etc/network/_Lans    \e[m";
 	read Minha_Escrita
-	Cadena_a_Comparar="nano /etc/network/interfaces"
+	Cadena_a_Comparar="nano /etc/network/_Lans"
 	Comparar_String
-	Arquivo_Interfaces
+	Arquivo__Lans
 	if [ "$?" = "0" ] ;then
 		echo "Tudo em ordem... VAMOS CONTINUAR ! ! !"
 		read

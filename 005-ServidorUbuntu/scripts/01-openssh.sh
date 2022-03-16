@@ -117,14 +117,14 @@ fi
 # [ ] = teste de expressão, == comparação de string, exit 1 = A maioria dos erros comuns na execução,
 # $? código de retorno do último comando executado, ; execução de comando, 
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
-if [ "$(nc -vz 127.0.0.1 $PORTSSH &> /dev/null ; echo $?)" == "0" ]
+if [ "$(nc -vz 127.0.0.1 $_PortSsh &> /dev/null ; echo $?)" == "0" ]
 	then
 		Logo_Empresa
-		echo -e "A porta: $PORTSSH está sendo utilizada pelo serviço do OpenSSH Server, continuando com o script..."
+		echo -e "A porta: $_PortSsh está sendo utilizada pelo serviço do OpenSSH Server, continuando com o script..."
 		sleep 5
 	else
 		Logo_Empresa
-		echo -e "A porta: $PORTSSH não está sendo utilizada nesse servidor."
+		echo -e "A porta: $_PortSsh não está sendo utilizada nesse servidor."
 		echo -e "Verifique as dependências desse serviço e execute novamente esse script.\n"
 		sleep 5
 		exit 1
@@ -134,16 +134,16 @@ fi
 # [ ] = teste de expressão, == comparação de string, exit 1 = A maioria dos erros comuns na execução,
 # $? código de retorno do último comando executado, ; execução de comando, 
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
-if [ "$(nc -vz 127.0.0.1 $PORTSHELLINABOX &> /dev/null ; echo $?)" == "0" ]
+if [ "$(nc -vz 127.0.0.1 $_PortShellInaBox &> /dev/null ; echo $?)" == "0" ]
 	then
 		Logo_Empresa
-		echo -e "A porta: $PORTSHELLINABOX já está sendo utilizada nesse servidor."
+		echo -e "A porta: $_PortShellInaBox já está sendo utilizada nesse servidor."
 		echo -e "Verifique o serviço associado a essa porta e execute novamente esse script.\n"
 		sleep 5
 		exit 1
 	else
 		Logo_Empresa
-		echo -e "A porta: $PORTSHELLINABOX está disponível, continuando com o script..."
+		echo -e "A porta: $_PortShellInaBox está disponível, continuando com o script..."
 		sleep 5
 fi
 #
@@ -154,7 +154,7 @@ fi
 # 0 ou 1, -ne = é diferente (NotEqual)
 Logo_Empresa
 echo -n "Verificando as dependências do OpenSSH Server, aguarde... "
-	for name in $SSHDEP
+	for name in $_SshDep
 	do
   		[[ $(dpkg -s $name 2> /dev/null) ]] || { 
               Logo_Empresa
@@ -196,9 +196,9 @@ Logo_Empresa
 echo
 #
 echo -e "Configuração do OpenSSH Server no GNU/Linux Ubuntu Server 20.04.x\n"
-echo -e "Porta padrão utilizada pelo OpenSSH Server.: TCP $PORTSSH"
-echo -e "Porta padrão utilizada pelo Shell-In-a-Box.: TCP $PORTSHELLINABOX"
-echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostname -I | cut -d' ' -f1):$PORTSHELLINABOX/\n"
+echo -e "Porta padrão utilizada pelo OpenSSH Server.: TCP $_PortSsh"
+echo -e "Porta padrão utilizada pelo Shell-In-a-Box.: TCP $_PortShellInaBox"
+echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostname -I | cut -d' ' -f1):$_PortShellInaBox/\n"
 echo -e "Aguarde, esse processo demora um pouco dependendo do seu Link de Internet...\n"
 sleep 5
 #
@@ -261,7 +261,7 @@ Logo_Empresa
 echo -e "Instalando as ferramentas básicas de rede do OpenSSH Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
-	apt -y install $SSHINSTALL &>> $LOG
+	apt -y install $_SshInstall &>> $LOG
 echo -e "Ferramentas instaladas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
@@ -283,20 +283,20 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/vimrc /etc/vim/ &>> $LOG
 	cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
 	cp -v conf/ssh/shellinabox /etc/default/ &>> $LOG
-	cp -v $NETPLAN $NETPLAN.old &>> $LOG
-	cp -v conf/ubuntu/00-installer-config.yaml $NETPLAN &>> $LOG
+	cp -v $_Netplan $_Netplan.old &>> $LOG
+	cp -v conf/ubuntu/00-installer-config.yaml $_Netplan &>> $LOG
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 Logo_Empresa
-echo -e "Editando o arquivo $NETPLAN, pressione <Enter> para continuar.\n"
+echo -e "Editando o arquivo $_Netplan, pressione <Enter> para continuar.\n"
 echo -e "CUIDADO!!!: o nome do arquivo de configuração da placa de rede pode mudar"
 echo -e "dependendo da versão do Ubuntu Server, verifique o conteúdo do diretório:"
 echo -e "/etc/netplan para saber o nome do arquivo de configuração do Netplan e altere"
-echo -e "o valor da variável NETPLAN no arquivo de configuração: 00-parametros.sh"
+echo -e "o valor da variável _Netplan no arquivo de configuração: 00-parametros.sh"
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim $NETPLAN
+	vim $_Netplan
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

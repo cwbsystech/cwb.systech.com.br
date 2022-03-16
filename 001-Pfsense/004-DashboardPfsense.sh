@@ -10,7 +10,7 @@ System
 			Top Navigation: Scroll with pages
 			Hostname in Menu: Fully Qualified Domain Name
 			Dashboard Columms: 3
-			Interfaces Sort: ON
+			_Lans Sort: ON
 			Associated Panels Show/Hide
 				Available Widgest: ON
 				Log Filter: ON
@@ -38,9 +38,9 @@ Dashboard
 				Save
 			System Information: ON - Left-02
 		#Configuração dos Widgest Centro
-			Interfaces: ON - Center-01
+			_Lans: ON - Center-01
 			Gateways: ON - Center-02
-			Interface Statistics: ON - Center-03
+			_Lan Statistics: ON - Center-03
 			Traffic Graphs: ON - Center-04
 			Service Status: ON - Center-05
 		#Configuração dos Widgest Lado Direito
@@ -53,7 +53,7 @@ Dashboard
 				Widgest: Firewall Logs 
 				Number of entries: 15
 				Filter actions: ON Pass, ON Block and ON Reject
-				Filter interface: ALL 
+				Filter _Lan: ALL 
 				Update interval: 5 Seconds
 				Save
 Save

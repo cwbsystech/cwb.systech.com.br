@@ -12,7 +12,7 @@
 # Testado e homologado para a versão do Zimbra Collaboration Community 8.8.x, Zimbra Desktop 7.3.x
 #
 # O Zimbra é uma solução de e-mail, calendário e colaboração de classe empresarial desenvolvida para 
-# rede local ou nuvem (pública ou privada). Com uma interface baseada em navegador redesenhada, o 
+# rede local ou nuvem (pública ou privada). Com uma _Lan baseada em navegador redesenhada, o 
 # Zimbra oferece a experiência de mensagens mais inovadora disponível atualmente, conectando os 
 # usuários finais às informações e atividades em suas nuvens pessoais. 
 #

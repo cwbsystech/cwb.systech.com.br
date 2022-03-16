@@ -23,7 +23,7 @@
 # configuração. Para saber mais sobre todos os recursos do Compose.
 #
 # O Portainer.io uma solução de gerenciamento para o Docker, com ele é possível gerenciar 
-# facilmente os seus hosts Docker e clusters com Docker Swarm através de uma interface web 
+# facilmente os seus hosts Docker e clusters com Docker Swarm através de uma _Lan web 
 # limpa, simples e intuitiva.
 #
 # Informações que serão solicitadas na configuração via Web do Portainer.io

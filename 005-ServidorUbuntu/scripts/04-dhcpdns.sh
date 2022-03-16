@@ -48,9 +48,9 @@
 #	ipconfig /all
 #	ipconfig /release
 #	ipconfig /renew
-#	netsh interface show interface
-#	netsh interface ip show interface
-#	netsh interface ip show config
+#	netsh _Lan show _Lan
+#	netsh _Lan ip show _Lan
+#	netsh _Lan ip show config
 #	nslookup systech.brz
 #	ipconfig /displaydns
 #	ping systech.brz

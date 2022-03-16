@@ -2,8 +2,8 @@ Opções do Console do pfSense: https://docs.netgate.com/pfsense/en/latest/confi
 
 Opções do Console do Netgate pfSense
 	0) Logout (SSH only) - sair do acesso remoto via SSH
-	1) Assign Interfaces - ativação e atribuição de Interfaces de Rede
-	2) Set Interface(s) IP address - configuração do Endereço IPv4, IPv6 e DHCP Server
+	1) Assign _Lans - ativação e atribuição de _Lans de Rede
+	2) Set _Lan(s) IP address - configuração do Endereço IPv4, IPv6 e DHCP Server
 	3) Reset WebConfigurator password - resetar para a senha padrão (pfSense) do usuário admin o acesso via WebGui
 	4) Reset to factory defaults - resetar para as configurações padrão do pfSense
 	5) Reboot system - reinicializar o pfSense
@@ -19,30 +19,30 @@ Opções do Console do Netgate pfSense
 	15) Restore recent configuration - restauração da última configuração válida do pfSense via console
 	16) Restart PHP-FPM - reinicializar o serviço do PHP-FPM (FastCGI Process Manager) do WebConfigurator
 
-Primeira etapa: Endereçamento das Interfaces do pfSense
-01. Interface WAN: Padrão de configuração via DHCP
-02. Interface LAN: Padrão de configuração de Endereço IP Estático
-03. Endereço IPv4 Padrão da Interface de LAN do pfSense: 192.168.1.1/24
+Primeira etapa: Endereçamento das _Lans do pfSense
+01. _Lan WAN: Padrão de configuração via DHCP
+02. _Lan LAN: Padrão de configuração de Endereço IP Estático
+03. Endereço IPv4 Padrão da _Lan de LAN do pfSense: 192.168.1.1/24
 
-Atribuição de Interfaces do pfSense: https://docs.netgate.com/pfsense/en/latest/config/console-menu.html#assign-interfaces
+Atribuição de _Lans do pfSense: https://docs.netgate.com/pfsense/en/latest/config/console-menu.html#assign-_Lans
 
-Segunda etapa: Atribuição das Interfaces do pfSense
-01. Atribuição das Interfaces de WAN e LAN
-	1) Assign Interfaces
+Segunda etapa: Atribuição das _Lans do pfSense
+01. Atribuição das _Lans de WAN e LAN
+	1) Assign _Lans
 		Should VLANs be set up now [y/n]? n <Enter>
-		Enter the WAN interface name or 'a' for auto-detection
+		Enter the WAN _Lan name or 'a' for auto-detection
 			(em0 em1 or a): em0 <Enter>
-		Enter the LAN interface name or 'a' for auto-detection
+		Enter the LAN _Lan name or 'a' for auto-detection
 		NOTE: this enables full Firewalling/NAT mode.
 			(em1 a or nothing if finished): em1 <Enter>
 		Do you want to proceed [y/n]? y <Enter>
 
-Configuração das Interfaces do pfSense: https://docs.netgate.com/pfsense/en/latest/config/console-menu.html#set-interface-s-ip-address
+Configuração das _Lans do pfSense: https://docs.netgate.com/pfsense/en/latest/config/console-menu.html#set-_Lan-s-ip-address
 
 Terceira etapa: Configuração do Endereço de Rede Local e DHCP Server
-01. Setando o Endereçamento IPv4 ou IPV6 das Interfaces de WAN e LAN
-	2) Set interface(s) IP address
-		Enter the number of the interface you wish to configure: 2 <Enter>
+01. Setando o Endereçamento IPv4 ou IPV6 das _Lans de WAN e LAN
+	2) Set _Lan(s) IP address
+		Enter the number of the _Lan you wish to configure: 2 <Enter>
 		Enter the new LAN IPv4 address.
 			> 173.169.73.254 <Enter>
 		Enter the new LAN IPv4 subnet.
@@ -60,7 +60,7 @@ Terceira etapa: Configuração do Endereço de Rede Local e DHCP Server
 
 Teste de conectividade do pfSense: https://docs.netgate.com/pfsense/en/latest/config/console-menu.html#ping-host
 
-Quarta Etapa: Verificação da conexão com a Internet na Interface WAN
+Quarta Etapa: Verificação da conexão com a Internet na _Lan WAN
 01. Testando a conectividade com a Internet
 	7) Ping host
 		Enter a host name or IP address: google.com <Enter>

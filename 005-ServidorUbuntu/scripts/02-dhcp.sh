@@ -35,9 +35,9 @@
 #	ipconfig /all
 #	ipconfig /release
 #	ipconfig /renew
-#	netsh interface show interface
-#	netsh interface ip show interface
-#	netsh interface ip show config
+#	netsh _Lan show _Lan
+#	netsh _Lan ip show _Lan
+#	netsh _Lan ip show config
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
@@ -172,14 +172,14 @@ echo -e "Instalando o ISC DHCP Server, aguarde..."
 echo -e "ISC DHCP Server instalado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo $NETPLAN, pressione <Enter> para continuar.\n"
+echo -e "Editando o arquivo $_Netplan, pressione <Enter> para continuar.\n"
 echo -e "CUIDADO!!!: o nome do arquivo de configuração da placa de rede pode mudar"
 echo -e "dependendo da versão do Ubuntu Server, verifique o conteúdo do diretório:"
 echo -e "/etc/netplan para saber o nome do arquivo de configuração do Netplan e altere"
-echo -e "o valor da variável NETPLAN no arquivo de configuração: 00-parametros.sh"
+echo -e "o valor da variável _Netplan no arquivo de configuração: 00-parametros.sh"
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim $NETPLAN
+	vim $_Netplan
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

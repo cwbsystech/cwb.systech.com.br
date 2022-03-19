@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 21/12/2021
+# Data de atualização: 12/01/2022
+# Versão: 0.03
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do Bacula Server 11.x e do Baculum 11.x
 #
@@ -16,8 +20,8 @@
 # facilitam a encontrar e recuperar arquivos perdidos ou corrompidos. Com ele é possível 
 # fazer backup remotamente de Linux, Solaris, FreeBSD, NetBSD, Windows, Mac OS X, etc... 
 #
-# O Baculum fornece duas aplicações web: o Baculum Web como _Lan web para gerenciar 
-# o Bacula e a API do Baculum, que é a _Lan de programação do Bacula. Ambas as 
+# O Baculum fornece duas aplicações web: o Baculum Web como interface web para gerenciar 
+# o Bacula e a API do Baculum, que é a interface de programação do Bacula. Ambas as 
 # ferramentas conectadas criam um ambiente web para facilitar o trabalho com os programas 
 # da Comunidade Bacula. 
 #
@@ -37,21 +41,21 @@
 #	Database type: MySQL
 #	Database name: bacula
 #	Login: root
-#	Password: Casado#55
+#	Password: pti@2018
 #	IP address (or hostname): localhost
 #	Port: 3306
 #	Connection test: <Test>
 #	<Next>
-# 03. Step 3 - share the Bacula Bconsole commands _Lan
-#	Do you want to setup and share the Bacula Bconsole _Lan to execute commands in this API instance?
+# 03. Step 3 - share the Bacula Bconsole commands interface
+#	Do you want to setup and share the Bacula Bconsole interface to execute commands in this API instance?
 #	Select: Yes
 #	Bconsole binary file path: /usr/sbin/bconsole
 #	Bconsole admin config file path: /opt/bacula/etc/bconsole.conf
 #	Use sudo: Yes
 #	Bconsole connection test: <Test>
 #	<Next>
-# 04. Step 4 - share the Bacula configuration _Lan
-#	Do you want to setup and share the Bacula configuration _Lan to configure Bacula components via this API instance?
+# 04. Step 4 - share the Bacula configuration interface
+#	Do you want to setup and share the Bacula configuration interface to configure Bacula components via this API instance?
 #	Select: Yes
 #	General configuration
 #		Baculum working directory for Bacula config: /etc/baculum/Config-api-apache
@@ -72,9 +76,9 @@
 #	<Next>
 # 05. Step 5 - authentication to AP
 #	Use HTTP Basic authentication: Yes
-#	Administration login: jensy
-#	Administration password: jensy
-#	Retype administration password: jensy
+#	Administration login: vaamonde
+#	Administration password: vaamonde
+#	Retype administration password: vaamonde
 #	<Next>
 # 06. @@Step 7 - Finish@@
 #	<save>
@@ -84,14 +88,14 @@
 #	Language: English 
 #	<Next>
 # 02. Step 2 - add API instances
-#	Baculum web _Lan requires to add at least one Baculum API instance with shared Catalog access. Please add API instance.
+#	Baculum web interface requires to add at least one Baculum API instance with shared Catalog access. Please add API instance.
 #		Add API host
 #			Protocol: HTTP
 #			IP Address/Hostname: localhost
 #			Port: 9096
 #			Use HTTP Basic authentication: Yes
-#			API Login: jensy
-#			API Password: jensy
+#			API Login: vaamonde
+#			API Password: vaamonde
 #			API connection test: <Test>
 #		<Next>
 # 03. Step 3 - authentication params to Baculum Web pane

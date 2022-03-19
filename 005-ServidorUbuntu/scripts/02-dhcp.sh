@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 10/10/2021
+# Data de atualização: 21/01/2022
+# Versão: 0.13
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do ISC DHCP Server v4.4.x
 #
@@ -20,24 +24,27 @@
 # Configuração do DHCP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Gráfico: NetworkManager - Ícone da Placa de Rede
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	sudo NetworkManager --print-config
-# 	sudo nmcli device status
-# 	sudo nmcli device show ens18 
-# 	sudo networkctl status ens18 
-# 	sudo ifconfig ens18
-# 	sudo ip address show ens18
-# 	sudo route -n
-# 	sudo systemd-resolve --status
-# 	sudo dhclient -r ens18
-# 	sudo dhclient ens18
-# 	sudo cat /var/lib/dhcp/dhclient.leases
+# 	sudo NetworkManager --print-config (network management daemon)
+# 	sudo nmcli device status (command-line tool for controlling NetworkManager)
+# 	sudo nmcli device show enp0s3 (command-line tool for controlling NetworkManager)
+# 	sudo networkctl status enp0s3 (Query the status of network links)
+# 	sudo ifconfig enp0s3 (configure a network interface)
+# 	sudo ip address show enp0s3 (show / manipulate routing, network devices, interfaces and tunnels)
+# 	sudo route -n (show/manipulate IP routing table)
+# 	sudo systemd-resolve --status (Resolve domain names, IPV4 and IPv6 addresses, DNS resource records, and services)
+# 	sudo dhclient -v -r enp0s3 (Dynamic Host Configuration Protocol Client)
+# 	sudo dhclient -v enp0s3 (Dynamic Host Configuration Protocol Client)
+# 	sudo cat /var/lib/dhcp/dhclient.leases (DHCP client lease database)
+#
 # Windows Powershell: 
+#	getmac
 #	ipconfig /all
 #	ipconfig /release
 #	ipconfig /renew
-#	netsh _Lan show _Lan
-#	netsh _Lan ip show _Lan
-#	netsh _Lan ip show config
+#	route print
+#	netsh interface show interface
+#	netsh interface ip show interface
+#	netsh interface ip show config
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
@@ -172,14 +179,14 @@ echo -e "Instalando o ISC DHCP Server, aguarde..."
 echo -e "ISC DHCP Server instalado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo $_Netplan, pressione <Enter> para continuar.\n"
+echo -e "Editando o arquivo $NETPLAN, pressione <Enter> para continuar.\n"
 echo -e "CUIDADO!!!: o nome do arquivo de configuração da placa de rede pode mudar"
 echo -e "dependendo da versão do Ubuntu Server, verifique o conteúdo do diretório:"
 echo -e "/etc/netplan para saber o nome do arquivo de configuração do Netplan e altere"
-echo -e "o valor da variável _Netplan no arquivo de configuração: 00-parametros.sh"
+echo -e "o valor da variável NETPLAN no arquivo de configuração: 00-parametros.sh"
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim $_Netplan
+	vim $NETPLAN
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

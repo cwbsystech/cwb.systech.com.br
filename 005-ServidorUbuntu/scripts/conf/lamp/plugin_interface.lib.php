@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Generic plugin _Lan.
+ * Generic plugin interface.
  *
  * @package PhpMyAdmin
  */

@@ -1,15 +1,19 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 02/11/2021
+# Data de atualização: 13/01/2022
+# Versão: 0.10
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do LogAnalyzer v4.1.x
 #
-# O LogAnalyzer é uma _Lan da Web para o Syslog/Rsyslog e outros dados de eventos 
+# O LogAnalyzer é uma interface da Web para o Syslog/Rsyslog e outros dados de eventos 
 # da rede. Ele fornece fácil navegação análise de eventos de rede em tempo real e 
 # serviços de relatórios. Os relatórios ajudam a manter um visão na atividade da rede. 
 # Ele consolida o Syslog/Rsyslog e outros dados de eventos, fornecendo uma página web 
@@ -47,11 +51,11 @@
 # Step 6 -	Creating the Main Useraccount
 #				Create User Account
 #					Username: admin
-#					Password: Casado#55
-#					Repeat Password: Casado#55: Next;
+#					Password: pti@2018
+#					Repeat Password: pti@2018: Next;
 # Step 7 -	Create the first source for syslog messages
 #				First Syslog Source
-#					Name of the Source: ServUbuntu
+#					Name of the Source: ptispo01ws01
 #					Source Type: MYSQL Native
 #					Select View: Syslog Fields
 #				Database Type Options
@@ -343,7 +347,7 @@ sleep 5
 #
 echo -e "Verificando o Virtual Host do LogAnalyzer no Apache2, aguarde..."
 	# opção do comando apachectl: -s (a synonym)
-	apache2ctl -S | grep log.$_DominioServer
+	apache2ctl -S | grep log.$DOMINIOSERVER
 echo -e "Virtual Host verificado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

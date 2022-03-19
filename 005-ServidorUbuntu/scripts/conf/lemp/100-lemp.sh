@@ -1,12 +1,16 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 13/02/2022
+# Data de atualização: 13/02/2022
+# Versão: 0.01
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do NGINX v, MariaDB v, PHP v7.4.x, 
 # Perl v5.30.x, Python v2.x e v3.x, PhpMyAdmin v4.9.x
 #
@@ -36,7 +40,7 @@
 # FPM (FastCGI Process Manager) é um gerenciador de processos para gerenciar o FastCGI SAPI 
 # (Server API) em PHP. O PHP-FPM é um serviço e não um módulo. Este serviço é executado 
 # completamente independente do servidor web em um processo à parte e é suportado por qualquer 
-# servidor web compatível com FastCGI (Fast Common Gateway _Lan).
+# servidor web compatível com FastCGI (Fast Common Gateway Interface).
 #
 # Perl é usada em aplicações de CGI para a web, para administração de sistemas linux e por 
 # várias aplicações que necessitam de facilidade de manipulação de strings.
@@ -72,7 +76,7 @@
 #
 # Variáveis de configuração do usuário root e senha do MariaDB para acesso via console e do PhpMyAdmin
 USERMARIADB="root"
-PASSWORDMARIADB="Casado#55"
+PASSWORDMARIADB="pti@2018"
 AGAINMARIADB=$PASSWORD
 #
 # Variáveis de configuração e liberação da conexão remota para o usuário Root do MariaDB
@@ -100,12 +104,12 @@ WEBSERVER_LEMP="localhost"
 # Utilização do MySQL Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo apt update && sudo apt install mariadb-client
-#	mariadb -u root -p -h systech.brz
+#	mariadb -u root -p -h pti.intra
 #
 # Utilização do Links2 Client no GNU/Linux
 # Linux Mint Terminal: Ctrl+Alt+T
 # 	sudo apt update && sudo apt install links2
-#	links2 http://systech.brz
+#	links2 http://pti.intra
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

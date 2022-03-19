@@ -1,12 +1,16 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 14/01/2022
+# Data de atualização: 21/01/2022
+# Versão: 0.03
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do Asterisk v19.1.x
 #
 # O Asterisk é um software livre, de código aberto, que implementa em software os recursos 
@@ -15,15 +19,15 @@
 # de programadores ao redor de todo o mundo. Seu desenvolvimento é ativo e sua área de aplicação 
 # muito promissora.
 #
-# DAHDI = DAHDI (Digium\Asterisk Hardware Device _Lan) é uma coleção de drivers de código 
-# aberto, para o Linux, que são usados para fazer _Lan com uma variedade de hardware 
+# DAHDI = DAHDI (Digium\Asterisk Hardware Device Interface) é uma coleção de drivers de código 
+# aberto, para o Linux, que são usados para fazer interface com uma variedade de hardware 
 # relacionado à telefonia.
 #
 # DAHDI Tools = contém uma variedade de utilitários de comandos do usuário que são usados para 
 # configurar e testar os drivers de hardware desenvolvidos pela Digium e Zapatel.
 #
 # LIBPRI = A biblioteca libpri permite que o Asterisk se comunique com conexões ISDN. Você só 
-# precisará disso se for usar o DAHDI com hardware de _Lan ISDN (como placas T1/E1/J1/BRI).
+# precisará disso se for usar o DAHDI com hardware de interface ISDN (como placas T1/E1/J1/BRI).
 #
 # iLBC = O iLBC (internet Low Bitrate Codec) é um codec de voz GRATUITO adequado para comunicação 
 # de voz robusta sobre IP. O codec é projetado para fala de banda estreita e resulta em uma taxa 

@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 17/10/2021
+# Data de atualização: 21/01/2022
+# Versão: 0.07
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do VSFTPD v3.0.x
 #
@@ -16,6 +20,21 @@
 #
 # Site Oficial do Projeto Vsftpd: https://security.appspot.com/vsftpd.html
 # Site Oficial do Projeto FileZilla: https://filezilla-project.org/
+#
+# Utilização do FTP Client no GNU/Linux ou Microsoft Windows
+# Linux Mint Terminal: Ctrl+Alt+T
+# 	ftp ftp.pti.intra (Internet file transfer program)
+#		verbose
+#		status
+#		get robson.txt
+#		put vaamonde.txt
+#
+# Windows Powershell:
+# 	ftp ftp.pti.intra
+#		verbose
+#		status
+#		get robson.txt
+#		put vaamonde.txt
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
@@ -286,8 +305,8 @@ echo -e "Criando a Chave Privada/Pública e o Certificado Assinado do Vsftpd Ser
 	# 	Locality Name (eg, city): Sao Paulo <-- pressione <Enter>
 	# 	Organization Name (eg, company): Bora para Pratica <-- pressione <Enter>
 	# 	Organization Unit Name (eg, section): Procedimentos em TI <-- pressione <Enter>
-	# 	Common Name (eg, server FQDN or YOUR name): systech.brz <-- pressione <Enter>
-	# 	Email Address: pti@systech.brz <-- pressione <Enter>
+	# 	Common Name (eg, server FQDN or YOUR name): pti.intra <-- pressione <Enter>
+	# 	Email Address: pti@pti.intra <-- pressione <Enter>
 	#
 	# opções do comando openssl: 
 	# x509 (command is a multi-purpose certificate utility),

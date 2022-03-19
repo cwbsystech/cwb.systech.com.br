@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 23/12/2021
+# Data de atualização: 12/01/2022
+# Versão: 0.03
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do PostgreSQL v14.x
 # Testado e homologado para a versão do PgAdmin v6.x
@@ -24,7 +28,7 @@
 # Enter it again: postgres
 #
 # Mensagem da configuração do email e senha do PgAdmin4 Web
-# Email address: postgres@systech.brz
+# Email address: postgres@pti.intra
 # Password: postgres
 # Retype password: postgres
 # We can now configure the Apache Web server for you. This involves enabling the wsgi module and 

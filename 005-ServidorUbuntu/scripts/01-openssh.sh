@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 10/10/2021
+# Data de atualização: 10/03/2022
+# Versão: 0.25
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do OpenSSH Server v8.2.x
 #
@@ -28,12 +32,12 @@
 # Acesso remoto utilizando o GNU/Linux ou Microsoft Windows
 #
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	ssh jensy@173.169.73.10
-#	ssh jensy@ssh.systech.brz
+# 	ssh vaamonde@172.16.1.20
+#	ssh vaamonde@ssh.pti.intra
 #
 # Windows Powershell: Menu, Powershell 
-#	ssh jensy@173.169.73.10
-#	ssh jensy@ssh.systech.brz
+#	ssh vaamonde@172.16.1.20
+#	ssh vaamonde@ssh.pti.intra
 #
 # Linux Mint ou Windows:
 #	apt install putty putty-tools
@@ -49,47 +53,40 @@
 #	sudo netstat -tnpa | grep 'ESTABLISHED.*sshd' (show networking connection)
 #	sudo ps -axfj | grep sshd (report a snapshot of the current processes)
 #
-# Gerando os par de chaves Pública/Privadas utilizando o GNU/Linux
+# Gerando os pares de chaves Pública/Privadas utilizando o GNU/Linux
 # Linux Mint Terminal: Ctrl+Alt+T
 #	ssh-keygen
-#		Enter file in which to save the key (/home/jensy/.ssh/id_rsa): /home/jensy/.ssh/jensy <Enter>
+#		Enter file in which to save the key (/home/vaamonde/.ssh/id_rsa): /home/vaamonde/.ssh/vaamonde <Enter>
 #		Enter passphrase (empty for no passphrase): <Enter>
 #		Enter same passphrase again: <Enter>
-#	ssh-copy-id jensy@ssh.systech.brz
+#	ssh-copy-id vaamonde@172.16.1.20
+#
+# Importando os pares de chaves Públicas/Privadas utilizando o Powershell
+# Windows Powershell: Menu, Powershell 
+#	Primeira etapa: clicar com o botão direito do mouse e selecionar: Abrir como Administrador
+#		Get-Service ssh-agent <Enter>
+#		Set-Service ssh-agent -StartupType Manual <Enter> (Ou mudar para: Automatic)
+#		Start-Service ssh-agent <Enter>
+#
+#	Segunda etapa: Powershell do perfil do usuário sem ser como administrador
+#		ssh-add .\vaamonde <Enter>
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
-
-
+#
 # Configuração da variável de Log utilizado nesse script
 LOG=$LOGSCRIPT
-
-
-# Verificando ou Instalando o Pacote FIGLET
-
-pacote=$(dpkg --get-selections | grep "figlet" )
-	if [ -n "$pacote" ] ;then
-		echo
-	else
-		apt-get install figlet
-	fi
-
-#
-
-
 #
 # Verificando se o usuário é Root e se a Distribuição é >= 20.04.x 
 # [ ] = teste de expressão, && = operador lógico AND, == comparação de string, exit 1 = A maioria 
 # dos erros comuns na execução
-Logo_Empresa
+clear
 if [ "$USUARIO" == "0" ] && [ "$UBUNTU" == "20.04" ]
 	then
-		Logo_Empresa
 		echo -e "O usuário é Root, continuando com o script..."
 		echo -e "Distribuição é >= 20.04.x, continuando com o script..."
 		sleep 5
 	else
-		Logo_Empresa
 		echo -e "Usuário não é Root ($USUARIO) ou a Distribuição não é >= 20.04.x ($UBUNTU)"
 		echo -e "Caso você não tenha executado o script com o comando: sudo -i"
 		echo -e "Execute novamente o script para verificar o ambiente."
@@ -102,11 +99,9 @@ fi
 # opção do comando nc: -z (scan for listening daemons), -w (timeouts), 1 (one timeout), 443 (port)
 if [ "$(nc -zw1 google.com 443 &> /dev/null ; echo $?)" == "0" ]
 	then
-		Logo_Empresa
 		echo -e "Você tem acesso a Internet, continuando com o script..."
 		sleep 5
 	else
-		Logo_Empresa
 		echo -e "Você NÃO tem acesso a Internet, verifique suas configurações de rede IPV4"
 		echo -e "e execute novamente este script."
 		sleep 5
@@ -117,14 +112,12 @@ fi
 # [ ] = teste de expressão, == comparação de string, exit 1 = A maioria dos erros comuns na execução,
 # $? código de retorno do último comando executado, ; execução de comando, 
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
-if [ "$(nc -vz 127.0.0.1 $_PortSsh &> /dev/null ; echo $?)" == "0" ]
+if [ "$(nc -vz 127.0.0.1 $PORTSSH &> /dev/null ; echo $?)" == "0" ]
 	then
-		Logo_Empresa
-		echo -e "A porta: $_PortSsh está sendo utilizada pelo serviço do OpenSSH Server, continuando com o script..."
+		echo -e "A porta: $PORTSSH está sendo utilizada pelo serviço do OpenSSH Server, continuando com o script..."
 		sleep 5
 	else
-		Logo_Empresa
-		echo -e "A porta: $_PortSsh não está sendo utilizada nesse servidor."
+		echo -e "A porta: $PORTSSH não está sendo utilizada nesse servidor."
 		echo -e "Verifique as dependências desse serviço e execute novamente esse script.\n"
 		sleep 5
 		exit 1
@@ -134,16 +127,14 @@ fi
 # [ ] = teste de expressão, == comparação de string, exit 1 = A maioria dos erros comuns na execução,
 # $? código de retorno do último comando executado, ; execução de comando, 
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
-if [ "$(nc -vz 127.0.0.1 $_PortShellInaBox &> /dev/null ; echo $?)" == "0" ]
+if [ "$(nc -vz 127.0.0.1 $PORTSHELLINABOX &> /dev/null ; echo $?)" == "0" ]
 	then
-		Logo_Empresa
-		echo -e "A porta: $_PortShellInaBox já está sendo utilizada nesse servidor."
+		echo -e "A porta: $PORTSHELLINABOX já está sendo utilizada nesse servidor."
 		echo -e "Verifique o serviço associado a essa porta e execute novamente esse script.\n"
 		sleep 5
 		exit 1
 	else
-		Logo_Empresa
-		echo -e "A porta: $_PortShellInaBox está disponível, continuando com o script..."
+		echo -e "A porta: $PORTSHELLINABOX está disponível, continuando com o script..."
 		sleep 5
 fi
 #
@@ -152,19 +143,16 @@ fi
 # -n (permite nova linha), || (operador lógico OU), 2> (redirecionar de saída de erro STDERR), 
 # && = operador lógico AND, { } = agrupa comandos em blocos, [ ] = testa uma expressão, retornando 
 # 0 ou 1, -ne = é diferente (NotEqual)
-Logo_Empresa
 echo -n "Verificando as dependências do OpenSSH Server, aguarde... "
-	for name in $_SshDep
+	for name in $SSHDEP
 	do
   		[[ $(dpkg -s $name 2> /dev/null) ]] || { 
-              Logo_Empresa
-			  echo -en "\n\nO software: $name precisa ser instalado. \nUse o comando 'apt install $name'\n";
+              echo -en "\n\nO software: $name precisa ser instalado. \nUse o comando 'apt install $name'\n";
               deps=1; 
               }
 	done
 		[[ $deps -ne 1 ]] && echo "Dependências.: OK" || { 
-            Logo_Empresa
-			echo -en "\nInstale as dependências acima e execute novamente este script\n";
+            echo -en "\nInstale as dependências acima e execute novamente este script\n";
             exit 1; 
             }
 		sleep 5
@@ -173,7 +161,6 @@ echo -n "Verificando as dependências do OpenSSH Server, aguarde... "
 # OBSERVAÇÃO IMPORTANTE: OS SCRIPTS FORAM PROJETADOS PARA SEREM EXECUTADOS APENAS 1 (UMA) VEZ
 if [ -f $LOG ]
 	then
-		Logo_Empresa
 		echo -e "Script $0 já foi executado 1 (uma) vez nesse servidor..."
 		echo -e "É recomendado analisar o arquivo de $LOG para informações de falhas ou erros"
 		echo -e "na instalação e configuração do serviço de rede utilizando esse script..."
@@ -181,7 +168,6 @@ if [ -f $LOG ]
 		sleep 5
 		exit 1
 	else
-		Logo_Empresa
 		echo -e "Primeira vez que você está executando esse script, tudo OK, agora só aguardar..."
 		sleep 5
 fi
@@ -192,26 +178,23 @@ fi
 # opção do comando hostname: -I (all-ip-addresses)
 # opção do comando cut: -d (delimiter), -f (fields)
 echo -e "Início do script $0 em: $(date +%d/%m/%Y-"("%H:%M")")\n" &>> $LOG
-Logo_Empresa
+clear
 echo
 #
 echo -e "Configuração do OpenSSH Server no GNU/Linux Ubuntu Server 20.04.x\n"
-echo -e "Porta padrão utilizada pelo OpenSSH Server.: TCP $_PortSsh"
-echo -e "Porta padrão utilizada pelo Shell-In-a-Box.: TCP $_PortShellInaBox"
-echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostname -I | cut -d' ' -f1):$_PortShellInaBox/\n"
+echo -e "Porta padrão utilizada pelo OpenSSH Server.: TCP $PORTSSH"
+echo -e "Porta padrão utilizada pelo Shell-In-a-Box.: TCP $PORTSHELLINABOX"
+echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostname -I | cut -d' ' -f1):$PORTSHELLINABOX/\n"
 echo -e "Aguarde, esse processo demora um pouco dependendo do seu Link de Internet...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Adicionando o Repositório Universal do Apt, aguarde..."
 	# Universe - Software de código aberto mantido pela comunidade:
 	# opção do comando: &>> (redirecionar a saída padrão)
 	add-apt-repository universe &>> $LOG
-Logo_Empresa
 echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Adicionando o Repositório Multiversão do Apt, aguarde..."
 	# Multiverse – Software não suportado, de código fechado e com patente: 
 	# opção do comando: &>> (redirecionar a saída padrão)
@@ -219,7 +202,6 @@ echo -e "Adicionando o Repositório Multiversão do Apt, aguarde..."
 echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Adicionando o Repositório Restrito do Apt, aguarde..."
 	# Restricted - Software de código fechado oficialmente suportado:
 	# opção do comando: &>> (redirecionar a saída padrão)
@@ -227,14 +209,12 @@ echo -e "Adicionando o Repositório Restrito do Apt, aguarde..."
 echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Atualizando as listas do Apt, aguarde..."
 	#opção do comando: &>> (redirecionar a saída padrão)
 	apt update &>> $LOG
 echo -e "Listas atualizadas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Atualizando todo o sistema operacional, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
@@ -244,7 +224,6 @@ echo -e "Atualizando todo o sistema operacional, aguarde..."
 echo -e "Sistema atualizado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Removendo todos os software desnecessários, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
@@ -253,19 +232,16 @@ echo -e "Removendo todos os software desnecessários, aguarde..."
 echo -e "Software removidos com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Iniciando a Configuração do OpenSSH Server, aguarde...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Instalando as ferramentas básicas de rede do OpenSSH Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
-	apt -y install $_SshInstall &>> $LOG
+	apt -y install $SSHINSTALL &>> $LOG
 echo -e "Ferramentas instaladas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando mv: -v (verbose)
@@ -283,24 +259,22 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/vimrc /etc/vim/ &>> $LOG
 	cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
 	cp -v conf/ssh/shellinabox /etc/default/ &>> $LOG
-	cp -v $_Netplan $_Netplan.old &>> $LOG
-	cp -v conf/ubuntu/00-installer-config.yaml $_Netplan &>> $LOG
+	cp -v $NETPLAN $NETPLAN.old &>> $LOG
+	cp -v conf/ubuntu/00-installer-config.yaml $NETPLAN &>> $LOG
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
-echo -e "Editando o arquivo $_Netplan, pressione <Enter> para continuar.\n"
+echo -e "Editando o arquivo $NETPLAN, pressione <Enter> para continuar.\n"
 echo -e "CUIDADO!!!: o nome do arquivo de configuração da placa de rede pode mudar"
 echo -e "dependendo da versão do Ubuntu Server, verifique o conteúdo do diretório:"
 echo -e "/etc/netplan para saber o nome do arquivo de configuração do Netplan e altere"
-echo -e "o valor da variável _Netplan no arquivo de configuração: 00-parametros.sh"
+echo -e "o valor da variável NETPLAN no arquivo de configuração: 00-parametros.sh"
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim $_Netplan
+	vim $NETPLAN
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração hostname, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -308,7 +282,6 @@ echo -e "Editando o arquivo de configuração hostname, pressione <Enter> para c
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração hosts, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -316,7 +289,6 @@ echo -e "Editando o arquivo de configuração hosts, pressione <Enter> para cont
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração nsswitch.conf, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -324,7 +296,6 @@ echo -e "Editando o arquivo de configuração nsswitch.conf, pressione <Enter> p
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração sshd_config, pressione <Enter> para continuar."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando read: -s (Do not echo keystrokes)
@@ -335,7 +306,6 @@ echo -e "Editando o arquivo de configuração sshd_config, pressione <Enter> par
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração hosts.allow, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -343,7 +313,6 @@ echo -e "Editando o arquivo de configuração hosts.allow, pressione <Enter> par
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração hosts.deny, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -351,7 +320,6 @@ echo -e "Editando o arquivo de configuração hosts.deny, pressione <Enter> para
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração issue.net, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -359,7 +327,6 @@ echo -e "Editando o arquivo de configuração issue.net, pressione <Enter> para 
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração shellinabox, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -367,7 +334,6 @@ echo -e "Editando o arquivo de configuração shellinabox, pressione <Enter> par
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração config.conf, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -375,7 +341,6 @@ echo -e "Editando o arquivo de configuração config.conf, pressione <Enter> par
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração neofetch-cron, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -383,7 +348,6 @@ echo -e "Editando o arquivo de configuração neofetch-cron, pressione <Enter> p
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Editando o arquivo de configuração 50-default.conf, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
@@ -391,7 +355,6 @@ echo -e "Editando o arquivo de configuração 50-default.conf, pressione <Enter>
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Criando o arquivo personalizado de Banner em: /etc/motd, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando chmod: -v (verbose), -x (remove executable)
@@ -400,14 +363,12 @@ echo -e "Criando o arquivo personalizado de Banner em: /etc/motd, aguarde..."
 echo -e "Arquivo criado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Aplicando as mudanças da Placa de Rede do Netplan, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	netplan --debug apply &>> $LOG
 echo -e "Mudanças aplicadas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Reinicializando os serviços do OpenSSH Server e do Shell-In-a-Box, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	systemctl restart sshd &>> $LOG
@@ -415,14 +376,12 @@ echo -e "Reinicializando os serviços do OpenSSH Server e do Shell-In-a-Box, agu
 echo -e "Serviços reinicializados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Verificando os serviços do OpenSSH Server e do Shell-In-a-Box, aguarde..."
 	echo -e "OpenSSH....: $(systemctl status sshd | grep Active)"
 	echo -e "Shellinabox: $(systemctl status shellinabox | grep Active)"
 echo -e "Serviços verificados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Verificando as portas de conexões do OpenSSH Server e do Shell-In-a-Box, aguarde..."
 	# opção do comando lsof: -n (inhibits the conversion of network numbers to host names for 
 	# network files), -P (inhibits the conversion of port numbers to port names for network files), 
@@ -432,7 +391,6 @@ echo -e "Verificando as portas de conexões do OpenSSH Server e do Shell-In-a-Bo
 echo -e "Portas verificadas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-Logo_Empresa
 echo -e "Configuração do OpenSSH Server feita com Sucesso!!!."
 	# script para calcular o tempo gasto (SCRIPT MELHORADO, CORRIGIDO FALHA DE HORA:MINUTO:SEGUNDOS)
 	# opção do comando date: +%T (Time)

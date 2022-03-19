@@ -1,12 +1,16 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 11/12/2021
+# Data de atualização: 12/01/2022
+# Versão: 0.04
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do Zabbix Server e Agent v5.4.x 
 #
 # O Zabbix é uma ferramenta de software de monitoramento de código aberto para diversos 
@@ -33,7 +37,7 @@
 # Zabbix server details
 #		Host: localhost
 #		Port: 10051
-#		Name: ServUbuntu
+#		Name: ptispo01ws01
 #	Next step;
 # GUI settings
 #		Default time zone: System

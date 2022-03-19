@@ -1,12 +1,16 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 16/12/2021
+# Data de atualização: 21/01/2022
+# Versão: 0.03
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do OpenFire v4.6.x
 #
 # Extensible Messaging and Presence Protocol (XMPP) (conhecido anteriormente como Jabber) 
@@ -25,8 +29,8 @@
 #		Português Brasileiro (pt_BR)
 #	Continuar;
 # Configurações do Servidor:
-#		Domínio: systech.brz
-#		Server Host Name (FQDN): ServUbuntu.systech.brz
+#		Domínio: pti.intra
+#		Server Host Name (FQDN): ptispo01ws01.pti.intra
 #		Porta do Console Admin: 9090
 #		Porta Segura do Console Admin: 9091: 
 #		Blowfish
@@ -48,9 +52,9 @@
 #		Padrão
 #	Continuar;
 # Conta do Administrador:
-#		Endereço de e-mail do Admin: jensy@systech.brz
-#		Nova senha: Casado#55
-#		Confirme a senha: Casado#55
+#		Endereço de e-mail do Admin: vaamonde@pti.intra
+#		Nova senha: pti@2018
+#		Confirme a senha: pti@2018
 #	Continuar;
 # Loge-se no console de administração.
 #

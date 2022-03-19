@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 10/10/2021
+# Data de atualização: 21/01/2022
+# Versão: 0.15
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do NTP Server v4.2.
 #
@@ -29,18 +33,19 @@
 #
 # Configuração do NTP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	sudo ntpdate -s 173.169.73.5
-#	sudo ntpq -pn
-#	sudo ntpq -c sysinfo
-#	sudo timedatectl
-#	sudo timedatectl show
-#	sudo date
-#	sudo hwclock
+# 	sudo ntpdate -s 172.16.1.20 (set the date and time via NTP )
+#	sudo ntpq -pn (standard NTP query program)
+#	sudo ntpq -c sysinfo (standard NTP query program)
+#	sudo timedatectl (Control the system time and date)
+#	sudo timedatectl show (Control the system time and date)
+#	sudo date (print or set the system date and time)
+#	sudo hwclock (time clocks utility)
+#
 # Windows Powershell: 
-#	net time \\173.169.73.5 /set /yes
+#	net time \\172.16.1.20 /set /yes
 #	w32tm /query /status
 #	w32tm /query /configuration
-#	w32tm /config /syncfromflags:manual /manualpeerlist:”173.169.73.5” /reliable:yes /update
+#	w32tm /config /syncfromflags:manual /manualpeerlist:”172.16.1.20” /reliable:yes /update
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

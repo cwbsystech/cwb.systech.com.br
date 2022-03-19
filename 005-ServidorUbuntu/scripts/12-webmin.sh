@@ -1,36 +1,40 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 02/11/2021
+# Data de atualização: 12/01/2022
+# Versão: 0.06
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do Webmin v1.9x e do Usermin v1.8x 
 #
 # Webmin é um programa de gerenciamento de servidor, que roda em plataformas Unix/Linux. 
 # Com ele você pode usar também o Usermin e o Virtualmin. O Webmin funciona como um 
 # centralizador de configurações do sistema, monitoração dos serviços e de servidores, 
-# fornecendo uma _Lan amigável, e que quando configurado com um servidor web, pode 
+# fornecendo uma interface amigável, e que quando configurado com um servidor web, pode 
 # ser acessado de qualquer local, através de um navegador: 
-# Exemplo: https:\\(ip do servidor):(porta de utilização) - https:\\173.169.73.5:10000
+# Exemplo: https:\\(ip do servidor):(porta de utilização) - https:\\172.16.1.20:10000
 #
-# Usermin é uma _Lan baseada na web para webmail, alteração de senha, filtros de 
+# Usermin é uma interface baseada na web para webmail, alteração de senha, filtros de 
 # e-mail, fetchmail e muito mais. Ele é projetado para uso por usuários não-root regulares 
 # em um sistema Unix e os limita a tarefas que seriam capazes de realizar se logados via 
 # SSH ou no console.
 #
 # Virtualmin é um módulo Webmin para gerenciar vários hosts virtuais por meio de uma única 
-# _Lan, como Plesk ou Cpanel. Ele suporta a criação e gerenciamento de hosts virtuais 
+# interface, como Plesk ou Cpanel. Ele suporta a criação e gerenciamento de hosts virtuais 
 # Apache, domínios BIND DNS, bancos de dados MySQL e caixas de correio e aliases com 
 # Sendmail ou Postfix. Ele faz uso dos módulos Webmin existentes para esses servidores e, 
 # portanto, deve funcionar com qualquer configuração de sistema existente, ao invés de 
 # precisar de seu próprio servidor de e-mail, servidor web e assim por diante.
 #
 # Informações que serão solicitadas na configuração via Web do Webmin e Usermin
-# Username: jensy
-# Password: Casado#55: Sign In
+# Username: vaamonde
+# Password: pti@2018: Sign In
 #
 # Site oficial do Webmin: http://www.webmin.com/
 # Site oficial do Usermin: https://www.webmin.com/usermin.html

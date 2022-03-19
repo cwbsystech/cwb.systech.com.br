@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 10/10/2021
+# Data de atualização: 08/03/2022
+# Versão: 0.50
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 #
 # Parâmetros (variáveis de ambiente) utilizados nos scripts de instalação dos Serviços de Rede
@@ -21,17 +25,6 @@
 # Variável da Hora Inicial do Script, utilizada para calcular o tempo de execução do script
 # opção do comando date: +%T (Time)
 HORAINICIAL=$(date +%T)
-
-EMPRESA="SYS - TECH"
-Logo_Empresa(){
-clear
-echo -e " \e[1;31m ======================================================================== \e[m ";
-figlet -c "$EMPRESA"
-echo -e " \e[1;31m ======================================================================== \e[m ";
-echo ""
-echo ""
-return
-}
 #
 # Variáveis para validar o ambiente, verificando se o usuário é "Root" e versão do "Ubuntu"
 # opções do comando id: -u (user)
@@ -56,22 +49,33 @@ export DEBIAN_FRONTEND="noninteractive"
 #
 # Declarando as variáveis utilizadas nas configurações de Rede do Servidor Ubuntu 
 #
-
-_UsuarioDefault="jensy"
-_SenhaAdministrator="Casado#55"
-_Nome_Servidor="ServUbuntu"
-_DominioServer="systech.brz"
-FQDNSERVER="$_Nome_Servidor.$_DominioServer"
-
-_Network="173.169.73.0"
-_Broadcast="173.169.73.255"
-_Gateway="173.169.73.254"
-_Mascara="24"
-_Ip_V4_DC_Primario="173.169.73.1"
-_Ip_V4_DC_Backup="173.169.73.2"
-_Ip_V4_Servidor="173.169.73.5"
-_Lan="enp0s3"
-_Netplan="/etc/netplan/00-installer-config.yaml"
+# Variável do Usuário padrão utilizado no Servidor Ubuntu desse curso
+USUARIODEFAULT="vaamonde"
+#
+# Variável da Senha padrão utilizado no Servidor Ubuntu desse curso
+SENHADEFAULT="pti@2018"
+#
+# Variável do Nome (Hostname) do Servidor Ubuntu desse curso
+NOMESERVER="ptispo01ws01"
+#
+# Variável do Nome de Domínio do Servidor Ubuntu desse curso
+# OBSERVAÇÃO IMPORTANTE: essa variável será utilizada em outras variáveis desse curso
+DOMINIOSERVER="pti.intra"
+#
+# Variável do Nome (Hostname) FQDN (Fully Qualified Domain Name) do Servidor Ubuntu desse curso
+FQDNSERVER="$NOMESERVER.$DOMINIOSERVER"
+#
+# Variável do Endereço IPv4 principal (padrão) do Servidor Ubuntu desse curso
+IPV4SERVER="172.16.1.20"
+#
+# Variável do Nome da Interface Lógica do Servidor Ubuntu Server desse curso
+INTERFACE="enp0s3"
+#
+# Variável do arquivo de configuração da Placa de Rede do Netplan do Servidor Ubuntu
+# CUIDADO!!! o nome do arquivo de configuração da placa de rede pode mudar dependendo da 
+# versão do Ubuntu Server, verificar o conteúdo do diretório: /etc/netplan para saber o nome 
+# do arquivo de configuração do Netplan e mudar a variável NETPLAN com o nome correspondente.
+NETPLAN="/etc/netplan/00-installer-config.yaml"
 #
 #=============================================================================================
 #                        VARIÁVEIS UTILIZADAS NO SCRIPT: 01-openssh.sh                       #
@@ -102,16 +106,16 @@ _Netplan="/etc/netplan/00-installer-config.yaml"
 # 07. tail -f /var/log/cron.log = filtrando as mensagens do serviço do CRON
 #
 # Variável das dependências do laço de loop do OpenSSH Server
-_SshDep="openssh-server openssh-client"
+SSHDEP="openssh-server openssh-client"
 #
 # Variável de instalação dos softwares extras do OpenSSH Server
-_SshInstall="net-tools ipcalc nmap tree pwgen neofetch shellinabox"
+SSHINSTALL="net-tools traceroute ipcalc nmap tree pwgen neofetch shellinabox"
 #
 # Variável da porta de conexão padrão do OpenSSH Server
-_PortSsh="22"
+PORTSSH="22"
 #
 # Variável da porta de conexão padrão do Shell-In-a-Box
-_PortShellInaBox="4200"
+PORTSHELLINABOX="4200"
 #
 #=============================================================================================
 #                          VARIÁVEIS UTILIZADAS NO SCRIPT: 02-dhcp.sh                        #
@@ -120,6 +124,7 @@ _PortShellInaBox="4200"
 # Arquivos de configuração (conf) do Serviço de Rede ISC DHCP Sever utilizados nesse script
 # 01. /etc/dhcp/dhcpd.conf = arquivo de configuração do Servidor ISC DHCP Server
 # 02. /etc/netplan/00-installer-config.yaml = arquivo de configuração da placa de rede
+# 03. /etc/default/isc-dhcp-server = arquivo de configuração do serviço do ISC DHCP Server
 #
 # Arquivos de monitoramento (log) do Serviço de Rede ISC DHCP Server utilizados nesse script
 # 01. systemctl status isc-dhcp-server = status do serviço do ISC DHCP
@@ -128,7 +133,7 @@ _PortShellInaBox="4200"
 # 04. tail -f /var/log/dmesg | grep dhcpd = filtrando as mensagens de erros do ISC DHCP
 # 05. less /var/lib/dhcp/dhcpd.leases = filtrando os alugueis de endereços IPv4 do ISC DHCP
 # 06. dhcp-lease-list = comando utilizado para mostrar os leases dos endereços IPv4 do ISC DHCP
-# 07. tcpdump -n -i ens18 port bootps or port bootpc = dump dos pacotes do ISC DHCP
+# 07. tcpdump -vv -n -i enp0s3 port bootps or port bootpc = dump dos pacotes do ISC DHCP
 #
 # Variável de instalação do serviço de rede ISC DHCP Server
 DHCPINSTALL="isc-dhcp-server net-tools"
@@ -148,11 +153,14 @@ PORTDHCP="67"
 # 05. /etc/bind/named.conf = arquivo de configuração da localização dos Confs do Bind9
 # 06. /etc/bind/named.conf.local = arquivo de configuração das Zonas do Bind9
 # 07. /etc/bind/named.conf.options = arquivo de configuração do Serviço do Bind9
-# 08. /etc/bind/rndc.key = arquivo de configuração das Chaves RNDC de integração Bind9 e DHCP
-# 09. /var/lib/bind/systech.brz.hosts = arquivo de configuração da Zona de Pesquisa Direta
-# 10. /var/lib/bind/173.169.73.rev = arquivo de configuração da Zona de Pesquisa Reversas
-# 11. /etc/cron.d/dnsupdate-cron = arquivo de configuração das atualizações de Ponteiros
+# 08. /etc/bind/named.conf.default-zones = arquivo de configuração das Zonas Padrão do Bind9
+# 09. /etc/bind/rndc.key = arquivo de configuração das Chaves RNDC de integração Bind9 e DHCP
+# 10. /var/lib/bind/pti.intra.hosts = arquivo de configuração da Zona de Pesquisa Direta
+# 11. /var/lib/bind/172.16.1.rev = arquivo de configuração da Zona de Pesquisa Reversas
 # 12. /etc/default/named = arquivo de configuração do Daemon do Serviço do Bind9
+# 13. /etc/cron.d/dnsupdate-cron = arquivo de configuração das atualizações de Ponteiros
+# 14. /etc/cron.d/rndcupdate-cron = arquivo de configuração das atualizações das Estatísticas
+# 15. /etc/logrotate.d/rndcstats = arquivo de configuração do Logrotate das Estatísticas
 #
 # Arquivos de monitoramento (log) do Serviço de Rede Bind DNS Server utilizados nesse script
 # 01. systemctl status bind9 = status do serviço do Bind DNS
@@ -164,13 +172,13 @@ PORTDHCP="67"
 # Declarando as variáveis de Pesquisa Direta do Domínio, Reversas e Subrede do Bind DNS Server
 #
 # Variável do nome do Domínio do Servidor DNS (veja a linha: 64 desse arquivo)
-DOMAIN=$_DominioServer
+DOMAIN=$DOMINIOSERVER
 #
 # Variável do nome da Pesquisa Reversas do Servidor de DNS
-DOMAINREV="73.169.173.in-addr.arpa"
+DOMAINREV="1.16.172.in-addr.arpa"
 #
 # Variável do endereço IPv4 da Subrede do Servidor de DNS
-NETWORK="173.169.73."
+NETWORK="172.16.1."
 #
 # Variável de instalação do serviço de rede Bind DNS Server
 DNSINSTALL="bind9 bind9utils bind9-doc dnsutils net-tools"
@@ -188,15 +196,20 @@ PORTDNS="53"
 # 03. /etc/bind/named.conf.local = arquivo de configuração das Zonas do Bind9
 # 04. /etc/bind/rndc.key = arquivo de configuração das Chaves RNDC de integração Bind9 e DHCP
 #
+# Arquivos de monitoramento (log) dos Serviços de Rede Bind9 e do DHCP utilizados nesse script
+# 01. dhcp-lease-list = comando utilizado para mostrar os leases dos endereços IPv4 do ISC DHCP
+# 02. less /var/lib/bind/pti.intra.hosts = arquivo de configuração da Zona de Pesquisa Direta
+# 03. less /var/lib/bind/172.16.1.rev = arquivo de configuração da Zona de Pesquisa Reversas
+#
 # Declarando a variável de geração da chave de atualização dos registros do Bind DNS Server 
 # integrado no ISC DHCP Server
 # 
 # Variável da senha em modo texto que está configurada nos arquivos: dhcpd.conf, named.conf.local
 # e rndc.key que será substituída para nova chave criptografada da variável USERUPDATE
-SECRETUPDATE="jensy"
+SECRETUPDATE="vaamonde"
 #
 # Variável da senha utilizada na criação da chave de atualização dos ponteiros do DNS e DHCP
-USERUPDATE="jensy"
+USERUPDATE="vaamonde"
 #
 # Variável das dependências do laço de loop da integração do Bind DNS e do ISC DHCP Server
 DHCPDNSDEP="isc-dhcp-server bind9"
@@ -282,7 +295,7 @@ PORTTFTP="69"
 # 07. /etc/hosts.allow = arquivo de configuração de liberação de hosts por serviço
 # 08. /var/www/html/phpinfo.php = arquivo de geração da documentação do PHP
 # 09. /var/www/html/teste.html = arquivo de teste de páginas HTML
-# 10. /etc/awstats/awstats.systech.brz.conf = arquivo de configuração do serviço AWStats
+# 10. /etc/awstats/awstats.pti.intra.conf = arquivo de configuração do serviço AWStats
 # 11. /etc/cron.d/awstatsupdate-cron = arquivo de atualização das estatísticas do AWStats
 #
 # Arquivos de monitoramento (log) do Serviço de Rede LAMP Server utilizados nesse script
@@ -302,7 +315,7 @@ PORTTFTP="69"
 USERMYSQL="root"
 #
 # Variáveis da senha e confirmação da senha do usuário Root do Mysql 
-SENHAMYSQL=$_SenhaAdministrator
+SENHAMYSQL=$SENHADEFAULT
 AGAINMYSQL=$SENHAMYSQL
 #
 # Variáveis de configuração e liberação da conexão remota para o usuário Root do MySQL
@@ -361,7 +374,7 @@ PORTMYSQL="3306"
 # Variáveis utilizadas na geração das chaves privadas/públicas dos certificados do OpenSSL
 #
 # Variável da senha utilizada na geração das chaves privadas/públicas da CA e dos certificados
-PASSPHRASE="jensy"
+PASSPHRASE="vaamonde"
 #
 # Variável do tipo de criptografia da chave privada com as opções de: -aes128, -aes192, -aes256, 
 # -camellia128, -camellia192, -camellia256, -des, -des3 ou -idea, padrão utilizado: -aes256
@@ -406,10 +419,10 @@ GROUPFTP="ftpusers"
 USERFTP="ftpuser"
 #
 # Variável da senha do Usuário de VSFTPd Server
-PASSWORDFTP=$_SenhaAdministrator
+PASSWORDFTP=$SENHADEFAULT
 #
 # Variável da senha utilizada na geração das chaves privadas/públicas de criptografia do OpenSSL 
-PWDSSLFTP="jensy"
+PWDSSLFTP="vaamonde"
 #
 # Variável das dependências do laço de loop do VSFTPd Server
 FTPDEP="bind9 bind9utils apache2 openssl"
@@ -454,7 +467,7 @@ PORTTOMCAT="8080"
 #
 # Variável de download da aplicação Agenda de Contatos em Java feita pelo Prof. José de Assis
 # Github do projeto: https://github.com/professorjosedeassis/javaEE (Link atualizado em: 11/01/2022)
-AGENDAJAVAEE="https://github.com/professorjosedeassis/javaEE/raw/main/agendavaamonde.war"
+AGENDAJAVAEE="https://github.com/professorjosedeassis/javaEE/raw/main/agendaVaamonde.war"
 #
 # Variáveis de criação da Base de Dados da Agenda de Contatos no MySQL
 # opções do comando CREATE: create (criação), database (base de dados), base (banco de dados)
@@ -537,7 +550,7 @@ FLUSH_WORDPRESS="FLUSH PRIVILEGES;"
 #
 # Variáveis de usuário e senha do FTP para acessar o diretório raiz da instalação do Wordpress
 USERFTPWORDPRESS="wordpress"
-PASSWORDFTPWORDPRESS=$_SenhaAdministrator
+PASSWORDFTPWORDPRESS=$SENHADEFAULT
 #
 # Variável da instalação das dependências do Wordpress
 # opção do caractere: \ (contra barra): utilizado para quebra de linha em comandos grandes
@@ -1214,7 +1227,7 @@ libdigest-hmac-perl libossp-uuid-perl libperl-dev libsnmp-perl libsnmp-dev libso
 #
 # Variável de alteração de senha do OCS Inventory Reports no Banco de Dados do MySQL
 # 'ocs'@'localhost' usuário de administração do banco de dados do OCS Inventory
-# PASSWORD('Casado#55') nova senha do usuário ocs
+# PASSWORD('pti@2018') nova senha do usuário ocs
 # CUIDADO!!!!: essa senha será utilizada nos arquivos de configuração do OCS Inventory: dbconfig.inc.php, 
 # z-ocsinventory-server.conf e zz-ocsinventory-restapi.conf
 # opção do comando create: create (criação), database (base de dados), base (banco de dados), 
@@ -1369,7 +1382,7 @@ POSTGRESQLINSTALL="postgresql postgresql-contrib postgresql-client"
 KEYPGADMIN4="https://www.pgadmin.org/static/packages_pgadmin_org.pub"
 #
 # Variável do email do usuário de autenticação padrão do PgAdmin4
-EMAILPGADMIN="$USERPOSTGRESQL@$_DominioServer"
+EMAILPGADMIN="$USERPOSTGRESQL@$DOMINIOSERVER"
 #
 # Variável da senha do email do usuário de autenticação padrão do PgAdmin4
 EMAILPASSPGADMIN=$PASSWORDPOSTGRESQL
@@ -1421,10 +1434,10 @@ WEBDAVDEP="apache2 apache2-utils openssl"
 REALWEBDAV="webdav"
 #
 # Variável da criação do usuário de acesso ao Webdav
-USERWEBDAV=$_UsuarioDefault
+USERWEBDAV=$USUARIODEFAULT
 #
 # Variável da criação da senha do usuário de acesso ao Webdav
-PASSWORDWEBDAV=$_SenhaAdministrator
+PASSWORDWEBDAV=$SENHADEFAULT
 #
 #=============================================================================================
 #                       VARIÁVEIS UTILIZADAS NO SCRIPT: 32-nextcloud.sh                      #

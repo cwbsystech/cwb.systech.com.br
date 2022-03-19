@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 10/10/2021
+# Data de atualização: 12/01/2022
+# Versão: 0.09
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do TFTP-HPA v5.2.x
 #
@@ -18,17 +22,19 @@
 #
 # Utilização do TFTP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	tftp tftp.systech.brz
+#	sudo apt install tftp ou sudo apt install tftp-hpa
+# 	tftp tftp.pti.intra (IPv4 Trivial File Transfer Protocol client)
 #		verbose
 #		status
 #		get robson.txt
-#		put jensy.txt
+#		put vaamonde.txt
+#
 # Windows Powershell:
-# 	tftp tftp.systech.brz
+# 	tftp tftp.pti.intra
 #		verbose
 #		status
 #		get robson.txt
-#		put jensy.txt
+#		put vaamonde.txt
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

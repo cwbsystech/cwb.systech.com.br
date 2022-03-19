@@ -1,12 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 25/11/2021
+# Data de atualização: 21/01/2022
+# Versão: 0.04
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do ownCloud v10.8.x
 #
@@ -19,7 +22,7 @@
 #
 # Informações que serão solicitadas na configuração via Web do ownCloud
 # 		Nome do usuário: admin
-# 		Senha: Casado#55
+# 		Senha: pti@2018
 # 		Pasta de dados: /var/www/html/own/data
 # 		Usuário do banco de dados: owncloud
 # 		Senha do banco de dados: owncloud
@@ -273,7 +276,7 @@ sleep 5
 #
 echo -e "Verificando o Virtual Host do ownCloud no Apache2, aguarde..."
 	# opção do comando apachectl: -s (a synonym)
-	apache2ctl -S | grep own.$_DominioServer
+	apache2ctl -S | grep own.$DOMINIOSERVER
 echo -e "Virtual Host verificado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

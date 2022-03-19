@@ -1,12 +1,12 @@
 #!/bin/bash
-# Autor: Robson jensy
+# Autor: Robson Vaamonde
 # Site: www.procedimentosemti.com.br
 # Facebook: facebook.com/ProcedimentosEmTI
 # Facebook: facebook.com/BoraParaPratica
 # YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-jensy-0b029028/
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
 # Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/jensy
+# Github: https://github.com/vaamonde
 # Data de criação: 10/10/2021
 # Data de atualização: 20/01/2022
 # Versão: 0.20
@@ -35,7 +35,7 @@
 # casos, use o GNU mais avançado dividido. O fdisk não usa o modo e os cilindros compatíveis com 
 # DOS como unidades de exibição por padrão.
 #
-# Cfdisk: é um editor de partições do Linux, semelhante ao fdisk, mas com uma _Lan de usuário 
+# Cfdisk: é um editor de partições do Linux, semelhante ao fdisk, mas com uma interface de usuário 
 # diferente (ncurses). Faz parte do pacote de programas utilitários do Linux, o util-linux. 
 #
 # Parted: (o nome sendo a conjunção das duas palavras PARTition e EDitor) é um editor de partições 

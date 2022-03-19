@@ -1,5 +1,5 @@
 #!/bin/bash
-# Autor: Robson jensy
+# Autor: Robson Vaamonde
 # Site: www.procedimentosemti.com.br
 # Facebook: facebook.com/ProcedimentosEmTI
 # Facebook: facebook.com/BoraParaPratica
@@ -52,11 +52,11 @@ KERNEL=$(uname -r | cut -d'.' -f1,2)
 LOG="/var/log/$(echo $0 | cut -d'/' -f2)"
 #
 # Variáveis de configuração do Kerberos e SAMBA4
-REALM="systech.brz"
+REALM="PTI.INTRA"
 NETBIOS="PTI"
-DOMAIN="systech.brz"
-FQDN="ServUbuntu.systech.brz"
-IP="173.169.73.5"
+DOMAIN="pti.intra"
+FQDN="ptispo01ws01.pti.intra"
+IP="172.16.1.20"
 #
 # Variáveis de configuração do NTP Server
 NTP="a.st1.ntp.br"
@@ -65,14 +65,14 @@ NTP="a.st1.ntp.br"
 ROLE="dc"
 DNS="SAMBA_INTERNAL"
 USER="administrator"
-PASSWORD="Casado#55"
+PASSWORD="pti@2018"
 LEVEL="2008_R2"
-SITE="systech.brz"
-_Lan="ens18"
-GATEWAY="173.169.73.254"
+SITE="PTI.INTRA"
+INTERFACE="enp0s3"
+GATEWAY="172.16.1.254"
 #
 # Variáveis de configuração do DNS
-ARPA="73.169.173.in-addr.arpa"
+ARPA="1.16.172.in-addr.arpa"
 ARPAIP="20"
 #
 # Exportando o recurso de Noninteractive do Debconf para não solicitar telas de configuração
@@ -274,17 +274,17 @@ echo -e "Instalação do SAMBA4 feito com sucesso!!!, continuando com o script..
 sleep 5
 echo
 #
-echo -e "Atualizando as configurações do _Netplan, aguarde..."
+echo -e "Atualizando as configurações do NETPLAN, aguarde..."
 	# opção do comando: &>> (redirecionar a entrada padrão)
 	# opção do comando cp: -v (verbose)
 	cp -v /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.old &>> $LOG
-	echo -e "Editando o arquivo de configuração do _Netplan, pressione <Enter> para continuar..."
+	echo -e "Editando o arquivo de configuração do NETPLAN, pressione <Enter> para continuar..."
 		read
 		sleep 3
 		vim /etc/netplan/50-cloud-init.yaml
 		netplan --debug apply &>> $LOG
 	echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
-echo -e "Atualização do _Netplan feita com sucesso!!!, continuando com o script..."
+echo -e "Atualização do NETPLAN feita com sucesso!!!, continuando com o script..."
 sleep 5
 clear
 #
@@ -304,8 +304,8 @@ echo -e "Promovendo o SAMBA-4 como Controlador de Domínio do Active Directory A
 	
 	#
 	samba-tool domain provision --realm=$REALM --domain=$NETBIOS --server-role=$ROLE --dns-backend=$DNS --use-rfc2307 \
-	--adminpass=$PASSWORD --function-level=$LEVEL --site=$SITE --host-ip=$IP --option="_Lans = lo $_Lan" \
-	--option="bind _Lans only = yes" --option="allow dns updates = nonsecure and secure" \
+	--adminpass=$PASSWORD --function-level=$LEVEL --site=$SITE --host-ip=$IP --option="interfaces = lo $INTERFACE" \
+	--option="bind interfaces only = yes" --option="allow dns updates = nonsecure and secure" \
 	--option="dns forwarder = $GATEWAY" --option="winbind use default domain = yes" --option="winbind enum users = yes" \
 	--option="winbind enum groups = yes" --option="winbind refresh tickets = yes" --option="server signing = auto" \
 	--option="vfs objects = acl_xattr" --option="map acl inherit = yes" --option="store dos attributes = yes" \

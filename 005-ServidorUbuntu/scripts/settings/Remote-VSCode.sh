@@ -1,12 +1,12 @@
 #!/bin/bash
-# Autor: Robson jensy
+# Autor: Robson Vaamonde
 # Site: www.procedimentosemti.com.br
 # Facebook: facebook.com/ProcedimentosEmTI
 # Facebook: facebook.com/BoraParaPratica
 # YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-jensy-0b029028/
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
 # Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/jensy
+# Github: https://github.com/vaamonde
 # Data de criação: 10/10/2021
 # Data de atualização: 20/01/2022
 # Versão: 0.20
@@ -36,7 +36,7 @@ Ctrl + Shift + "``" Acento Grave ou Crase
 netstat -an | grep 52698
 #
 # Quinta Etapa: Instalação do Rmate no Ubuntu Server 18.04.x LTS
-ssh jensy@173.169.73.5
+ssh vaamonde@172.16.1.20
 sudo apt update
 sudo apt install python-pip
 sudo pip install rmate
@@ -51,7 +51,7 @@ exit
 # 52698: 	Porta do Túnel Virtual que será criada no lado do servidor
 # 127.0.0.1: Endereço de Loopback do lado servidor e cliente
 # 52698: 	Porta Padrão do Túnel Virtual que será criada no lado do cliente utilizado pelo Remote VSCode
-ssh -R 52698:127.0.0.1:52698 jensy@173.169.73.5
+ssh -R 52698:127.0.0.1:52698 vaamonde@172.16.1.20
 netstat -an | grep 52698
 #
 # Sétima Etapa: Editando arquivos remotamente com o Remote VSCode

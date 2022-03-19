@@ -1,12 +1,13 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Data de criação: 04/08/2020
+# Data de atualização: 05/05/2021
+# Versão: 0.07
+# Testado e homologado para a versão do Ubuntu Server 18.04.x LTS x64
 # Kernel >= 4.15.x
 # Testado e homologado para a versão do Rocket.Chat 3.9.x e MongoDB 4.x
 #
@@ -16,17 +17,17 @@
 #
 # Informações que serão solicitadas na configuração via Web do Rocket.Chat
 # Passo 1: Informação de administração
-#   Nome: Robson jensy
-#   Nome de usuário: jensy
-#   E-mail da Organização: jensy@systech.brz
-#   Senha: jensy <Continuar>
+#   Nome: Robson Vaamonde
+#   Nome de usuário: vaamonde
+#   E-mail da Organização: vaamonde@pti.intra
+#   Senha: vaamonde <Continuar>
 # Passo 2: Informações sobre a Organização
 #   Tipo de Organização: Comunidade
 #   Nome da Organização: Bora para Prática!!!
 #   Indústria: Educação
 #   Tamanho: 1-10 people
 #   País: Brasil
-#   Site: jensy.com.br <Continuar>
+#   Site: vaamonde.com.br <Continuar>
 # Passo 3: Informações do servidor
 #   Nome do Site: BoraParaPratica
 #   Idioma: Português do Brasil

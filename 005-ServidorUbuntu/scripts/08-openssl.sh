@@ -1,12 +1,16 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 16/10/2021
+# Data de atualização: 12/01/2022
+# Versão: 0.10
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do OpenSSL v1.1.x
 #
 # OpenSSL é uma implementação de código aberto dos protocolos SSL e TLS. A biblioteca 
@@ -26,6 +30,9 @@
 # Os sites podem usar o TLS para proteger todas as comunicações entre seus servidores e 
 # navegadores web.
 #
+# Site Oficial do Projeto: https://www.openssl.org/
+# Manual do OpenSSL: https://man.openbsd.org/openssl.1
+#
 # Instalação da Autoridade Certificadora CA no Mozilla Firefox (GNU/Linux ou Microsoft Windows)
 # Abrir menu de Aplicativo
 #	Preferências ou Opções ou Configurações
@@ -35,7 +42,7 @@
 #					Yes: Confiar nesta CA para identificar sites
 #					Yes: Confiar nesta autoridade certificadora para identificar usuários de email
 #				Bora para Pratica
-#					ServUbuntu.systech.brz
+#					ptispo01ws01.pti.intra
 #
 # Instalação da Autoridade Certificadora CA no Google Chrome (GNU/Linux)
 # chrome://settings/certificates
@@ -45,7 +52,7 @@
 #			Yes: Confiar neste certificado para identificar usuários de e-mail
 #			Yes: Confiar neste certificado para a identificação de criadores de software
 #		org-Bora para Pratica
-#			ServUbuntu.systech.brz
+#			ptispo01ws01.pti.intra
 #	chrome://restart
 #
 # Instalação da Autoridade Certificadora CA no Microsoft Edge (GNU/Linux)
@@ -93,10 +100,7 @@
 #		Autoridades de Certificação Raiz Confiáveis
 #			Certificados
 #				Emitido para:
-#					ServUbuntu.systech.brz
-#
-# Site Oficial do Projeto: https://www.openssl.org/
-# Manual do OpenSSL: https://man.openbsd.org/openssl.1
+#					ptispo01ws01.pti.intra
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
@@ -326,8 +330,8 @@ echo -e "Criando o arquivo CSR (Certificate Signing Request), confirme as mensag
 	# 	Locality Name (eg, city): Sao Paulo <-- pressione <Enter>
 	# 	Organization Name (eg, company): Bora para Pratica <-- pressione <Enter>
 	# 	Organization Unit Name (eg, section): Procedimentos em TI <-- pressione <Enter>
-	# 	Common Name (eg, server FQDN or YOUR name): ServUbuntu.systech.brz <-- pressione <Enter>
-	# 	Email Address: pti@systech.brz <-- pressione <Enter>
+	# 	Common Name (eg, server FQDN or YOUR name): ptispo01ws01.pti.intra <-- pressione <Enter>
+	# 	Email Address: pti@pti.intra <-- pressione <Enter>
 	#
 	openssl req -new -$CRIPTOCERT -nodes -key /etc/ssl/private/ca-ptikey.key -out \
 	/etc/ssl/requests/ca-pticsr.csr -config /etc/ssl/pti-ca.conf
@@ -356,8 +360,8 @@ echo -e "Criando o arquivo CRT (Certificate Request Trust), confirme as mensagen
 	# 	Locality Name (eg, city): Sao Paulo <-- pressione <Enter>
 	# 	Organization Name (eg, company): Bora para Pratica <-- pressione <Enter>
 	# 	Organization Unit Name (eg, section): Procedimentos em TI <-- pressione <Enter>
-	# 	Common Name (eg, server FQDN or YOUR name): systech.brz <-- pressione <Enter>
-	# 	Email Address: pti@systech.brz <-- pressione <Enter>
+	# 	Common Name (eg, server FQDN or YOUR name): pti.intra <-- pressione <Enter>
+	# 	Email Address: pti@pti.intra <-- pressione <Enter>
 	#
 	openssl req -new -x509 -$CRIPTOCERT -days 3650 -in /etc/ssl/requests/ca-pticsr.csr -key \
 	/etc/ssl/private/ca-ptikey.key -out /etc/ssl/newcerts/ca-pticrt.crt -config /etc/ssl/pti-ca.conf
@@ -460,8 +464,8 @@ echo -e "Criando o arquivo CSR (Certificate Signing Request), confirme as mensag
 	# 	Locality Name (eg, city): Sao Paulo <-- pressione <Enter>
 	# 	Organization Name (eg, company): Bora para Pratica <-- pressione <Enter>
 	# 	Organization Unit Name (eg, section): Procedimentos em TI <-- pressione <Enter>
-	# 	Common Name (eg, server FQDN or YOUR name): systech.brz <-- pressione <Enter>
-	# 	Email Address: pti@systech.brz <-- pressione <Enter>
+	# 	Common Name (eg, server FQDN or YOUR name): pti.intra <-- pressione <Enter>
+	# 	Email Address: pti@pti.intra <-- pressione <Enter>
 	#
 	openssl req -new -$CRIPTOCERT -nodes -key /etc/ssl/private/apache2-ptikey.key -out \
 	/etc/ssl/requests/apache2-pticsr.csr -extensions v3_req -config /etc/ssl/pti-ssl.conf
@@ -602,7 +606,7 @@ echo -e "Testando o Certificado TLS/SSL do Apache2, aguarde..."
 	# -servername (Include the TLS Server Name Indication (SNI) extension in the ClientHello message)
 	# -showcerts (Display the whole server certificate chain: normally only the server certificate itself is displayed)
 	#
-	echo | openssl s_client -connect localhost:443 -servername www.$_DominioServer -showcerts &>> $LOG
+	echo | openssl s_client -connect localhost:443 -servername www.$DOMINIOSERVER -showcerts &>> $LOG
 echo -e "Certificado do Apache2 testado sucesso!!!, continuando com o script...\n"
 sleep 5
 #

@@ -1,12 +1,13 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Modificado por: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Data de criação: 14/09/2021
+# Data de atualização: 17/09/2021
+# Versão: 0.02
+# Testado e homologado para a versão do Ubuntu Server 18.04.x LTS x64
 # Kernel >= 4.15.x
 # Testado e homologado para a versão do IPTables v1.6.x
 #
@@ -27,9 +28,9 @@ PORTSBLO="$RULES/portsblo"                  #Portas bloqueadas
 MULTIPORTSLIBTCP="$RULES/multiportslibtcp"  #Multiplas Portas Liberadas TCP
 DNSSERVER="$RULES/dnsserver"                #Servidores DNS liberados
 #
-# Declarando as variáveis da _Lans de Rede e Subrede do IPTables
-LAN="ens18"           #_Lan de Rede LAN
-REDE="173.169.73.0/24"   #Endereço da Subrede
+# Declarando as variáveis da Interfaces de Rede e Subrede do IPTables
+LAN="enp0s3"           #Interface de Rede LAN
+REDE="172.16.1.0/24"   #Endereço da Subrede
 #
 # opção da variável $1: Parâmetro número 1 (da linha de comando ou função)
 case "$1" in
@@ -78,7 +79,7 @@ case "$1" in
 	echo -e "ON .............................................................[ OK ]\n"
 	#
 	# Habilitando o Fluxo Interno entre os processos das Tabelas do IPTables
-	# opções do comando iptables: -I (insert), -i (in-_Lan), -o (out-_Lan), 
+	# opções do comando iptables: -I (insert), -i (in-interface), -o (out-interface), 
 	# lo (loopback), -j (jump)
 	$IPTABLES -I INPUT -i lo -j ACCEPT
 	$IPTABLES -I OUTPUT -o lo -j ACCEPT
@@ -86,7 +87,7 @@ case "$1" in
 	echo -e "ON .............................................................[ OK ]\n"
 	# 
 	# Habilitando o Log de todas as informações de INPUT e OUTPUT no arquivo: /var/log/firewall.log
-	# opções do comando iptables: -A (append), -i (in-_Lan), -o (out-_Lan), -j (jump)
+	# opções do comando iptables: -A (append), -i (in-interface), -o (out-interface), -j (jump)
 	$IPTABLES -A INPUT -i $LAN -j LOG --log-prefix "$LAN Trafego aceito de INPUT"
 	$IPTABLES -A OUTPUT -o $LAN -j LOG --log-prefix "$LAN Trafego aceito de OUTPUT"
 	echo "Habilitando o Log de todo o Tráfego de INPUT e OUTPUT do IPTables..."
@@ -105,7 +106,7 @@ case "$1" in
 	# Permitindo a Resolução de Nomes utilizando os Servidores DNS Liberados
 	# Utilização de um Laço de Loop For para listar o conteúdo do arquivo: dnsserver
 	# opções do comando iptables: -A (append), -I (insert), -p (protocol), -m (match), -d (destination), 
-	# -s (source), -j (jump), -o (out-_Lan)
+	# -s (source), -j (jump), -o (out-interface)
 	for i in $(cat $DNSSERVER); do
 		$IPTABLES -A OUTPUT -p udp -d $i --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
 		$IPTABLES -A INPUT  -p udp -s $i --sport 53 -m state --state ESTABLISHED -j ACCEPT
@@ -122,7 +123,7 @@ case "$1" in
 	# Permitindo todas as Portas TCP de Serviços instalados no Servidor Ubuntu
 	# Utilização de um Laço de Loop For para listar o conteúdo do arquivo: portslibtcp
 	# opções do comando iptables: -A (append), -I (insert), -p (protocol), -m (match), -j (jump), 
-	# -o (out-_Lan)
+	# -o (out-interface)
 	for i in $(cat $PORTSLIBTCP); do
 		$IPTABLES -A INPUT -p tcp --dport $i -j ACCEPT
 		$IPTABLES -A FORWARD -p tcp --dport $i -j ACCEPT
@@ -138,7 +139,7 @@ case "$1" in
 	# Permitindo Multiportas TCP de Serviços instalados no Servidor Ubuntu
 	# Utilização de um Laço de Loop For para listar o conteúdo do arquivo: multiportslibtcp
 	# opções do comando iptables: -A (append), -I (insert), -p (protocol), -m (match), -j (jump), 
-	# -o (out-_Lan)
+	# -o (out-interface)
 	for i in $(cat $MULTIPORTSLIBTCP); do
 		$IPTABLES -A INPUT -p tcp -m multiport --ports $i -j ACCEPT
 		$IPTABLES -A FORWARD -p tcp -m multiport --ports $i -j ACCEPT
@@ -154,7 +155,7 @@ case "$1" in
 	# Permitindo todas as Portas UDP de Serviços instalados no Servidor Ubuntu
 	# Utilização de um Laço de Loop For para listar o conteúdo do arquivo: portslibtcp
 	# opções do comando iptables: -A (append), -I (insert), -p (protocol), -m (match), -j (jump), 
-	# -o (out-_Lan)
+	# -o (out-interface)
 	for i in $(cat $PORTSLIBUDP); do
 		$IPTABLES -A INPUT -p udp --dport $i -j ACCEPT
 		$IPTABLES -A FORWARD -p udp --dport $i -j ACCEPT
@@ -179,7 +180,7 @@ case "$1" in
 	#
 	# Aplicando a Segurança de Tentativa de Ataque tipo Inundação SYN (Syn-Flooding)
 	# opções do comando iptables: -N (new-chain), -A (append), -p (protocol), -m (match), -j (jump)
-	# -i (in-_Lan)
+	# -i (in-interface)
 	echo "0" > /proc/sys/net/ipv4/tcp_syncookies
 	$IPTABLES -N syn-flood
 	$IPTABLES -A INPUT -i $LAN -p tcp --syn -j syn-flood
@@ -190,7 +191,7 @@ case "$1" in
 	#
 	# Aplicando a Segurança de Tentativa de Ataque do Tipo Força Bruta (Brute force)
 	# opções do comando iptables: -N (new-chain), -A (append), -p (protocol), -m (match), -j (jump)
-	# -i (in-_Lan)
+	# -i (in-interface)
 	$IPTABLES -N SSH-BRUT-FORCE
 	$IPTABLES -A INPUT -i $LAN -p tcp --dport 22 -j SSH-BRUT-FORCE
 	$IPTABLES -A SSH-BRUT-FORCE -m limit --limit 1/s --limit-burst 4 -j RETURN
@@ -200,7 +201,7 @@ case "$1" in
 	#
 	# Bloqueando todas as Portas TCP e UDP de Serviços não instalados no Servidor Ubuntu
 	# Utilização de um Laço de Loop For para listar o conteúdo do arquivo: portsblo
-	# opções do comando iptables: -A (append), -p (protocol), -i (in-_Lan), -j (jump)
+	# opções do comando iptables: -A (append), -p (protocol), -i (in-interface), -j (jump)
 	for i in $(cat $PORTSBLO); do
 		$IPTABLES -A INPUT -p tcp -i $LAN --dport $i -j DROP
 		$IPTABLES -A INPUT -p udp -i $LAN --dport $i -j DROP
@@ -210,7 +211,7 @@ case "$1" in
 	echo -e "ON .............................................................[ OK ]\n"
 	#
 	# Aplicando a Segurança de Tentativa de Ataque do Tipo Remetentes Falsificados (IP-Spoofing)
-	# opções do comando iptables: -A (append), -s (source), -i (in-_Lan), -j (jump)
+	# opções do comando iptables: -A (append), -s (source), -i (in-interface), -j (jump)
 	$IPTABLES -A INPUT -s 10.0.0.0/8 -i $LAN -j DROP
 	$IPTABLES -A INPUT -s 127.0.0.0/8 -i $LAN -j DROP
 	$IPTABLES -A INPUT -s 172.16.0.0/12 -i $LAN -j DROP
@@ -236,7 +237,7 @@ case "$1" in
 	echo "======================================================================|"
 	echo "FIREWALL ATIVADO - SISTEMA PREPARADO E FUNCIONANDO PERFEITAMENTE"
 	echo "SCRIPT DE FIREWALL CRIADO POR :-) MARCELO MAGNO :-) - TODOS OS CRÉDITOS"
-	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON jensy - Procedimentos em TI ;-)"
+	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON VAAMONDE - Procedimentos em TI ;-)"
 	;;
 	#
 	# Início do Script de Firewall IPTables, utilizando o comando case (opção: stop)
@@ -268,7 +269,7 @@ case "$1" in
 	echo "======================================================================|"
 	echo "FIREWALL INATIVO - SISTEMA PARADO E LIBERADO TODAS AS REGRAS"
 	echo "SCRIPT DE FIREWALL CRIADO POR: MARCELO MAGNO :-) - TODOS OS CRÉDITOS"
-	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON jensy - Procedimentos em TI ;-)"
+	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON VAAMONDE - Procedimentos em TI ;-)"
 	;;
 	#
 	# Início do Script de Firewall IPTables, utilizando o comando case (opção: restart)
@@ -302,7 +303,7 @@ case "$1" in
 	echo ":FIM DA LISTAGEM DAS REGRAS DE FIREWALL NETFILTER ATRAVÉS DO IPTABLES:|"
 	echo "======================================================================|"
 	echo "SCRIPT DE FIREWALL CRIADO POR: MARCELO MAGNO :-) - TODOS OS CRÉDITOS"
-	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON jensy - Procedimentos em TI ;-)"
+	echo "SCRIPT DE FIREWALL MODIFICADO POR: ROBSON VAAMONDE - Procedimentos em TI ;-)"
 	;;
 	#
 	# Início do Script de Firewall IPTables, utilizando o comando case (opção: *)	

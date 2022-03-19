@@ -1,12 +1,16 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 16/12/2021
+# Data de atualização: 21/01/2022
+# Versão: 0.04
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64x
 # Testado e homologado para a versão do NTop-NG v5.0.x
 #
 # NTop-NG é um software para monitorar o tráfego em uma rede de computadores. Ele foi 
@@ -14,14 +18,14 @@
 # NTop-NG é um software de código aberto lançado sob a Licença Pública Geral GNU 
 # (GPLv3) para software. Versões de código-fonte estão disponíveis para os sistemas 
 # operacionais: Unix, Linux, BSD, Mac OS X e Windows. O mecanismo do NTop-NG é escrito 
-# na linguagem de programação C++, sua _Lan da web é opcional e foi desenvolvida 
+# na linguagem de programação C++, sua interface da web é opcional e foi desenvolvida 
 # na linguagem Lua.
 #
 # OBSERVAÇÃO IMPORTANTE: para o NTop-NG funcionar corretamente em uma Infraestrutura 
 # de Redes de Computadores, é recomendado que as configurações da Porta do Switch que 
 # está conectado o Servidor do NTop-NG esteja no Modo Mirroring/Monitoring (Espelhamento
 # /Monitoramento) ou em alguns casos no Modo Trunk (Tronco), também é recomendado que 
-# a _Lan de Rede do Servidor esteja no Promiscuous Mode (Modo Promíscuo) 
+# a Interface de Rede do Servidor esteja no Promiscuous Mode (Modo Promíscuo) 
 #
 # Informações que serão solicitadas na configuração via Web do NTop-NG
 #
@@ -29,8 +33,8 @@
 # Password: admin (Login)
 #
 # Change Password
-#	Password: Casado#55
-#	Confirm Password: Casado#55
+#	Password: pti@2018
+#	Confirm Password: pti@2018
 #	Language: English (Change Password)
 #
 # Site Oficial do Projeto: https://www.ntop.org/
@@ -239,10 +243,10 @@ echo -e "Iniciando o serviço do NTop-NG, aguarde..."
 echo -e "Serviço do NTop-NG iniciado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Configurando a _Lan de Rede em Modo Promíscuo, aguarde..."
+echo -e "Configurando a Interface de Rede em Modo Promíscuo, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
-	ifconfig $_Lan promisc &>> $LOG
-echo -e "_Lan de Rede configurada com sucesso!!!, continuando com o script...\n"
+	ifconfig $INTERFACE promisc &>> $LOG
+echo -e "Interface de Rede configurada com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Verificando o serviço do NTop-NG, aguarde..."

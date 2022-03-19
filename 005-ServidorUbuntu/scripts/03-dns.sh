@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 10/10/2021
+# Data de atualização: 03/02/2022
+# Versão: 0.15
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do ISC DHCP Server v4.4.x
 # Testado e homologado para a versão do Bind DNS Sever v9.16.x
@@ -22,16 +26,20 @@
 #
 # Testando o DNS no GNU/Linux ou Microsoft Windows
 # Linux Mint Terminal: Ctrl+Alt+T 
-#	nslookup systech.brz
-#	dig systech.brz
-#	host systech.brz
-#	ping systech.brz
+#	nslookup pti.intra (query Internet name servers interactively)
+#	dig pti.intra (DNS lookup utility)
+#	host pti.intra (DNS lookup utility)
+#	ping pti.intra (send ICMP ECHO_REQUEST to network hosts)
+#
 # Windows Powershell.: 
-#	nslookup systech.brz
+#	nslookup pti.intra
+#	nslookup 172.16.1.20
+#	nslookup ptispo01ws01
+#	nslookup ptispo01ws01.pti.intra
 #	ipconfig /displaydns
-#	ping systech.brz
-#	Resolve-DnsName systech.brz
-#	Test-Connection systech.brz
+#	ping pti.intra
+#	Resolve-DnsName pti.intra
+#	Test-Connection pti.intra
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
@@ -188,14 +196,14 @@ echo -e "Editando o arquivo de configuração nsswitch.conf, pressione <Enter> p
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo $_Netplan, pressione <Enter> para continuar.\n"
+echo -e "Editando o arquivo $NETPLAN, pressione <Enter> para continuar.\n"
 echo -e "CUIDADO!!!: o nome do arquivo de configuração da placa de rede pode mudar"
 echo -e "dependendo da versão do Ubuntu Server, verifique o conteúdo do diretório:"
 echo -e "/etc/netplan para saber o nome do arquivo de configuração do Netplan e altere"
-echo -e "o valor da variável _Netplan no arquivo de configuração: 00-parametros.sh"
+echo -e "o valor da variável NETPLAN no arquivo de configuração: 00-parametros.sh"
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim $_Netplan
+	vim $NETPLAN
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
@@ -215,12 +223,12 @@ echo -e "Atualizando os arquivos de configuração do Bind DNS Server, aguarde..
 	mv -v /etc/bind/rndc.key /etc/bind/rndc.key.old &>> $LOG
 	mv -v /etc/default/named /etc/default/named.old &>> $LOG
 	cp -v conf/dns/{named.conf,named.conf.local,named.conf.options,named.conf.default-zones,rndc.key} /etc/bind/ &>> $LOG
-	cp -v conf/dns/{systech.brz.hosts,173.169.73.rev} /var/lib/bind/ &>> $LOG
+	cp -v conf/dns/{pti.intra.hosts,172.16.1.rev} /var/lib/bind/ &>> $LOG
 	cp -v conf/dns/{dnsupdate-cron,rndcupdate-cron} /etc/cron.d/ &>> $LOG
 	cp -v conf/dns/named /etc/default/ &>> $LOG
 	cp -v conf/dns/rndcstats /etc/logrotate.d/ &>> $LOG
 	chown -v root:bind /etc/bind/rndc.key &>> $LOG
-	chown -v root:bind /var/lib/bind/{systech.brz.hosts,173.169.73.rev} &>> $LOG
+	chown -v root:bind /var/lib/bind/{pti.intra.hosts,172.16.1.rev} &>> $LOG
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
@@ -262,22 +270,22 @@ echo -e "Editando o arquivo de configuração rndc.key, pressione <Enter> para c
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo de configuração systech.brz.hosts, pressione <Enter> para continuar."
+echo -e "Editando o arquivo de configuração pti.intra.hosts, pressione <Enter> para continuar."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /var/lib/bind/systech.brz.hosts
-	named-checkzone $DOMAIN /var/lib/bind/systech.brz.hosts &>> $LOG
+	vim /var/lib/bind/pti.intra.hosts
+	named-checkzone $DOMAIN /var/lib/bind/pti.intra.hosts &>> $LOG
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo de configuração 173.169.73.rev, pressione <Enter> para continuar."
+echo -e "Editando o arquivo de configuração 172.16.1.rev, pressione <Enter> para continuar."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /var/lib/bind/173.169.73.rev
-	named-checkzone $DOMAINREV /var/lib/bind/173.169.73.rev &>> $LOG
-	named-checkzone $NETWORK /var/lib/bind/173.169.73.rev &>> $LOG
+	vim /var/lib/bind/172.16.1.rev
+	named-checkzone $DOMAINREV /var/lib/bind/172.16.1.rev &>> $LOG
+	named-checkzone $NETWORK /var/lib/bind/172.16.1.rev &>> $LOG
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

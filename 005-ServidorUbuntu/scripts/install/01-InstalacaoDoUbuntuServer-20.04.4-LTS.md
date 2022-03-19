@@ -8,28 +8,29 @@ Instagram Procedimentos em TI: https://www.instagram.com/procedimentoem<br>
 YouTUBE Bora Para Prática: https://www.youtube.com/boraparapratica<br>
 LinkedIn Robson Vaamonde: https://www.linkedin.com/in/robson-vaamonde-0b029028/<br>
 Github Procedimentos em TI: https://github.com/vaamonde<br>
-Data de criação: 10/10/2021<br>
+Data de criação: 26/02/2022<br>
 Data de atualização: 02/03/2022<br>
-Versão: 0.04<br>
-Testado e homologado no GNU/Linux Ubuntu Server 20.04.3 LTS
+Versão: 0.02<br>
+Testado e homologado no GNU/Linux Ubuntu Server 20.04.4 LTS
 
-Atualização da versão do Ubuntu Server 20.04.3: https://wiki.ubuntu.com/FocalFossa/ReleaseNotes<br>
-Mudanças da versão do Ubuntu Server 20.04.3: https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/ChangeSummary/20.04.3<br>
+Release Notes Ubuntu Server 20.04.4: https://wiki.ubuntu.com/FocalFossa/ReleaseNotes<br>
+Atualização da versão do Ubuntu Server 20.04.4: https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/ChangeSummary/20.04.4<br>
+Ubuntu Advantage for Infrastructure: https://ubuntu.com/advantage<br>
 Ciclo de Lançamento do Ubuntu Server: https://ubuntu.com/about/release-cycle
 
 OBS1 - lentidão da instalação e configuração do Ubuntu Server 20.04.x no Oracle VirtualBOX<br>
 Link1: https://forums.virtualbox.org/viewtopic.php?f=3&t=98944<br>
 Link2: https://forums.virtualbox.org/viewtopic.php?f=7&t=98586<br>
 
-OBSERVAÇÃO IMPORTANTE: após vários testes na versão 20.04.3 LTS do Ubuntu Server x64 a falha de lentidão<br>
+OBSERVAÇÃO IMPORTANTE: após vários testes na versão 20.04.4 LTS do Ubuntu Server x64 a falha de lentidão<br>
 no processo de atualização do sistema utilizando os comandos apt ou apt-get está associada ao Sources List<br>
 do BR (Brasil), após a alteração no arquivo: /etc/apt/sources.list de: https://br. para https://us. em <br>
 todas as linhas o processo de atualização ficou muito mais rápido.
 
-Primeira etapa: Download da ISO do Ubuntu Server 20.04.3 LTS
+Primeira etapa: Download da ISO do Ubuntu Server 20.04.4 LTS
 
-01. Link de download do Ubuntu Server: https://releases.ubuntu.com/20.04.3/
-02. Versão do download Ubuntu Server: ubuntu-20.04.3-live-server-amd64.iso (24/08/2021)
+01. Link de download do Ubuntu Server: https://releases.ubuntu.com/20.04/
+02. Versão do download Ubuntu Server: ubuntu-20.04.4-live-server-amd64.iso (23/02/2022)
 03. Arquitetura do Ubuntu Server: AMD64 (64-bit)
 04. Tipo de instalação: DVD Image (ISO) Installer
 
@@ -39,7 +40,7 @@ Link de download do Oracle VirtualBOX: https://www.virtualbox.org/wiki/Downloads
 	_ 01. Ferramentas;
 	_		Novo
 	_ 02. Nome e Sistema Operacional:
-	_		Nome: Webserver-Ubuntu-20.04
+	_		Nome: Webserver-Ubuntu-2004
 	_		Pasta da Máquina: (deixar o padrão do sistema)
 	_		Tipo: Linux
 	_		Versão: Ubuntu (64-bit)
@@ -60,7 +61,7 @@ Link de download do Oracle VirtualBOX: https://www.virtualbox.org/wiki/Downloads
 	_		Localização: (deixar o padrão do sistema)
 	_		Tamanho do disco: 50GB
 	_	<Criar>
-	_ 08. Configurações da Máquina Virtual Webserver-Ubuntu-20.04 (Propriedades/Configurações)
+	_ 08. Configurações da Máquina Virtual  Webserver-Ubuntu-2004 (Propriedades/Configurações)
 	_	Sistema
 	_		Placa Mãe
 	_			Recurso Estendidos
@@ -68,7 +69,7 @@ Link de download do Oracle VirtualBOX: https://www.virtualbox.org/wiki/Downloads
 	_		Processador
 	_			Processadores: 02 CPUs
 	_			Recursos Estendidos: Habilitar PAE/NX
-	_ 			Recursos Estendidos: Habilitar VT-x/AMD-v Aninhado
+	_								 Habilitar VT-x/AMD-v Aninhado 
 	_	Monitor
 	_		Tela
 	_			Memória de Vídeo: 128MB
@@ -82,21 +83,21 @@ Link de download do Oracle VirtualBOX: https://www.virtualbox.org/wiki/Downloads
 	_			Nome: (deixar o padrão do sistema: intnet)
 	_	<OK>
 
-Terceira etapa: Iniciando a Instalação do Ubuntu Server 20.04.3 LTS (localizar a ISO)
+Terceira etapa: Iniciando a Instalação do Ubuntu Server 20.04.4 LTS (localizar a ISO)
 
-	_ 01. VM Webserver-Ubuntu-20.04: Iniciar
+	_ 01. VM  Webserver-Ubuntu-2004: Iniciar
 	_ 02. Selecione o disco rígido de boot
 	_ 		Selecionar um arquivo de disco óptico virtual
 	_ 03. Seletor de Discos Ópticos
 	_ 		Acrescentar
-	_ 		Selecione o arquivo de disco óptico virtual: ubuntu-20.04.3-live-server-amd64.iso
+	_ 		Selecione o arquivo de disco óptico virtual: ubuntu-20.04.4-live-server-amd64.iso
 	_ 	<Abrir>
 	_ 04. Not Attached
-	_ 		Selecionar: ubuntu-20.04.3-live-server-amd64.iso
+	_ 		Selecionar: ubuntu-20.04.4-live-server-amd64.iso
 	_ 	<Escolher>
 	_ <Iniciar>
 
-Quarta etapa: Instalação e Configuração do Ubuntu Server 20.04.3 LTS<br>
+Quarta etapa: Instalação e Configuração do Ubuntu Server 20.04.4 LTS<br>
 Instalação do Ubuntu Server: https://ubuntu.com/server/docs/installation
 
 	_ 01. Use UP, DOWN and ENTER keys to select your language
@@ -147,12 +148,14 @@ Instalação do Ubuntu Server: https://ubuntu.com/server/docs/installation
 	_ 		Choose a passwords: pti@2018 <Tab>
 	_ 		Confirm your passwords: pti@2018
 	_ 	<Done>
-	_ 10. SSH Setup
+	_ 10. Enable Ubuntu Advantage
+	_	<Done>
+	_ 11. SSH Setup
 	_ 		Install OpenSSH server: ON <Space>
 	_ 		Import SSH identity: No <Tab>
 	_ 	<Done>
-	_ 11. Featured Server Snaps
+	_ 12. Featured Server Snaps
 	_	<Done>
-	_ 12. Install complete!
+	_ 13. Install complete!
 	_	<Reboot Now>
-	_ 13. Please remove the installation medium, then press ENTER - <Enter>
+	_ 14. Please remove the installation medium, then press ENTER - <Enter>

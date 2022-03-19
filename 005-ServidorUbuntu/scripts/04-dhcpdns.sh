@@ -1,11 +1,15 @@
 #!/bin/bash
-# Autor:						Jensy Gregorio Gomez
-# YouTube:						youtube.com/systech
-# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
-# Github:						https://github.com/vaasystech-brz
-# Data de criação:				01/01/2022
-# Data de atualização:			01/01/2022
-# Versão:						0.01
+# Autor: Robson Vaamonde
+# Site: www.procedimentosemti.com.br
+# Facebook: facebook.com/ProcedimentosEmTI
+# Facebook: facebook.com/BoraParaPratica
+# YouTube: youtube.com/BoraParaPratica
+# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
+# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
+# Github: https://github.com/vaamonde
+# Data de criação: 10/10/2021
+# Data de atualização: 12/01/2022
+# Versão: 0.13
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do ISC DHCP Server v4.4.x e Bind DNS Sever v9.16.x
 #
@@ -29,33 +33,34 @@
 # Configuração do DHCP Client no GNU/Linux ou Microsoft Windows
 # Linux Mint Gráfico: NetworkManager - Icone da Placa de Rede
 # Linux Mint Terminal: Ctrl+Alt+T
-# 	sudo NetworkManager --print-config
-# 	sudo nmcli device status
-# 	sudo nmcli device show ens18 
-# 	sudo networkctl status ens18 
-# 	sudo ifconfig ens18
-# 	sudo ip address show ens18
-# 	sudo route -n
-# 	sudo systemd-resolve --status
-# 	sudo dhclient -r ens18
-# 	sudo dhclient ens18
-# 	sudo cat /var/lib/dhcp/dhclient.leases
-#	nslookup systech.brz
-#	dig systech.brz
-#	host systech.brz
-#	ping systech.brz
+# 	sudo NetworkManager --print-config (network management daemon)
+# 	sudo nmcli device status (command-line tool for controlling NetworkManager)
+# 	sudo nmcli device show enp0s3 (command-line tool for controlling NetworkManager)
+# 	sudo networkctl status enp0s3 Query the status of network links)
+# 	sudo ifconfig enp0s3 (configure a network interface)
+# 	sudo ip address show enp0s3 (show / manipulate routing, network devices, interfaces and tunnels)
+# 	sudo route -n (show/manipulate IP routing table)
+# 	sudo systemd-resolve --status (Resolve domain names, IPV4 and IPv6 addresses, DNS resource records, and services)
+# 	sudo dhclient -r enp0s3 (Dynamic Host Configuration Protocol Client)
+# 	sudo dhclient enp0s3 (Dynamic Host Configuration Protocol Client)
+# 	sudo cat /var/lib/dhcp/dhclient.leases (DHCP client lease database)
+#	nslookup pti.intra (query Internet name servers interactively)
+#	dig pti.intra (DNS lookup utility)
+#	host pti.intra (DNS lookup utility)
+#	ping pti.intra (send ICMP ECHO_REQUEST to network hosts)
+#
 # Windows Powershell: 
 #	ipconfig /all
 #	ipconfig /release
 #	ipconfig /renew
-#	netsh _Lan show _Lan
-#	netsh _Lan ip show _Lan
-#	netsh _Lan ip show config
-#	nslookup systech.brz
+#	netsh interface show interface
+#	netsh interface ip show interface
+#	netsh interface ip show config
+#	nslookup pti.intra
 #	ipconfig /displaydns
-#	ping systech.brz
-#	Resolve-DnsName systech.brz
-#	Test-Connection systech.brz
+#	ping pti.intra
+#	Resolve-DnsName pti.intra
+#	Test-Connection pti.intra
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh

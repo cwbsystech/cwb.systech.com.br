@@ -88,7 +88,7 @@ LOG=$LOGSCRIPT
 # [ ] = teste de expressão, && = operador lógico AND, == comparação de string, exit 1 = A maioria 
 # dos erros comuns na execução
 _Logo_Empresa
-if [ "$USUARIO" == "0" ] && [ "$UBUNTU" == "20.04" ]
+if [ "$_Usuario" == "0" ] && [ "$_VersaoUbuntu" == "20.04" ]
 	then
 	_Logo_Empresa
 		echo -e "O usuário é Root, continuando com o script..."

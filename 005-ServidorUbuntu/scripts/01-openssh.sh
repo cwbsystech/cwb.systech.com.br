@@ -287,7 +287,7 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/neofetch-cron /etc/cron.d/ &>> $LOG
 	cp -v conf/ubuntu/50-default.conf /etc/rsyslog.d/ &>> $LOG
 
-cat <<EOF > /conf/ubuntu/hostname
+cat <<EOF > /etc/hostname
 	
 	# Gerado:				cwb.systech.com.br -- Soluçoes em TI
 	# Autor:				Jensy Gregorio Gomez

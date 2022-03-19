@@ -1,47 +1,21 @@
-#!/bin/bash
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/vaamonde
-# Data de criação: 10/10/2021
-# Data de atualização: 08/03/2022
-# Versão: 0.50
+#!/usr/bin/env bash
+# Autor:				JENSY GEGORIO GOMEZ
+# Bio:					Tecnico em Informatica e Eletronica
+# YouTube: 				youtube.com/Sys-tech
+# Instagram: 			https://www.instagram.com/systech5/?hl=pt-br
+# Github: 				https://github.com/systech-brz
+
+# Data de criação: 		01/01/2022
+# Data de atualização: 	01/01/2022
+# Versão: 				0.01
+
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 #
-# Parâmetros (variáveis de ambiente) utilizados nos scripts de instalação dos Serviços de Rede
-# no Ubuntu Server 20.04.x LTS, antes de modificar esse arquivo, veja os arquivos: BUGS, NEW e
-# CHANGELOG para mais informações.
-#
-#=============================================================================================
-#                    VARIÁVEIS GLOBAIS UTILIZADAS EM TODOS OS SCRIPTS                        #
-#=============================================================================================
-#
-# Declarando as variáveis utilizadas na verificação e validação da versão do Ubuntu Server 
-#
-# Variável da Hora Inicial do Script, utilizada para calcular o tempo de execução do script
-# opção do comando date: +%T (Time)
-HORAINICIAL=$(date +%T)
-#
-# Variáveis para validar o ambiente, verificando se o usuário é "Root" e versão do "Ubuntu"
-# opções do comando id: -u (user)
-# opções do comando: lsb_release: -r (release), -s (short), 
-USUARIO=$(id -u)
-UBUNTU=$(lsb_release -rs)
-#
-# Variável do Caminho e Nome do arquivo de Log utilizado em todos os script
-# opção da variável de ambiente $0: Nome do comando/script executado
-# opção do redirecionador | (piper): Conecta a saída padrão com a entrada padrão de outro comando
-# opções do comando cut: -d (delimiter), -f (fields)
-LOGSCRIPT="/var/log/$(echo $0 | cut -d'/' -f2)"
-#
-# Exportando o recurso de Noninteractive do Debconf para não solicitar telas de configuração e
-# nenhuma interação durante a instalação ou atualização do sistema via Apt ou Apt-Get. Ele 
-# aceita a resposta padrão para todas as perguntas.
-export DEBIAN_FRONTEND="noninteractive"
+# PARAMETROS:
+#				(variáveis de ambiente) utilizados nos scripts de instalação
+#				dos Serviços de Rede no Ubuntu Server 20.04.x LTS, antes de 
+#				modificar esse arquivo, veja os arquivos: BUGS, NEW e  CHANGELOG 
+#				para mais informações.
 #
 _Logo_Empresa () {
 	clear
@@ -52,35 +26,65 @@ _Logo_Empresa () {
 	echo ""
 	return
 }
-_Empresa="Sys - Tech"
+
+
+
+#============================================================================================
+#						VARIÁVEIS GLOBAIS UTILIZADAS EM TODOS OS SCRIPTS					#
+#============================================================================================
+#
+# Declarando as variáveis utilizadas na verificação e validação da versão do Ubuntu Server 
+#
+# Variável da Hora Inicial do Script, utilizada para calcular o tempo de execução do script
+# opção do comando date: +%T (Time)
+HORAINICIAL=$(date +%T)
+
+_Usuario=$(id -u)
+_VersaoUbuntu=$(lsb_release -rs)
+#
+# Variável do Caminho e Nome do arquivo de Log utilizado em todos os script
+# opção da variável de ambiente $0: Nome do comando/script executado
+# opção do redirecionador | (piper): Conecta a saída padrão com a entrada padrão de outro comando
+# opções do comando cut: -d (delimiter), -f (fields)
+_LogScript="/var/log/$(echo $0 | cut -d'/' -f2)"
+#
+# Exportando o recurso de Noninteractive do Debconf para não solicitar telas de configuração e
+# nenhuma interação durante a instalação ou atualização do sistema via Apt ou Apt-Get. Ele 
+# aceita a resposta padrão para todas as perguntas.
+export DEBIAN_FRONTEND="noninteractive"
+#
 #=============================================================================================
 #              VARIÁVEIS DE REDE DO SERVIDOR UTILIZADAS EM TODOS OS SCRIPTS                  #
 #=============================================================================================
 #
 # Declarando as variáveis utilizadas nas configurações de Rede do Servidor Ubuntu 
-#
-# Variável do Usuário padrão utilizado no Servidor Ubuntu desse curso
-USUARIODEFAULT="jensyg"
-#
-# Variável da Senha padrão utilizado no Servidor Ubuntu desse curso
-SENHADEFAULT="Casado#55"
-_NomeServidor="servUbuntu"
-_Dominio="cwb.systech.com.br"
-#
-# Variável do Nome (Hostname) FQDN (Fully Qualified Domain Name) do Servidor Ubuntu desse curso
-_FQDN="$_NomeServidor.$_Dominio"
-#
-# Variável do Endereço IPv4 principal (padrão) do Servidor Ubuntu desse curso
+
+_Empresa="Sys - Tech"
+
+
+_Network="192.168.1.0"
+_Broadcast="192.168.1.255"
+_Gateway="192.168.1.1"
+_Mascara="24"
+_Interface_Lan="enp0s3"
+
+
+_Ip_V4_DC_Primario="173.169.73.1"
+_Ip_V4_DC_Backup="173.169.73.2"
 _Ip_V4_Servidor="192.168.1.107"
-#
-# Variável do Nome da Interface Lógica do Servidor Ubuntu Server desse curso
-INTERFACE="enp0s3"
-#
-# Variável do arquivo de configuração da Placa de Rede do Netplan do Servidor Ubuntu
-# CUIDADO!!! o nome do arquivo de configuração da placa de rede pode mudar dependendo da 
-# versão do Ubuntu Server, verificar o conteúdo do diretório: /etc/netplan para saber o nome 
-# do arquivo de configuração do Netplan e mudar a variável NETPLAN com o nome correspondente.
-NETPLAN="/etc/netplan/00-installer-config.yaml"
+_Nome_Servidor="Ubuntu"
+_Nome_Dominio="systech.brz"
+_Nome_FQDN="$_Nome_Servidor.$_Nome_Dominio"
+_Nome_Dominio_Netbios="cwb.systech"
+_Senha_Administrator="Casado#55"
+_UsuarioDefault="jensyg"
+
+
+
+
+
+
+_Netplan="/etc/netplan/00-installer-config.yaml"
 #
 #=============================================================================================
 #                        VARIÁVEIS UTILIZADAS NO SCRIPT: 01-openssh.sh                       #
@@ -111,16 +115,16 @@ NETPLAN="/etc/netplan/00-installer-config.yaml"
 # 07. tail -f /var/log/cron.log = filtrando as mensagens do serviço do CRON
 #
 # Variável das dependências do laço de loop do OpenSSH Server
-SSHDEP="openssh-server openssh-client"
+_SshDepen="openssh-server openssh-client"
 #
 # Variável de instalação dos softwares extras do OpenSSH Server
-SSHINSTALL="net-tools traceroute ipcalc nmap tree pwgen neofetch shellinabox"
+_SshInstall="net-tools ipcalc nmap tree pwgen neofetch shellinabox"
 #
 # Variável da porta de conexão padrão do OpenSSH Server
-PORTSSH="22"
+_PortSsh="22"
 #
 # Variável da porta de conexão padrão do Shell-In-a-Box
-PORTSHELLINABOX="4200"
+_PortShellInbox="4200"
 #
 #=============================================================================================
 #                          VARIÁVEIS UTILIZADAS NO SCRIPT: 02-dhcp.sh                        #

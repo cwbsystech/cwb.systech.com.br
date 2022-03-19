@@ -50,23 +50,23 @@ export DEBIAN_FRONTEND="noninteractive"
 # Declarando as variáveis utilizadas nas configurações de Rede do Servidor Ubuntu 
 #
 # Variável do Usuário padrão utilizado no Servidor Ubuntu desse curso
-USUARIODEFAULT="vaamonde"
+USUARIODEFAULT="jensyg"
 #
 # Variável da Senha padrão utilizado no Servidor Ubuntu desse curso
-SENHADEFAULT="pti@2018"
+SENHADEFAULT="Casado#55"
 #
 # Variável do Nome (Hostname) do Servidor Ubuntu desse curso
-NOMESERVER="ptispo01ws01"
+NOMESERVER="servUbuntu"
 #
 # Variável do Nome de Domínio do Servidor Ubuntu desse curso
 # OBSERVAÇÃO IMPORTANTE: essa variável será utilizada em outras variáveis desse curso
-DOMINIOSERVER="pti.intra"
+DOMINIOSERVER="cwb.systech.com.br"
 #
 # Variável do Nome (Hostname) FQDN (Fully Qualified Domain Name) do Servidor Ubuntu desse curso
 FQDNSERVER="$NOMESERVER.$DOMINIOSERVER"
 #
 # Variável do Endereço IPv4 principal (padrão) do Servidor Ubuntu desse curso
-IPV4SERVER="172.16.1.20"
+IPV4SERVER="192.168.1.107"
 #
 # Variável do Nome da Interface Lógica do Servidor Ubuntu Server desse curso
 INTERFACE="enp0s3"

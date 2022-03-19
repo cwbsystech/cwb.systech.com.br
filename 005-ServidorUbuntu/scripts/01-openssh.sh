@@ -299,7 +299,7 @@ cat <<EOF > /etc/hostname
 
 	$_FQDN	
 EOF
-	cp -v conf/ubuntu/{hostname,hosts,hosts.allow,hosts.deny,issue.net,nsswitch.conf} /etc/ &>> $LOG
+	cp -v conf/ubuntu/{hosts,hosts.allow,hosts.deny,issue.net,nsswitch.conf} /etc/ &>> $LOG
 	cp -v conf/ubuntu/vimrc /etc/vim/ &>> $LOG
 	cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
 	cp -v conf/ssh/shellinabox /etc/default/ &>> $LOG

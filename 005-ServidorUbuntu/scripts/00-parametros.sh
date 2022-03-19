@@ -43,6 +43,16 @@ LOGSCRIPT="/var/log/$(echo $0 | cut -d'/' -f2)"
 # aceita a resposta padrão para todas as perguntas.
 export DEBIAN_FRONTEND="noninteractive"
 #
+_Logo_Empresa () {
+	clear
+	echo -e " \e[1;31m ======================================================================== \e[m ";
+	figlet -c "$_Empresa"
+	echo -e " \e[1;31m ======================================================================== \e[m ";
+	echo ""
+	echo ""
+	return
+}
+_Empresa="Sys - Tech"
 #=============================================================================================
 #              VARIÁVEIS DE REDE DO SERVIDOR UTILIZADAS EM TODOS OS SCRIPTS                  #
 #=============================================================================================
@@ -56,14 +66,14 @@ USUARIODEFAULT="jensyg"
 SENHADEFAULT="Casado#55"
 #
 # Variável do Nome (Hostname) do Servidor Ubuntu desse curso
-NOMESERVER="servUbuntu"
+_NomeServidor="servUbuntu"
 #
 # Variável do Nome de Domínio do Servidor Ubuntu desse curso
 # OBSERVAÇÃO IMPORTANTE: essa variável será utilizada em outras variáveis desse curso
-DOMINIOSERVER="cwb.systech.com.br"
+_Dominio="cwb.systech.com.br"
 #
 # Variável do Nome (Hostname) FQDN (Fully Qualified Domain Name) do Servidor Ubuntu desse curso
-FQDNSERVER="$NOMESERVER.$DOMINIOSERVER"
+_FQDN="$_NomeServidor.$_Dominio"
 #
 # Variável do Endereço IPv4 principal (padrão) do Servidor Ubuntu desse curso
 IPV4SERVER="192.168.1.107"

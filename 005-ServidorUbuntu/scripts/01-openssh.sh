@@ -1,28 +1,29 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/vaamonde
-# Data de criação: 10/10/2021
-# Data de atualização: 10/03/2022
-# Versão: 0.25
+# Autor:						Jensy Gregorio Gomez
+# YouTube:						youtube.com/systech
+# Instagram:					https://www.instagram.com/systech5/?hl=pt-br
+# Github:						https://github.com/vaasystech-brz
+# Data de criação:				01/01/2022
+# Data de atualização:			01/01/2022
+# Versão:						0.01
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do OpenSSH Server v8.2.x
 #
-# OpenSSH (Open Secure Shell) é um conjunto de utilitários de rede relacionado à segurança que 
-# provém a criptografia em sessões de comunicações em uma rede de computadores usando o protocolo 
-# SSH. Foi criado com um código aberto alternativo ao código proprietário da suíte de softwares 
-# Secure Shell, oferecido pela SSH Communications Security. OpenSSH foi desenvolvido como parte 
-# do projeto OpenBSD.
+# OpenSSH 
+#			(Open Secure Shell) é um conjunto de utilitários de rede relacionado à
+#			segurança que provém a criptografia em sessões de comunicações em uma 
+#			rede de computadores usando o protocolo SSH. Foi criado com um código 
+#			aberto alternativo ao código proprietário da suíte de softwares Secure 
+#			Shell, oferecido pela SSH Communications Security. OpenSSH foi desenvolvido 
+#			como parte do projeto OpenBSD.
 #
-# O TCP Wrapper é um sistema de rede ACL baseado em host, usado para filtrar acesso à rede a 
-# servidores de protocolo de Internet (IP) em sistemas operacionais do tipo Unix, como Linux ou 
-# BSD. Ele permite que o host, endereços IP de sub-rede, nomes e/ou respostas de consulta ident, 
-# sejam usados como tokens sobre os quais realizam-se filtros para propósitos de controle de acesso.
+# O TCP Wrapper 
+#			É um sistema de rede ACL baseado em host, usado para filtrar acesso à 
+#			rede a servidores de protocolo de Internet (IP) em sistemas operacionais 
+#			do tipo Unix, como Linux ou BSD. Ele permite que o host, endereços IP de 
+#			sub-rede, nomes e/ou respostas de consulta ident, sejam usados como tokens 
+#			sobre os quais realizam-se filtros para propósitos de controle de acesso.
+
 #
 # Site Oficial do Projeto OpenSSH: https://www.openssh.com/
 # Site Oficial do Projeto OpenSSL: https://www.openssl.org/
@@ -74,19 +75,27 @@
 # Arquivo de configuração dos parâmetros utilizados nesse script
 source 00-parametros.sh
 #
+pacote=$(dpkg --get-selections | grep "figlet" )
+	if [ -n "$pacote" ] ;then
+		echo
+	else
+		apt-get install figlet -qq > /dev/null
+	fi
 # Configuração da variável de Log utilizado nesse script
 LOG=$LOGSCRIPT
 #
 # Verificando se o usuário é Root e se a Distribuição é >= 20.04.x 
 # [ ] = teste de expressão, && = operador lógico AND, == comparação de string, exit 1 = A maioria 
 # dos erros comuns na execução
-clear
+_Logo_Empresa
 if [ "$USUARIO" == "0" ] && [ "$UBUNTU" == "20.04" ]
 	then
+	_Logo_Empresa
 		echo -e "O usuário é Root, continuando com o script..."
 		echo -e "Distribuição é >= 20.04.x, continuando com o script..."
 		sleep 5
 	else
+	_Logo_Empresa
 		echo -e "Usuário não é Root ($USUARIO) ou a Distribuição não é >= 20.04.x ($UBUNTU)"
 		echo -e "Caso você não tenha executado o script com o comando: sudo -i"
 		echo -e "Execute novamente o script para verificar o ambiente."
@@ -99,9 +108,11 @@ fi
 # opção do comando nc: -z (scan for listening daemons), -w (timeouts), 1 (one timeout), 443 (port)
 if [ "$(nc -zw1 google.com 443 &> /dev/null ; echo $?)" == "0" ]
 	then
+	_Logo_Empresa
 		echo -e "Você tem acesso a Internet, continuando com o script..."
 		sleep 5
 	else
+	_Logo_Empresa
 		echo -e "Você NÃO tem acesso a Internet, verifique suas configurações de rede IPV4"
 		echo -e "e execute novamente este script."
 		sleep 5
@@ -114,9 +125,11 @@ fi
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
 if [ "$(nc -vz 127.0.0.1 $PORTSSH &> /dev/null ; echo $?)" == "0" ]
 	then
+	_Logo_Empresa
 		echo -e "A porta: $PORTSSH está sendo utilizada pelo serviço do OpenSSH Server, continuando com o script..."
 		sleep 5
 	else
+	_Logo_Empresa
 		echo -e "A porta: $PORTSSH não está sendo utilizada nesse servidor."
 		echo -e "Verifique as dependências desse serviço e execute novamente esse script.\n"
 		sleep 5
@@ -129,11 +142,13 @@ fi
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
 if [ "$(nc -vz 127.0.0.1 $PORTSHELLINABOX &> /dev/null ; echo $?)" == "0" ]
 	then
+	_Logo_Empresa
 		echo -e "A porta: $PORTSHELLINABOX já está sendo utilizada nesse servidor."
 		echo -e "Verifique o serviço associado a essa porta e execute novamente esse script.\n"
 		sleep 5
 		exit 1
 	else
+	_Logo_Empresa
 		echo -e "A porta: $PORTSHELLINABOX está disponível, continuando com o script..."
 		sleep 5
 fi
@@ -143,6 +158,7 @@ fi
 # -n (permite nova linha), || (operador lógico OU), 2> (redirecionar de saída de erro STDERR), 
 # && = operador lógico AND, { } = agrupa comandos em blocos, [ ] = testa uma expressão, retornando 
 # 0 ou 1, -ne = é diferente (NotEqual)
+_Logo_Empresa
 echo -n "Verificando as dependências do OpenSSH Server, aguarde... "
 	for name in $SSHDEP
 	do
@@ -161,6 +177,7 @@ echo -n "Verificando as dependências do OpenSSH Server, aguarde... "
 # OBSERVAÇÃO IMPORTANTE: OS SCRIPTS FORAM PROJETADOS PARA SEREM EXECUTADOS APENAS 1 (UMA) VEZ
 if [ -f $LOG ]
 	then
+	_Logo_Empresa
 		echo -e "Script $0 já foi executado 1 (uma) vez nesse servidor..."
 		echo -e "É recomendado analisar o arquivo de $LOG para informações de falhas ou erros"
 		echo -e "na instalação e configuração do serviço de rede utilizando esse script..."
@@ -168,6 +185,7 @@ if [ -f $LOG ]
 		sleep 5
 		exit 1
 	else
+	_Logo_Empresa
 		echo -e "Primeira vez que você está executando esse script, tudo OK, agora só aguardar..."
 		sleep 5
 fi
@@ -177,8 +195,9 @@ fi
 # opção do comando date: + (format), %d (day), %m (month), %Y (year 1970), %H (hour 24), %M (minute 60)
 # opção do comando hostname: -I (all-ip-addresses)
 # opção do comando cut: -d (delimiter), -f (fields)
+_Logo_Empresa
 echo -e "Início do script $0 em: $(date +%d/%m/%Y-"("%H:%M")")\n" &>> $LOG
-clear
+_Logo_Empresa
 echo
 #
 echo -e "Configuração do OpenSSH Server no GNU/Linux Ubuntu Server 20.04.x\n"
@@ -188,6 +207,7 @@ echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostnam
 echo -e "Aguarde, esse processo demora um pouco dependendo do seu Link de Internet...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Adicionando o Repositório Universal do Apt, aguarde..."
 	# Universe - Software de código aberto mantido pela comunidade:
 	# opção do comando: &>> (redirecionar a saída padrão)
@@ -195,6 +215,7 @@ echo -e "Adicionando o Repositório Universal do Apt, aguarde..."
 echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Adicionando o Repositório Multiversão do Apt, aguarde..."
 	# Multiverse – Software não suportado, de código fechado e com patente: 
 	# opção do comando: &>> (redirecionar a saída padrão)
@@ -202,6 +223,7 @@ echo -e "Adicionando o Repositório Multiversão do Apt, aguarde..."
 echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Adicionando o Repositório Restrito do Apt, aguarde..."
 	# Restricted - Software de código fechado oficialmente suportado:
 	# opção do comando: &>> (redirecionar a saída padrão)
@@ -209,12 +231,14 @@ echo -e "Adicionando o Repositório Restrito do Apt, aguarde..."
 echo -e "Repositório adicionado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Atualizando as listas do Apt, aguarde..."
 	#opção do comando: &>> (redirecionar a saída padrão)
 	apt update &>> $LOG
 echo -e "Listas atualizadas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Atualizando todo o sistema operacional, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
@@ -224,6 +248,7 @@ echo -e "Atualizando todo o sistema operacional, aguarde..."
 echo -e "Sistema atualizado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Removendo todos os software desnecessários, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
@@ -235,6 +260,7 @@ sleep 5
 echo -e "Iniciando a Configuração do OpenSSH Server, aguarde...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Instalando as ferramentas básicas de rede do OpenSSH Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
@@ -242,12 +268,17 @@ echo -e "Instalando as ferramentas básicas de rede do OpenSSH Server, aguarde..
 echo -e "Ferramentas instaladas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando mv: -v (verbose)
 	# opção do comando mkdir: -v (verbose)
 	# opção do comando cp: -v (verbose)
 	# opção do bloco e agrupamentos {}: (Agrupa comandos em um bloco)
+
+
+
+
 	mv -v /etc/ssh/sshd_config /etc/ssh/sshd_config.old &>> $LOG
 	mv -v /etc/default/shellinabox /etc/default/shellinabox.old &>> $LOG
 	mv -v /etc/rsyslog.d/50-default.conf /etc/rsyslog.d/50-default.conf.old &>> $LOG
@@ -255,6 +286,19 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/config.conf /etc/neofetch/ &>> $LOG
 	cp -v conf/ubuntu/neofetch-cron /etc/cron.d/ &>> $LOG
 	cp -v conf/ubuntu/50-default.conf /etc/rsyslog.d/ &>> $LOG
+
+cat <<EOF > /conf/ubuntu/hostname
+	
+	# Gerado:				cwb.systech.com.br -- Soluçoes em TI
+	# Autor:				Jensy Gregorio Gomez
+	# Bio:					Têcnico em Informatica e Eletronica
+	# WhatsApp:				(41) 99896-2670    /    99799-3164
+	# Date:					01/01/2022
+	# Versão:				0.01
+	#
+
+	$_FQDN	
+EOF
 	cp -v conf/ubuntu/{hostname,hosts,hosts.allow,hosts.deny,issue.net,nsswitch.conf} /etc/ &>> $LOG
 	cp -v conf/ubuntu/vimrc /etc/vim/ &>> $LOG
 	cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG

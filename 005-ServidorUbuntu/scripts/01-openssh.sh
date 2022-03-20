@@ -123,14 +123,14 @@ fi
 # [ ] = teste de expressão, == comparação de string, exit 1 = A maioria dos erros comuns na execução,
 # $? código de retorno do último comando executado, ; execução de comando, 
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
-if [ "$(nc -vz 127.0.0.1 $PORTSSH &> /dev/null ; echo $?)" == "0" ]
+if [ "$(nc -vz 127.0.0.1 $_PortSsh &> /dev/null ; echo $?)" == "0" ]
 	then
 	_Logo_Empresa
-		echo -e "A porta: $PORTSSH está sendo utilizada pelo serviço do OpenSSH Server, continuando com o script..."
+		echo -e "A porta: $_PortSsh está sendo utilizada pelo serviço do OpenSSH Server, continuando com o script..."
 		sleep 5
 	else
 	_Logo_Empresa
-		echo -e "A porta: $PORTSSH não está sendo utilizada nesse servidor."
+		echo -e "A porta: $_PortSsh não está sendo utilizada nesse servidor."
 		echo -e "Verifique as dependências desse serviço e execute novamente esse script.\n"
 		sleep 5
 		exit 1
@@ -140,16 +140,16 @@ fi
 # [ ] = teste de expressão, == comparação de string, exit 1 = A maioria dos erros comuns na execução,
 # $? código de retorno do último comando executado, ; execução de comando, 
 # opção do comando nc: -v (verbose), -z (DCCP mode), &> redirecionador de saída de erro
-if [ "$(nc -vz 127.0.0.1 $PORTSHELLINABOX &> /dev/null ; echo $?)" == "0" ]
+if [ "$(nc -vz 127.0.0.1 $_PortShellInbox &> /dev/null ; echo $?)" == "0" ]
 	then
 	_Logo_Empresa
-		echo -e "A porta: $PORTSHELLINABOX já está sendo utilizada nesse servidor."
+		echo -e "A porta: $_PortShellInbox já está sendo utilizada nesse servidor."
 		echo -e "Verifique o serviço associado a essa porta e execute novamente esse script.\n"
 		sleep 5
 		exit 1
 	else
 	_Logo_Empresa
-		echo -e "A porta: $PORTSHELLINABOX está disponível, continuando com o script..."
+		echo -e "A porta: $_PortShellInbox está disponível, continuando com o script..."
 		sleep 5
 fi
 #
@@ -160,7 +160,7 @@ fi
 # 0 ou 1, -ne = é diferente (NotEqual)
 _Logo_Empresa
 echo -n "Verificando as dependências do OpenSSH Server, aguarde... "
-	for name in $SSHDEP
+	for name in $_SshDepen
 	do
   		[[ $(dpkg -s $name 2> /dev/null) ]] || { 
               echo -en "\n\nO software: $name precisa ser instalado. \nUse o comando 'apt install $name'\n";
@@ -201,9 +201,9 @@ _Logo_Empresa
 echo
 #
 echo -e "Configuração do OpenSSH Server no GNU/Linux Ubuntu Server 20.04.x\n"
-echo -e "Porta padrão utilizada pelo OpenSSH Server.: TCP $PORTSSH"
-echo -e "Porta padrão utilizada pelo Shell-In-a-Box.: TCP $PORTSHELLINABOX"
-echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostname -I | cut -d' ' -f1):$PORTSHELLINABOX/\n"
+echo -e "Porta padrão utilizada pelo OpenSSH Server.: TCP $_PortSsh"
+echo -e "Porta padrão utilizada pelo Shell-In-a-Box.: TCP $_PortShellInbox"
+echo -e "Após a instalação do Shell-In-a-Box acessar a URL: https://$(hostname -I | cut -d' ' -f1):$_PortShellInbox/\n"
 echo -e "Aguarde, esse processo demora um pouco dependendo do seu Link de Internet...\n"
 sleep 5
 #
@@ -264,7 +264,7 @@ _Logo_Empresa
 echo -e "Instalando as ferramentas básicas de rede do OpenSSH Server, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando apt: -y (yes)
-	apt -y install $SSHINSTALL &>> $LOG
+	apt -y install $_SshInstall &>> $LOG
 echo -e "Ferramentas instaladas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

@@ -96,7 +96,7 @@ if [ "$_Usuario" == "0" ] && [ "$_VersaoUbuntu" == "20.04" ]
 		sleep 5
 	else
 	_Logo_Empresa
-		echo -e "Usuário não é Root ($USUARIO) ou a Distribuição não é >= 20.04.x ($UBUNTU)"
+		echo -e "Usuário não é Root ($_Usuario) ou a Distribuição não é >= 20.04.x ($_VersaoUbuntu)"
 		echo -e "Caso você não tenha executado o script com o comando: sudo -i"
 		echo -e "Execute novamente o script para verificar o ambiente."
 		exit 1

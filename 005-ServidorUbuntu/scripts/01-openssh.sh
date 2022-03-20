@@ -736,20 +736,6 @@ network:
   version: 2
 EOF
 
-_Logo_Empresa
-netplan --debug apply &>> $LOG
-if [ "$(nc -zw1 google.com 443 &> /dev/null ; echo $?)" == "0" ]
-	then
-	_Logo_Empresa
-		echo -e "Você tem acesso a Internet, continuando com o script..."
-		sleep 5
-	else
-	_Logo_Empresa
-		echo -e "Você NÃO tem acesso a Internet, verifique suas configurações de rede IPV4"
-		echo -e "e execute novamente este script."
-		sleep 5
-		exit 1
-fi
 
 _Logo_Empresa
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"

@@ -702,31 +702,30 @@ cat <<EOF > $_Netplan
 	#
 	# Configuração do Endereço IPv4 do Ubuntu Server
 network:
-  
   ethernets:
-
     $_Interface_Lan:
-
-      #dhcp4: true
-
-      addresses:
-      - $_Ip_V4_Servidor/$_Mascara
-
+      dhcp4: false
+      addresses: [$_Ip_V4_Servidor/$_Mascara]
       gateway4: $_Gateway
 
-      nameservers:
-        addresses:
-        #- 172.16.1.20
-        - $_Gateway
-        #- 8.8.8.8
-        #- 8.8.8.8
-
-        search:
-        - $_Nome_Dominio
-
-  # Configuração da versão do Protocolo Ethernet do Ubuntu Server
   version: 2
 EOF
+
+_Logo_Empresa
+sudo netplan --debug try
+sudo netplan --debug apply
+if [ "$(nc -zw1 google.com 443 &> /dev/null ; echo $?)" == "0" ]
+	then
+	_Logo_Empresa
+		echo -e "Você tem acesso a Internet, continuando com o script..."
+		sleep 5
+	else
+	_Logo_Empresa
+		echo -e "Você NÃO tem acesso a Internet, verifique suas configurações de rede IPV4"
+		echo -e "e execute novamente este script."
+		sleep 5
+		exit 1
+fi
 
 	
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"

@@ -82,7 +82,7 @@ pacote=$(dpkg --get-selections | grep "figlet" )
 		apt-get install figlet -qq > /dev/null
 	fi
 # Configuração da variável de Log utilizado nesse script
-LOG=$LOGSCRIPT
+LOG=$_LogScript
 #
 # Verificando se o usuário é Root e se a Distribuição é >= 20.04.x 
 # [ ] = teste de expressão, && = operador lógico AND, == comparação de string, exit 1 = A maioria 

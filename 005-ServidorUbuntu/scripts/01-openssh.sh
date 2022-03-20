@@ -737,7 +737,6 @@ network:
 EOF
 
 _Logo_Empresa
-netplan --debug try &>> $LOG
 netplan --debug apply &>> $LOG
 if [ "$(nc -zw1 google.com 443 &> /dev/null ; echo $?)" == "0" ]
 	then

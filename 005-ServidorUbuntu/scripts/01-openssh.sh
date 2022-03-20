@@ -287,6 +287,9 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/neofetch-cron /etc/cron.d/ &>> $LOG
 	cp -v conf/ubuntu/50-default.conf /etc/rsyslog.d/ &>> $LOG
 
+_Logo_Empresa
+echo "Configurando o Arquivo HOSTNAME"
+sleep 2
 cat <<EOF > /etc/hostname
 	
 	# Gerado:				cwb.systech.com.br -- Soluçoes em TI
@@ -300,6 +303,9 @@ cat <<EOF > /etc/hostname
 	$_Nome_FQDN	
 EOF
 
+_Logo_Empresa
+echo "Configurando o Arquivo HOSTS"
+sleep 2
 cat << EOF > /etc/hosts
 	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
 	# Autor:			Jensy Gregorio Gomez
@@ -327,6 +333,9 @@ cat << EOF > /etc/hosts
 	ff02::2     ip6-allrouters
 EOF
 
+_Logo_Empresa
+echo "Configurando o Arquivo HOSTs.ALLOW"
+sleep 2
 cat << EOF > /etc/hosts.allow
 	
 	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
@@ -391,6 +400,9 @@ cat << EOF > /etc/hosts.allow
 
 EOF
 
+_Logo_Empresa
+echo "Configurando o Arquivo HOSTS.DENY"
+sleep 2
 cat << EOF > /etc/hosts.deny
 	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
 	# Autor:			Jensy Gregorio Gomez
@@ -420,7 +432,9 @@ cat << EOF > /etc/hosts.deny
 	#sshd: 192.168.1. EXCEPT 192.168.1.11: spawn /bin/echo "$(date) Conexão Recusada - SSH - IP %a" >> /var/log/tcpwrappers-deny.log
 EOF
 
-
+_Logo_Empresa
+echo "Configurando o Arquivo NSSWITCH.CONF"
+sleep 2
 cat << EOF > /etc/nsswitch.conf
 
 	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
@@ -462,6 +476,9 @@ EOF
 	cp -v conf/ubuntu/vimrc /etc/vim/ &>> $LOG
 	cp -v conf/ubuntu/issue.net /etc/issue.net &>> $LOG
 
+_Logo_Empresa
+echo "Configurando o Arquivo SSHD_CONFIG"
+sleep 2
 cat << EOF > /etc/ssh/sshd_config
 
 
@@ -650,6 +667,9 @@ cat << EOF > /etc/ssh/sshd_config
 	UseDNS no
 EOF
 
+_Logo_Empresa
+echo "Configurando o Arquivo SHELLINABOX"
+sleep 2
 cat <<EOF > /etc/default/shellinabox
 	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
 	# Autor:			Jensy Gregorio Gomez
@@ -686,6 +706,9 @@ EOF
 
 	cp -v $_Netplan $_Netplan.old &>> $LOG
 	
+_Logo_Empresa
+echo "Configurando o Arquivo NETPLAN"
+sleep 2
 cat <<EOF > $_Netplan
 	
 # Gerado:          cwb.systech.com.br -- Soluçoes em TI
@@ -731,25 +754,30 @@ if [ "$(nc -zw1 google.com 443 &> /dev/null ; echo $?)" == "0" ]
 		exit 1
 fi
 
-	
+_Logo_Empresa
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 5
 
-
+_Logo_Empresa
 echo -e "Criando o arquivo personalizado de Banner em: /etc/motd, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	# opção do comando chmod: -v (verbose), -x (remove executable)
 	neofetch --config /etc/neofetch/config.conf > /etc/motd
 	chmod -v -x /etc/update-motd.d/* &>> $LOG
+_Logo_Empresa
 echo -e "Arquivo criado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Aplicando as mudanças da Placa de Rede do Netplan, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	netplan --debug apply &>> $LOG
+
+_Logo_Empresa
 echo -e "Mudanças aplicadas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Reinicializando os serviços do OpenSSH Server e do Shell-In-a-Box, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
 	systemctl restart sshd &>> $LOG
@@ -757,12 +785,15 @@ echo -e "Reinicializando os serviços do OpenSSH Server e do Shell-In-a-Box, agu
 echo -e "Serviços reinicializados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Verificando os serviços do OpenSSH Server e do Shell-In-a-Box, aguarde..."
 	echo -e "OpenSSH....: $(systemctl status sshd | grep Active)"
 	echo -e "Shellinabox: $(systemctl status shellinabox | grep Active)"
+_Logo_Empresa
 echo -e "Serviços verificados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Verificando as portas de conexões do OpenSSH Server e do Shell-In-a-Box, aguarde..."
 	# opção do comando lsof: -n (inhibits the conversion of network numbers to host names for 
 	# network files), -P (inhibits the conversion of port numbers to port names for network files), 
@@ -772,6 +803,7 @@ echo -e "Verificando as portas de conexões do OpenSSH Server e do Shell-In-a-Bo
 echo -e "Portas verificadas com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
+_Logo_Empresa
 echo -e "Configuração do OpenSSH Server feita com Sucesso!!!."
 	# script para calcular o tempo gasto (SCRIPT MELHORADO, CORRIGIDO FALHA DE HORA:MINUTO:SEGUNDOS)
 	# opção do comando date: +%T (Time)

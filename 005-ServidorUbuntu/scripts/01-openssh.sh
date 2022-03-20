@@ -688,12 +688,12 @@ EOF
 	
 cat <<EOF > $_Netplan
 	
-# Gerado:			cwb.systech.com.br -- Soluçoes em TI
-# Autor:			Jensy Gregorio Gomez
-# Bio:				Têcnico em Informatica e Eletronica
-# WhatsApp:			(41) 99896-2670    /    99799-3164
-# Date:				01/01/2022
-# Versão:			0.01
+# Gerado:          cwb.systech.com.br -- Soluçoes em TI
+# Autor:           Jensy Gregorio Gomez
+# Bio:             Têcnico em Informatica e Eletronica
+# WhatsApp:        (41) 99896-2670    /    99799-3164
+# Date:            01/01/2022
+# Versão:          0.01
 #
 
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64

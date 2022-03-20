@@ -708,9 +708,9 @@ network:
       dhcp4: false
       addresses: [$_Ip_V4_Servidor/$_Mascara]
       gateway4: $_Gateway
-	  nameservers:
+      nameservers:
 	    addresses: [$_Gateway, 8.8.8.8, 8.8.4.4]
-	    search: [$_Nome_Dominio]
+		search: [$_Nome_Dominio]
 
   version: 2
 EOF

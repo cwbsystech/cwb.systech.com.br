@@ -710,7 +710,6 @@ _Logo_Empresa
 echo "Configurando o Arquivo NETPLAN"
 sleep 2
 cat <<EOF > $_Netplan
-	
 # Gerado:          cwb.systech.com.br -- Soluçoes em TI
 # Autor:           Jensy Gregorio Gomez
 # Bio:             Têcnico em Informatica e Eletronica
@@ -718,9 +717,7 @@ cat <<EOF > $_Netplan
 # Date:            01/01/2022
 # Versão:          0.01
 #
-
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-
 # Mais informações veja o arquivo: scripts/settings/04-ConfiguracaoDoNetplan.sh
 # Após as configuração do endereço IPv4 digitar o comando: netplan --debug apply
 #

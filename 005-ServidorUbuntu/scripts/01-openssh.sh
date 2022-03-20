@@ -685,28 +685,32 @@ cat <<EOF > /etc/default/shellinabox
 EOF
 
 	cp -v $_Netplan $_Netplan.old &>> $LOG
+	
 cat <<EOF > $_Netplan
 	
-	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
-	# Autor:			Jensy Gregorio Gomez
-	# Bio:				Têcnico em Informatica e Eletronica
-	# WhatsApp:			(41) 99896-2670    /    99799-3164
-	# Date:				01/01/2022
-	# Versão:			0.01
-	#
+# Gerado:			cwb.systech.com.br -- Soluçoes em TI
+# Autor:			Jensy Gregorio Gomez
+# Bio:				Têcnico em Informatica e Eletronica
+# WhatsApp:			(41) 99896-2670    /    99799-3164
+# Date:				01/01/2022
+# Versão:			0.01
+#
 
-	# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
+# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 
-	# Mais informações veja o arquivo: scripts/settings/04-ConfiguracaoDoNetplan.sh
-	# Após as configuração do endereço IPv4 digitar o comando: netplan --debug apply
-	#
-	# Configuração do Endereço IPv4 do Ubuntu Server
+# Mais informações veja o arquivo: scripts/settings/04-ConfiguracaoDoNetplan.sh
+# Após as configuração do endereço IPv4 digitar o comando: netplan --debug apply
+#
+# Configuração do Endereço IPv4 do Ubuntu Server
 network:
   ethernets:
     $_Interface_Lan:
       dhcp4: false
       addresses: [$_Ip_V4_Servidor/$_Mascara]
       gateway4: $_Gateway
+	  nameservers:
+	    addresses: [$_Gateway, 8.8.8.8, 8.8.4.4]
+	    search: [$_Nome_Dominio]
 
   version: 2
 EOF

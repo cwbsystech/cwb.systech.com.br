@@ -420,38 +420,8 @@ cat << EOF > /etc/hosts.deny
 	#sshd: 192.168.1. EXCEPT 192.168.1.11: spawn /bin/echo "$(date) Conexão Recusada - SSH - IP %a" >> /var/log/tcpwrappers-deny.log
 EOF
 
-cat << EOF > /etc/issue.net
-	**************************************************************************
-	##########################################################################
-	##          Acesso ao Servidor Remoto utilizando o OpenSSH              ##
-	##########################################################################
-	**************************************************************************
-		_____               _   _    _____   ______   _____    _   _   _ 
-		|  __ \      /\     | \ | |  / ____| |  ____| |  __ \  | | | | | |
-		| |  | |    /  \    |  \| | | |  __  | |__    | |__) | | | | | | |
-		| |  | |   / /\ \   | . ` | | | |_ | |  __|   |  _  /  | | | | | |
-		| |__| |  / ____ \  | |\  | | |__| | | |____  | | \ \  |_| |_| |_|
-		|_____/  /_/    \_\ |_| \_|  \_____| |______| |_|  \_\ (_) (_) (_)
 
-	AVISO: O acesso nao autorizado a este sistema e proibido e sera processado
-	conforme a lei.  Ao se conectar nesse sistema,  voce concorda que todas as
-	suas acoes  serao monitoradas, caso  seja  verificado  o uso  indevido dos 
-	recursos de acesso remoto nesse servidor, sera aplicado a lei vigente  com
-	base nas diretivas da LGPD (Lei Geral de Protecao de Dados n: 13.709/2018)
-
-		# Gerado:			cwb.systech.com.br -- Soluçoes em TI
-		# Autor:			Jensy Gregorio Gomez
-		# Bio:				Têcnico em Informatica e Eletronica
-		# WhatsApp:			(41) 99896-2670    /    99799-3164
-		# Date:				01/01/2022
-		# Versão:			0.01
-
-	**************************************************************************
-	##########################################################################
-	**************************************************************************
-EOF
-
-cat << EOF > etc/nsswitch.conf
+cat << EOF > /etc/nsswitch.conf
 
 	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
 	# Autor:			Jensy Gregorio Gomez
@@ -490,8 +460,18 @@ cat << EOF > etc/nsswitch.conf
 EOF
 
 	cp -v conf/ubuntu/vimrc /etc/vim/ &>> $LOG
+	cp -v conf/ubuntu/issue.net /etc/issue.net &>> $LOG
 
 cat << EOF > /etc/ssh/sshd_config
+
+
+	# Gerado:			cwb.systech.com.br -- Soluçoes em TI
+	# Autor:			Jensy Gregorio Gomez
+	# Bio:				Têcnico em Informatica e Eletronica
+	# WhatsApp:			(41) 99896-2670    /    99799-3164
+	# Date:				01/01/2022
+	# Versão:			0.01
+	#
 	# Testado e homologado para a versão do OpenSSH Server v8.2.x
 	#
 	# Incluindo o diretório de configuração personalizada do OpenSSH Server
